@@ -131,7 +131,7 @@ message CellFindMessage {
   CellType type = 2;
   oneof query {
     string name = 3;
-	sint64 id = 4;
+    sint64 id = 4;
   }
 }
 

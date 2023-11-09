@@ -4,9 +4,9 @@ syntax = "proto3";
 
 package ansys.api.edb.v1;
 
-import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/bondwire.proto";
 import "ansys/api/edb/v1/definition_obj.proto";
+import "ansys/api/edb/v1/edb_messages.proto";
 
 enum AccessLevel {
   ACCESS_LEVEL_NO_ACCESS = 0;

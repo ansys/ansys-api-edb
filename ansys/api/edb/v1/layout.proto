@@ -6,11 +6,11 @@ syntax = "proto3";
 package ansys.api.edb.v1;
 
 // Imports
-import "ansys/api/edb/v1/edb_messages.proto";
-import "ansys/api/edb/v1/refs.proto";
-import "ansys/api/edb/v1/layout_obj.proto";
 import "ansys/api/edb/v1/edb_defs.proto";
+import "ansys/api/edb/v1/edb_messages.proto";
+import "ansys/api/edb/v1/layout_obj.proto";
 import "ansys/api/edb/v1/polygon_data.proto";
+import "ansys/api/edb/v1/refs.proto";
 
 // Cell service definition
 service LayoutService {

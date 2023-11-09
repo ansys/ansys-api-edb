@@ -142,27 +142,27 @@ service SIWaveDCAdvancedSettingsService {
 
 enum SParamInterpolation
 {
-   POINT_IN = 0;
-   LINEAR_IN = 1;
-   STEP_IN = 2;
+  POINT_IN = 0;
+  LINEAR_IN = 1;
+  STEP_IN = 2;
 }
 
 enum SParamExtrapolation
 {
-    ZERO_EX = 0;
-    SAME_EX = 1;
-    LINEAR_EX = 2;
-    CONSTANT_EX = 3;
+  ZERO_EX = 0;
+  SAME_EX = 1;
+  LINEAR_EX = 2;
+  CONSTANT_EX = 3;
 }
 
 enum SParamDCBehavior
 {
-    ZERO_DC = 0;
-    SAME_DC = 1;
-    LINEAR_DC = 2;
-    CONSTANT_DC = 3;
-    ONE_PORT_CAPACITOR_DC = 4;
-    OPEN_DC = 5;
+  ZERO_DC = 0;
+  SAME_DC = 1;
+  LINEAR_DC = 2;
+  CONSTANT_DC = 3;
+  ONE_PORT_CAPACITOR_DC = 4;
+  OPEN_DC = 5;
 }
 
 service SIWaveSParameterSettingsService {

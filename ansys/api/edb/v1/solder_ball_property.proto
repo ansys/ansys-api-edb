@@ -1,3 +1,5 @@
+// Proto file representing the SolderBallProperty class
+
 syntax = "proto3";
 
 package ansys.api.edb.v1;

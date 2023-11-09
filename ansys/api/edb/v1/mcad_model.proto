@@ -49,7 +49,7 @@ message McadModelCreationMessage {
     string file_name = 2;
   }
   message WithConnObj {
-      EDBObjMessage obj = 1;
+    EDBObjMessage obj = 1;
   }
 
   oneof param {

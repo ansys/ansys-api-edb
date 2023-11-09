@@ -82,8 +82,8 @@ message TensorPositionMessage {
 }
 
 message MaterialDefSetPropertyMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
   ValueMessage value = 3;
   oneof select{
     EDBInternalIdMessage component = 4;
@@ -92,8 +92,8 @@ message MaterialDefSetPropertyMessage {
 }
 
 message MaterialDefGetPropertyMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
   oneof select{
     EDBInternalIdMessage component = 3;
     TensorPositionMessage tensor = 4;
@@ -128,25 +128,25 @@ message SetAnisotropicThermalModifierMessage {
 }
 
 message SetMaterialDefPropertyMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
   EDBObjMessage thermal_modifier = 3;
 }
 
 message SetMaterialDefPropertyComponentMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
   EDBObjMessage thermal_modifier = 3;
   uint64 component = 4;
 }
 
 message MaterialDefPropertyMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
 }
 
 message MaterialDefPropertyComponentMessage {
-  EDBObjMessage materialDef = 1;
-  MaterialPropertyID propertyId = 2;
+  EDBObjMessage material_def = 1;
+  MaterialPropertyID property_id = 2;
   uint64 component = 3;
 }

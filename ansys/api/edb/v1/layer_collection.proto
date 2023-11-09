@@ -63,7 +63,8 @@ service LayerCollectionService {
   // Get a list of property ids associated with the layer for the given product
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
-  // Merges the dielectric layers in a range of layers into one large dielectric layer that spans the elevation range of all merged dielectric layers
+  // Merges the dielectric layers in a range of layers into one large dielectric layer that spans
+  // the elevation range of all merged dielectric layers
   rpc MergeDielectrics (MergeDielectricsMessage) returns (EDBObjMessage) {}
 
   // Retrieves a list of all zones in the LayerCollection
@@ -107,7 +108,7 @@ message AddLayerMessage {
   EDBObjMessage layer = 2;
   oneof op_params {
     AddLayerAboveBelowMessage above_below_msg = 3;
-	bool add_top = 4;
+    bool add_top = 4;
   }
 }
 

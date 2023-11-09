@@ -39,12 +39,12 @@ service ArcDataService {
 message ArcMessage {
   message RadiusMessage {
     double radius = 1;
-	RotationDirection dir = 2;
-	bool is_big = 3;
+    RotationDirection dir = 2;
+    bool is_big = 3;
   }
   message CenterMessage {
     PointMessage point = 1;
-	RotationDirection dir = 2;
+    RotationDirection dir = 2;
   }
 
   PointMessage start = 1;
@@ -52,8 +52,8 @@ message ArcMessage {
   oneof option {
     google.protobuf.FloatValue height = 3;
     PointMessage thru = 4;
-	RadiusMessage radius = 5;
-	CenterMessage center = 6;
+    RadiusMessage radius = 5;
+    CenterMessage center = 6;
   }
 }
 

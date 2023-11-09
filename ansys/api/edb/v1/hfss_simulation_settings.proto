@@ -31,13 +31,16 @@ enum AdaptType
 // General settings
 service HFSSGeneralSettingsService {
   rpc GetSingleFrequencyAdaptiveSolution(EDBObjMessage) returns (SingleFrequencyAdaptiveSolutionMessage) {}
-  rpc SetSingleFrequencyAdaptiveSolution(SingleFrequencyAdaptiveSolutionPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetSingleFrequencyAdaptiveSolution(SingleFrequencyAdaptiveSolutionPropertyMessage)
+    returns (google.protobuf.Empty) {}
 
   rpc GetMultiFrequencyAdaptiveSolution(EDBObjMessage) returns (MultiFrequencyAdaptiveSolutionMessage) {}
-  rpc SetMultiFrequencyAdaptiveSolution(MultiFrequencyAdaptiveSolutionPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetMultiFrequencyAdaptiveSolution(MultiFrequencyAdaptiveSolutionPropertyMessage)
+    returns (google.protobuf.Empty) {}
 
   rpc GetBroadbandFrequencyAdaptiveSolution(EDBObjMessage) returns (BroadbandFrequencyAdaptiveSolutionMessage) {}
-  rpc SetBroadbandFrequencyAdaptiveSolution(BroadbandFrequencyAdaptiveSolutionPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetBroadbandFrequencyAdaptiveSolution(BroadbandFrequencyAdaptiveSolutionPropertyMessage)
+    returns (google.protobuf.Empty) {}
 
   rpc GetSaveFieldsFlag(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc SetSaveFieldsFlag(BoolPropertyMessage) returns (google.protobuf.Empty) {}
