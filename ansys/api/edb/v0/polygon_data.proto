@@ -77,9 +77,9 @@ message PolygonDataTransformMessage {
   }
 
   PolygonDataMessage polygon = 1;
-    oneof op {
-      PointMessage move = 2;
-      PointValueMessage rotate = 3;
+  oneof op {
+    PointMessage move = 2;
+    PointValueMessage rotate = 3;
     PointValueMessage scale = 4;
     float mirror_x = 5;
   }

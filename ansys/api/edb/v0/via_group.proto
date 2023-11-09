@@ -5,9 +5,9 @@ syntax = "proto3";
 package ansys.api.edb.v0;
 
 import "ansys/api/edb/v0/edb_messages.proto";
+import "ansys/api/edb/v0/hierarchy_obj.proto";
 import "ansys/api/edb/v0/polygon_data.proto";
 import "ansys/api/edb/v0/refs.proto";
-import "ansys/api/edb/v0/hierarchy_obj.proto";
 
 // ViaGroup service definition
 service ViaGroupService {

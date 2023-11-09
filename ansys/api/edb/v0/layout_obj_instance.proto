@@ -5,9 +5,9 @@ syntax = "proto3";
 package ansys.api.edb.v0;
 
 import "ansys/api/edb/v0/edb_messages.proto";
-import "ansys/api/edb/v0/refs.proto";
-import "ansys/api/edb/v0/point_data.proto";
 import "ansys/api/edb/v0/layout_obj_instance_geometry.proto";
+import "ansys/api/edb/v0/point_data.proto";
+import "ansys/api/edb/v0/refs.proto";
 
 service LayoutObjInstanceService {
   rpc GetLayers(EDBObjMessage) returns (EDBObjCollectionMessage) {}

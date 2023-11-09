@@ -7,8 +7,8 @@ package ansys.api.edb.v0;
 
 // Imports
 import "ansys/api/edb/v0/edb_messages.proto";
-import "ansys/api/edb/v0/refs.proto";
 import "ansys/api/edb/v0/layout_obj.proto";
+import "ansys/api/edb/v0/refs.proto";
 
 // Connectable Service definition
 service ConnectableService {
@@ -36,7 +36,7 @@ service ConnectableService {
 
   // Sets the net of the connectable object.
   rpc SetNet(SetNetMessage) returns (google.protobuf.Empty) {}
-  }
+}
 
 message LayoutObjTypeMessage {
   LayoutObjType type = 1;

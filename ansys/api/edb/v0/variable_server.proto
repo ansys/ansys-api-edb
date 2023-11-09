@@ -27,10 +27,10 @@ service VariableServerService {
 }
 
 message AddVariableMessage {
-    EDBObjMessage variable_owner = 1;
-    string name = 2;
-    ValueMessage value = 3;
-    bool isparam = 4;
+  EDBObjMessage variable_owner = 1;
+  string name = 2;
+  ValueMessage value = 3;
+  bool isparam = 4;
 }
 
 message AddMenuVariableMessage {
@@ -47,9 +47,9 @@ message VariableNameMessage {
 }
 
 message SetVariableMessage {
-    EDBObjMessage variable_owner = 1;
-    string name = 2;
-    ValueMessage value = 3;
+  EDBObjMessage variable_owner = 1;
+  string name = 2;
+  ValueMessage value = 3;
 }
 
 message SetDescriptionMessage {

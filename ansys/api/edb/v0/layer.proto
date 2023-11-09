@@ -132,7 +132,8 @@ service LayerService {
   // Get the zone ids of all zones containing this layer
   rpc GetZones (EDBObjMessage) returns (ZonesMessage) {}
 
-  // Get the zone index asociated with the layer's owning layer collection (if owner is invalid index is 0, if owner is multizone index is -1)
+  // Get the zone index asociated with the layer's owning layer collection
+  // (if owner is invalid index is 0, if owner is multizone index is -1)
   rpc GetZone (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 }
 

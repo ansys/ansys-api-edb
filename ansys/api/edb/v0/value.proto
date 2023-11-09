@@ -16,6 +16,6 @@ service ValueService {
 }
 
 message ValueTextMessage {
-    string text = 1;
-    EDBObjMessage variable_owner = 2;
+  string text = 1;
+  EDBObjMessage variable_owner = 2;
 }

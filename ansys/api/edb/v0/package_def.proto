@@ -1,3 +1,5 @@
+// Proto file
+
 syntax = "proto3";
 
 package ansys.api.edb.v0;
@@ -33,14 +35,14 @@ service PackageDefService {
   rpc GetMaximumPower(EDBObjMessage) returns (ValueMessage) {}
   rpc SetMaximumPower(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
-  rpc GetTherm_Cond(EDBObjMessage) returns (ValueMessage) {}
-  rpc SetTherm_Cond(ValuePropertyMessage) returns (google.protobuf.Empty) {}
+  rpc GetThermCond(EDBObjMessage) returns (ValueMessage) {}
+  rpc SetThermCond(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
-  rpc GetTheta_JB(EDBObjMessage) returns (ValueMessage) {}
-  rpc SetTheta_JB(ValuePropertyMessage) returns (google.protobuf.Empty) {}
+  rpc GetThetaJB(EDBObjMessage) returns (ValueMessage) {}
+  rpc SetThetaJB(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
-  rpc GetTheta_JC(EDBObjMessage) returns (ValueMessage) {}
-  rpc SetTheta_JC(ValuePropertyMessage) returns (google.protobuf.Empty) {}
+  rpc GetThetaJC(EDBObjMessage) returns (ValueMessage) {}
+  rpc SetThetaJC(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   rpc GetHeatSink(EDBObjMessage) returns (HeatSinkMessage) {}
   rpc SetHeatSink(SetHeatSinkMessage) returns (google.protobuf.Empty) {}

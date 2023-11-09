@@ -5,8 +5,8 @@ syntax = "proto3";
 package ansys.api.edb.v0;
 
 import "ansys/api/edb/v0/edb_messages.proto";
-import "ansys/api/edb/v0/point_3d_data.proto";
 import "ansys/api/edb/v0/layout_obj_instance_geometry.proto";
+import "ansys/api/edb/v0/point_3d_data.proto";
 
 service LayoutObjInstance3DGeometryService {
   rpc GetTesselationData(LayoutObjInstanceGeometryMessage) returns (TesselationDataMessage) {}

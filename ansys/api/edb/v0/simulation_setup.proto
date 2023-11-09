@@ -4,8 +4,8 @@ syntax = "proto3";
 
 package ansys.api.edb.v0;
 
-import "ansys/api/edb/v0/edb_messages.proto";
 import "ansys/api/edb/v0/edb_defs.proto";
+import "ansys/api/edb/v0/edb_messages.proto";
 
 service SimulationSetupService {
   rpc Create(SimulationSetupCreationMessage) returns (EDBObjMessage) {}
