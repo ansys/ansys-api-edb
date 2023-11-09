@@ -1,0 +1,54 @@
+// Proto file representing the layout instance class
+
+syntax = "proto3";
+
+package ansys.api.edb.v0;
+
+import "ansys/api/edb/v0/edb_messages.proto";
+import "ansys/api/edb/v0/point_data.proto";
+import "ansys/api/edb/v0/refs.proto";
+import "ansys/api/edb/v0/polygon_data.proto";
+
+service LayoutInstanceService {
+  rpc Refresh(EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  rpc QueryLayoutObjInstances(LayoutObjInstancesQueryMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
+
+  rpc GetLayoutObjInstanceInContext(GetLayoutObjInstanceInContextMessage) returns (EDBObjMessage) {}
+
+  rpc GetConnectedObjects(GetConnectedObjectsMessage) returns (EDBObjCollectionMessage) {}
+}
+
+message LayoutObjInstancesQueryMessage {
+  EDBObjMessage layout_inst = 1;
+  oneof spatial_filter {
+    PointMessage point_filter = 2;
+    PolygonDataMessage region_filter = 3;
+  }
+  repeated LayerRefMessage layer_filter = 4;
+  repeated NetRefMessage net_filter = 5;
+}
+
+message LayoutObjInstancesQueryResultsMessage {
+  oneof results {
+    EDBObjCollectionMessage hits = 1;
+	FullPartialHitsMessage full_partial_hits = 2;
+  }
+}
+
+message FullPartialHitsMessage {
+  EDBObjCollectionMessage full = 1;
+  EDBObjCollectionMessage partial = 2;
+}
+
+message GetLayoutObjInstanceInContextMessage {
+  EDBObjMessage layout_inst = 1;
+  EDBObjMessage layout_obj = 2;
+  StringsMessage context = 3;
+}
+
+message GetConnectedObjectsMessage {
+  EDBObjMessage layout_inst = 1;
+  EDBObjMessage layout_obj = 2;
+  bool touching_only = 3;
+}

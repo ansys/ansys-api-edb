@@ -1,0 +1,14 @@
+// Proto file representing the EDB BundleTerminal class
+
+syntax = "proto3";
+package ansys.api.edb.v0;
+
+import "ansys/api/edb/v0/edb_messages.proto";
+
+service BundleTerminalService {
+  rpc Create (EDBObjCollectionMessage) returns (EDBObjMessage) {}
+
+  rpc Ungroup (EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  rpc GetTerminals (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+}
