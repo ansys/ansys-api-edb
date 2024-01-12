@@ -38,7 +38,7 @@ jobs:
           python -c "from ansys.api.edb import __version__; print(__version__)"
 
       - name: Upload packages
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ansys-api-edb-package
           path: dist/
@@ -55,7 +55,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
 
       - name: Display structure of downloaded files
         run: ls -R
