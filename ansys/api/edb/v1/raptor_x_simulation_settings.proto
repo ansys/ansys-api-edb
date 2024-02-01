@@ -60,12 +60,6 @@ service RaptorXAdvancedSettingsService {
   rpc GetEliminateSlitPerHoles(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
   rpc SetEliminateSlitPerHoles(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
-  rpc GetUseArcResolution(EDBObjMessage) returns (google.protobuf.BoolValue) {}
-  rpc SetUseArcResolution(BoolPropertyMessage) returns (google.protobuf.Empty) {}
-
-  rpc GetArcResolution(EDBObjMessage) returns (google.protobuf.StringValue) {}
-  rpc SetArcResolution(StringPropertyMessage) returns (google.protobuf.Empty) {}
-
   rpc GetUseAutoRemovalSliverPoly(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc SetUseAutoRemovalSliverPoly(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
