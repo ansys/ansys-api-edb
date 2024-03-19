@@ -35,6 +35,15 @@ enum SimulationSetupType {
   RAPTOR_X_SIM = 12;
 }
 
+//------------------------------------------------------------------------------
+// Frequency Sweep Type
+
+enum FreqSweepType {
+  INTERPOLATING_SWEEP = 0;
+  DISCRETE_SWEEP = 1;
+  BROADBAND_SWEEP = 2;
+}
+
 //------------------------------------------------------------------------------ 
 // HFSS Extents
 
