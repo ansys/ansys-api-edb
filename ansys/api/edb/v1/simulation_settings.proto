@@ -21,6 +21,9 @@ service SettingsOptionsService {
   rpc GetLamdaTarget(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
   rpc SetLamdaTarget(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  rpc GetMeshSizefactor(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+  rpc SetMeshSizefactor(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
   rpc GetUseDefaultLamda(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc SetUseDefaultLamda(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
@@ -41,6 +44,9 @@ service AdvancedSettingsService {
 
   rpc GetRemoveFloatingGeometry(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc SetRemoveFloatingGeometry(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  rpc GetHealingOption(EDBObjMessage) returns (google.protobuf.Int64Value) {}
+  rpc SetHealingOption(IntPropertyMessage) returns (google.protobuf.Empty) {}
 
   rpc GetSmallVoidArea(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
   rpc SetSmallVoidArea(DoublePropertyMessage) returns (google.protobuf.Empty) {}

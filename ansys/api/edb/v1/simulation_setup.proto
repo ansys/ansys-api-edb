@@ -28,10 +28,63 @@ message SimulationSetupCreationMessage {
   SimulationSetupType type = 3;
 }
 
+message HFSSRegionComputeResourceMessage {
+  int64 region_id = 1;
+  double compute_resource_percentage = 2;
+}
+
+message MatrixConvergenceEntryMessage {
+  string port_1 = 1;
+  string port_2 = 2;
+  double mag_limit = 3;
+  double phase_limit = 4;
+}
+
+message InterpolatingSweepDataMessage {
+  double relative_s_error = 1;
+  bool enforce_causality = 2;
+  bool enforce_passivity = 3;
+  double passivity_tolerance = 4;
+  int64 max_solutions = 5;
+  bool interp_use_s_matrix = 6;
+  bool interp_use_port_impedance = 7;
+  bool interp_use_prop_const = 8;
+  bool interp_use_full_basis = 9;
+  bool fast_sweep = 10;
+  bool adaptive_sampling = 11;
+  bool enforce_dc_and_causality = 12;
+  repeated MatrixConvergenceEntryMessage matrix_conv_entry_list = 13;
+  int64 interp_min_subranges = 14;
+  int64 interp_min_solutions = 15;
+}
+
 message SweepDataMessage {
   string name = 1;
   string frequency_string = 2;
-  bool fast_sweep = 3;
+  reserved 3;
+  reserved "fast_sweep";
+  bool enabled = 4;
+  FreqSweepType type = 5;
+  bool use_q3d_for_dc = 6;
+  bool save_fields = 7;
+  bool save_rad_fields_only = 8;
+  bool compute_dc_point = 9;
+  bool siwave_with_3dddm = 10;
+  bool use_hfss_solver_regions = 11;
+  bool use_hfss_solver_region_sch_gen = 12;
+  bool use_hfss_solver_region_parallel_solve = 13;
+  bool use_adp_solution_for_all_sweep_freq = 14;
+  int64 num_parallel_hfss_regions = 15;
+  repeated HFSSRegionComputeResourceMessage parallel_hfss_regions_sim_cfg = 17;
+  bool auto_s_mat_only_solve = 18;
+  string min_freq_s_mat_only_solve = 19;
+  repeated string frequencies = 20;
+  double steady_state_start = 21;
+  int64 mesh_freq_choice = 22;
+  repeated string mesh_freq_points = 23;
+  string mesh_freq_range_start = 24;
+  string mesh_freq_range_stop = 25;
+  InterpolatingSweepDataMessage interp_sweep_data = 26;
 }
 
 message SweepDataListMessage {
