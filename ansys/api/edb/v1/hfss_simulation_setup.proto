@@ -46,6 +46,7 @@ message MeshOperationMessage {
     SkinDepthMeshOperationMessage skin_depth_mesh_op = 6;
     LengthMeshOperationMessage length_mesh_op = 7;
   }
+  bool solve_inside = 8;
 }
 
 message MeshOperationsMessage {
