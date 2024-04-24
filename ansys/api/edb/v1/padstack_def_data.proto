@@ -55,6 +55,21 @@ enum SolderballPlacement {
   UNKNOWN_PLACEMENT = 2;
 }
 
+// CONNECTIONPT_DIRECTION type enum
+enum ConnectionPtDirection {
+  PS_NO_DIRECTION = 0;
+  PS_ANY_DIRECTION = 1;
+  PS_0_DIRECTION = 2;
+  PS_45_DIRECTION = 3;
+  PS_90_DIRECTION = 4;
+  PS_135_DIRECTION = 5;
+  PS_180_DIRECTION = 6;
+  PS_225_DIRECTION = 7;
+  PS_270_DIRECTION = 8;
+  PS_315_DIRECTION = 9;
+  PS_UNKNOWN_DIRECTION = 10;
+}
+
 service PadstackDefDataService {
   // create a PadstackDefData
   rpc Create(google.protobuf.Empty) returns (EDBObjMessage) {}
@@ -115,6 +130,12 @@ service PadstackDefDataService {
   
   // set solderBall material of PadstackDefData
   rpc SetSolderBallMaterial(PadstackDefDataSetSolderBallMaterialMessage) returns (google.protobuf.Empty) {}
+
+  // get ConnectionPt of PadstackDefData
+  rpc GetConnectionPt(PadstackDefDataGetConnectionPtMessage) returns (PadstackDefDataConnectionPtMessage) {}
+
+  // set ConnectionPt of PadstackDefData
+  rpc SetConnectionPt(PadstackDefDataSetConnectionPtMessage) returns (google.protobuf.Empty) {} 
 }
 
 // Message representing target and material
@@ -238,4 +259,23 @@ message PadstackDefDataSetSolderBallParamMessage{
 message PadstackDefDataSetSolderBallMaterialMessage{
   EDBObjMessage target = 1;
   string material = 2;
+}
+
+message PadstackDefDataGetConnectionPtMessage {
+  EDBObjMessage target = 1;
+  string layer = 2;
+}
+
+message PadstackDefDataSetConnectionPtMessage {
+  EDBObjMessage target = 1;
+  string layer = 2;
+  ValueMessage x = 3;
+  ValueMessage y = 4;
+  ConnectionPtDirection direction = 5;
+}
+
+message PadstackDefDataConnectionPtMessage {
+  ValueMessage x = 1;
+  ValueMessage y = 2;
+  ConnectionPtDirection direction = 3;
 }
