@@ -26,6 +26,7 @@ service CellInstanceService {
 
   // Terminal Instances
   rpc GetTermInsts(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamTermInsts(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get if component is 3dplaced
   rpc GetIs3DPlacement(EDBObjMessage) returns (google.protobuf.BoolValue) {}

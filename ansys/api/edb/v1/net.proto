@@ -25,6 +25,7 @@ service NetService {
 
   // layout objects getter
   rpc GetLayoutObjects (NetGetLayoutObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamLayoutObjects (NetGetLayoutObjMessage) returns (stream EDBObjCollectionMessage) {}
 }
 
 message NetGetLayoutObjMessage {

@@ -28,6 +28,7 @@ service GroupService {
 
   // Get iterable for group members
   rpc GetMembers(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamMembers(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get the type of the group
   rpc GetGroupType(EDBObjMessage) returns (GroupTypeMessage) {}

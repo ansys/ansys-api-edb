@@ -99,6 +99,7 @@ service CellService {
 
   // Get simulation setups
   rpc GetSimulationSetups (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamSimulationSetups (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Generate auto HFSS regions
   rpc GenerateAutoHFSSRegions (EDBObjMessage) returns (google.protobuf.Empty) {}
