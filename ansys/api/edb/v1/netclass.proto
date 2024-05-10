@@ -22,6 +22,7 @@ service NetClassService {
   rpc IsPowerGround(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   rpc GetNets(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamNets(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
   
   rpc AddNet(NetClassEditMessage) returns (google.protobuf.Empty) {}
 

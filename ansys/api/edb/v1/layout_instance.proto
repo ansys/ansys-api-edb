@@ -17,6 +17,7 @@ service LayoutInstanceService {
   rpc GetLayoutObjInstanceInContext(GetLayoutObjInstanceInContextMessage) returns (EDBObjMessage) {}
 
   rpc GetConnectedObjects(GetConnectedObjectsMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamConnectedObjects(GetConnectedObjectsMessage) returns (stream EDBObjCollectionMessage) {}
 }
 
 message LayoutObjInstancesQueryMessage {

@@ -28,6 +28,7 @@ service EdgeTerminalService {
   rpc Create (EdgeTermCreationMessage) returns (EDBObjMessage) {}
 
   rpc GetEdges (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamEdges (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   rpc SetEdges (EdgeTermSetEdgesMessage) returns (google.protobuf.Empty) {}
 }

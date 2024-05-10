@@ -53,6 +53,7 @@ service LayerCollectionService {
 
   // Get a list of layers in the LayerCollection filtered by the given layer filter
   rpc GetLayers (GetLayersMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamLayers (GetLayersMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get the layer's product property corresponding to the given product and attribute ids
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}

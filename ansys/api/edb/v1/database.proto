@@ -35,6 +35,7 @@ service DatabaseService {
 
   // Gets the top circuits in a database
   rpc GetTopCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamTopCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Gets the id of a database
   rpc GetId (EDBObjMessage) returns (google.protobuf.Int64Value) {} 
@@ -69,11 +70,14 @@ service DatabaseService {
 
   // Get defs
   rpc GetDefinitionObjs (GetDefinitionObjsMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamDefinitionObjs (GetDefinitionObjsMessage) returns (stream EDBObjCollectionMessage) {}
   
   // get cells
   rpc TopCircuitCells (EDBObjMessage) returns (EDBObjCollectionMessage) {}
   rpc GetCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
   rpc GetFootprints (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamFootprints (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
   
 }
 
