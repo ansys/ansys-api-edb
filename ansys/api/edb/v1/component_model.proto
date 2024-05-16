@@ -15,6 +15,12 @@ service ComponentModelService {
 
   // Get reference file
   rpc GetReferenceFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // Find component model by name
+  rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
+
+  // Find component model by id
+  rpc FindById(IntPropertyMessage) returns (EDBObjMessage) {}
 }
 
 service NPortComponentModelService {
