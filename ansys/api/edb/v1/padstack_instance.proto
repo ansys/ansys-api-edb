@@ -83,7 +83,8 @@ service PadstackInstanceService {
   rpc IsInPinGroup(PadstackInstIsInPinGroupMessage) returns (google.protobuf.BoolValue) {}
   
   // Get pin groups of PadstackInst
-  rpc GetPinGroups(EDBObjMessage) returns (EDBObjCollectionMessage ) {}
+  rpc GetPinGroups(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamPinGroups(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
 }
 

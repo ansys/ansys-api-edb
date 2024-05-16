@@ -54,6 +54,7 @@ service PrimitiveService {
 
   // Gets an iterator of the voids in the Primitive
   rpc Voids(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamVoids(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get Owner
   rpc GetOwner(EDBObjMessage) returns (EDBObjMessage) {}

@@ -20,6 +20,7 @@ service PinGroupService {
   rpc RemovePins (PinGroupPinsModifyMessage) returns (google.protobuf.Empty) {}
 
   rpc GetPins (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamPins (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 }
 
 message PinGroupCreationMessage {
