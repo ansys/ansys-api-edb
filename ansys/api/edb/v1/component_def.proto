@@ -30,9 +30,17 @@ service ComponentDefService {
 
   // Get the component models owned by this component def
   rpc GetComponentModels(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamComponentModels(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get the component pins owned by this component def.
   rpc GetComponentPins(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamComponentPins(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
+
+  // Add component model to this component def
+  rpc AddComponentModel(EDBObjPairMessage) returns (google.protobuf.Empty) {}
+
+  // Remove component from this component def
+  rpc RemoveComponentModel(EDBObjPairMessage) returns (google.protobuf.Empty) {}
 }
 
 

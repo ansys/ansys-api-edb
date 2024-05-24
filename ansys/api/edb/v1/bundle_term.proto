@@ -11,4 +11,5 @@ service BundleTerminalService {
   rpc Ungroup (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   rpc GetTerminals (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamTerminals (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 }

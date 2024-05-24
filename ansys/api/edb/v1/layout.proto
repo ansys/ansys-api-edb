@@ -25,6 +25,7 @@ service LayoutService {
 
   // Gets the layout objects that belong to the layout
   rpc GetItems (LayoutGetItemsMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamItems (LayoutGetItemsMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get expanded extent from nets
   rpc GetExpandedExtentFromNets (LayoutExpandedExtentMessage) returns (PolygonDataMessage) {}
@@ -37,6 +38,7 @@ service LayoutService {
 
   // Gets list of zone primitives
   rpc GetZonePrimitives (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamZonePrimitives (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Set fixed zone primitives
   rpc SetFixedZonePrimitives (PointerPropertyMessage) returns (google.protobuf.Empty) {}
@@ -46,6 +48,7 @@ service LayoutService {
 
   // Get board bend definitions
   rpc GetBoardBendDefs (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamBoardBendDefs (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Synchronize bend manager
   rpc SynchronizeBendManager (EDBObjMessage) returns (google.protobuf.Empty) {}
