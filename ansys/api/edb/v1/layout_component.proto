@@ -21,6 +21,6 @@ service LayoutComponentService {
 }
 
 message ImportExportLayoutComponentMessage {
-  EDBObjMessage cell = 1;
+  EDBObjMessage layout = 1;
   string aedbcomp_path = 2;
 }
