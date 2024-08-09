@@ -1,0 +1,26 @@
+// Proto file representing layout components
+
+syntax = "proto3";
+
+// Package
+package ansys.api.edb.v1;
+
+// Imports
+import "ansys/api/edb/v1/edb_messages.proto";
+
+// LayoutComponent service definition
+service LayoutComponentService {
+  // Exports a layout component from a provided layout
+  rpc ExportLayoutComponent (ImportExportLayoutComponentMessage) returns (google.protobuf.Empty) {}
+
+  // Imports a layout component as a sub-design within a given layout
+  rpc ImportLayoutComponent (ImportExportLayoutComponentMessage) returns (EDBObjMessage) {}
+
+  // Get the underlying cell instance of the layout component
+  rpc GetCellInstance (EDBObjMessage) returns (EDBObjMessage) {}
+}
+
+message ImportExportLayoutComponentMessage {
+  EDBObjMessage layout = 1;
+  string aedbcomp_path = 2;
+}
