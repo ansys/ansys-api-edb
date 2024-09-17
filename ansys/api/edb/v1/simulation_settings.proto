@@ -36,7 +36,13 @@ enum T25DViaStyle
   MESH = 2;
   FIELD = 3;
   NUM_VIA_STYLE = 4;
-}	
+}
+
+enum DefeatureModelType
+{
+  GENERAL_MODEL = 0;
+  IC_MODEL = 1;
+}
 
 service AdvancedSettingsService {
   rpc GetUnionPolygons(EDBObjMessage) returns (google.protobuf.BoolValue) {}
@@ -74,6 +80,9 @@ service AdvancedSettingsService {
 
   rpc GetViaMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
   rpc SetViaMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  rpc GetModelType(EDBObjMessage) returns (DefeatureModelTypeMessage) {}
+  rpc SetModelType(DefeatureModelTypePropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 message ViaModelTypeMessage {
@@ -83,6 +92,15 @@ message ViaModelTypeMessage {
 message ViaModelTypePropertyMessage {
   EDBObjMessage target = 1;
   T25DViaStyle via_model_type = 2;
+}
+
+message DefeatureModelTypeMessage {
+  DefeatureModelType defeature_model_type = 1;
+}
+
+message DefeatureModelTypePropertyMessage {
+  EDBObjMessage target = 1;
+  DefeatureModelType defeature_model_type = 2;
 }
 
 // Advanced meshing settings
