@@ -55,6 +55,12 @@ service LayoutService {
 
   // Get the layout instance of the layout
   rpc GetLayoutInstance(EDBObjMessage) returns (EDBObjMessage) {}
+
+  // Reconstruct arcs on layer
+  rpc ReconstructArcsOnLayer(ReconstructArcsOnLayerMessage) returns (google.protobuf.Empty) {}
+
+  // Union primitives on layer
+  rpc UnitePrimitivesOnLayer(UnitePrimitivesOnLayerMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
@@ -91,4 +97,15 @@ message LayoutConvertP2VMessage {
 message LayoutPortRefTerminalsConnectedMessage {
   bool is_connected = 1;
   repeated google.protobuf.StringValue error_ports = 2;
+}
+
+message ReconstructArcsOnLayerMessage {
+  EDBObjMessage layout = 1;
+  LayerRefMessage layer = 2;
+  ValueMessage tolerance = 3;
+}
+
+message UnitePrimitivesOnLayerMessage {
+  EDBObjMessage layout = 1;
+  LayerRefMessage layer = 2;
 }
