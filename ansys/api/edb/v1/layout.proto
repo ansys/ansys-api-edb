@@ -54,7 +54,22 @@ service LayoutService {
   rpc SynchronizeBendManager (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // Get the layout instance of the layout
-  rpc GetLayoutInstance(EDBObjMessage) returns (EDBObjMessage) {}
+  rpc GetLayoutInstance (EDBObjMessage) returns (EDBObjMessage) {}
+
+  // Reconstruct arcs on layer
+  rpc ReconstructArcs (GeometrySimplificationSettingsMessage) returns (google.protobuf.Empty) {}
+
+  // Union primitives on layer
+  rpc UnitePrimitives (LayerRefPropertyMessage) returns (google.protobuf.Empty) {}
+  
+  // Create via groups on layer
+  rpc GroupVias (ViaGroupingSettingsMessage) returns (google.protobuf.Empty) {}
+  
+  // Snap vias on layer
+  rpc SnapVias (ViaSnappingSettingsMessage) returns (google.protobuf.Empty) {}
+
+  // Snap primitives on layer
+  rpc SnapPrimitives (GeometrySimplificationSettingsWithOptionMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
@@ -91,4 +106,29 @@ message LayoutConvertP2VMessage {
 message LayoutPortRefTerminalsConnectedMessage {
   bool is_connected = 1;
   repeated google.protobuf.StringValue error_ports = 2;
+}
+
+message GeometrySimplificationSettingsMessage {
+  LayerRefPropertyMessage layout_layer = 1;
+  ValueMessage tolerance = 2;
+}
+
+message GeometrySimplificationSettingsWithOptionMessage {
+  GeometrySimplificationSettingsMessage geom_simplification_settings = 1;
+  bool option = 2;
+}
+
+message ViaSimplificationSettingsMessage {
+  GeometrySimplificationSettingsWithOptionMessage geom_simplification_settings_with_option = 1;
+  bool simplification_method = 2;
+}
+
+message ViaGroupingSettingsMessage {
+  ViaSimplificationSettingsMessage via_simplification_settings = 1;
+  bool persistent = 2;
+}
+
+message ViaSnappingSettingsMessage {
+  ViaSimplificationSettingsMessage via_simplification_settings = 1;
+  ValueMessage prim_snapping_tol = 2;
 }
