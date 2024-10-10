@@ -20,6 +20,21 @@ service SIWaveGeneralSettingsService {
   rpc SetPISliderPos(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 }
 
+enum ACDCMergeMode
+{
+  DEFAULT = 0;
+  FAST = 1;
+}
+
+message ACDCMergeModeMessage {
+  ACDCMergeMode ac_dc_merge_mode = 1;
+}
+
+message ACDCMergeModePropertyMessage {
+  EDBObjMessage target = 1;
+  ACDCMergeMode ac_dc_merge_mode = 2;
+}
+
 service SIWaveAdvancedSettingsService {
   rpc GetIncludeCoPlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc SetIncludeCoPlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
@@ -59,6 +74,9 @@ service SIWaveAdvancedSettingsService {
 
   rpc GetMeshFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
   rpc SetMeshFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
+  
+  rpc GetAcDcMergeMode(EDBObjMessage) returns (ACDCMergeModeMessage) {}
+  rpc SetAcDcMergeMode(ACDCMergeModePropertyMessage) returns (google.protobuf.Empty) {}
 
   rpc Get3DReturnCurrentDistribution(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   rpc Set3DReturnCurrentDistribution(BoolPropertyMessage) returns (google.protobuf.Empty) {}
