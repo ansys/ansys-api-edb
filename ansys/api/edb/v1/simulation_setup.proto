@@ -52,7 +52,8 @@ message InterpolatingSweepDataMessage {
   bool interp_use_full_basis = 9;
   bool fast_sweep = 10;
   bool adaptive_sampling = 11;
-  bool enforce_dc_and_causality = 12;
+  reserved 12;
+  reserved "enforce_psi_dc_point";
   repeated MatrixConvergenceEntryMessage matrix_conv_entry_list = 13;
   int64 interp_min_subranges = 14;
   int64 interp_min_solutions = 15;

@@ -21,6 +21,8 @@ service PinGroupService {
 
   rpc GetPins (EDBObjMessage) returns (EDBObjCollectionMessage) {}
   rpc StreamPins (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
+  
+  rpc GetPinGroupTerminal (EDBObjMessage) returns (EDBObjMessage) {}
 }
 
 message PinGroupCreationMessage {
