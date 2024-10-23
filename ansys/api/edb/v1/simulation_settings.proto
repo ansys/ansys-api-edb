@@ -80,6 +80,9 @@ service AdvancedSettingsService {
 
   rpc GetViaMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
   rpc SetViaMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
+  
+  rpc GetMeshForViaPlating(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  rpc SetMeshForViaPlating(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   rpc GetModelType(EDBObjMessage) returns (DefeatureModelTypeMessage) {}
   rpc SetModelType(DefeatureModelTypePropertyMessage) returns (google.protobuf.Empty) {}
