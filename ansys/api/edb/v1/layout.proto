@@ -70,6 +70,9 @@ service LayoutService {
 
   // Snap primitives on layer
   rpc SnapPrimitives (GeometrySimplificationSettingsWithOptionMessage) returns (google.protobuf.Empty) {}
+
+  // Create mesh region
+  rpc CreateMeshRegion(CreateMeshRegionMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
@@ -131,4 +134,16 @@ message ViaGroupingSettingsMessage {
 message ViaSnappingSettingsMessage {
   ViaSimplificationSettingsMessage via_simplification_settings = 1;
   ValueMessage prim_snapping_tol = 2;
+}
+
+message CreateMeshRegionMessage {
+	EDBObjMessage layout = 1;
+	ValueMessage xy_exp = 2;
+	ValueMessage pos_z_exp = 3;
+	ValueMessage neg_z_exp = 4;
+	bool use_active_nets = 5;
+	bool incl_ref = 6;
+	GeometryExtentType ext = 7;
+	uint64 num_x_partitions = 8;
+	uint64 num_y_partitions = 9;
 }
