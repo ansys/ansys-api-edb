@@ -6,6 +6,7 @@ package ansys.api.edb.v1;
 
 import public "google/protobuf/wrappers.proto";
 import public "google/protobuf/empty.proto";
+import public "google/protobuf/any.proto";
 
 import "ansys/api/edb/v1/edb_defs.proto";
 
@@ -87,6 +88,7 @@ message ComponentTypeMessage {
 message EDBObjMessage {
   uint64 impl_ptr_address = 1;
   uint64 id = 2;
+  EdbObjCacheMessage cache = 3;
 }
 
 // Message containing a collection of edb objects 
@@ -213,4 +215,20 @@ message DoublesMessage {
 message DoublesPropertyMessage {
   EDBObjMessage edb_obj = 1;
   repeated double doubles = 2;
+}
+
+message AnyModuleMessage {
+  google.protobuf.Any any = 1;
+  string module = 2;
+}
+
+message EdbObjCacheEntryMessage {
+  AnyModuleMessage request = 1;
+  AnyModuleMessage response = 2;
+  string service_name = 3;
+  string rpc_method_name = 4;
+}
+
+message EdbObjCacheMessage {
+  repeated EdbObjCacheEntryMessage cache = 1;
 }
