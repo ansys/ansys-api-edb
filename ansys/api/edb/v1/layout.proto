@@ -24,8 +24,8 @@ service LayoutService {
   rpc SetLayerCollection (SetLayerCollectionMessage) returns (google.protobuf.Empty) {}
 
   // Gets the layout objects that belong to the layout
-  rpc GetItems (LayoutGetItemsMessage) returns (EDBObjCollectionMessage) {}
-  rpc StreamItems (LayoutGetItemsMessage) returns (stream EDBObjCollectionMessage) {}
+  rpc GetItems (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamItems (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 
   // Get expanded extent from nets
   rpc GetExpandedExtentFromNets (LayoutExpandedExtentMessage) returns (PolygonDataMessage) {}
@@ -83,11 +83,6 @@ message SetLayerCollectionMessage {
 message LayerLookupMessage {
   EDBObjMessage layout = 1;
   LayerRefMessage layer = 2;
-}
-
-message LayoutGetItemsMessage {
-  EDBObjMessage layout = 1;
-  LayoutObjType obj_type = 2;
 }
 
 message LayoutExpandedExtentMessage {

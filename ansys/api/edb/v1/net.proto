@@ -24,11 +24,6 @@ service NetService {
   rpc SetIsPowerGround (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // layout objects getter
-  rpc GetLayoutObjects (NetGetLayoutObjMessage) returns (EDBObjCollectionMessage) {}
-  rpc StreamLayoutObjects (NetGetLayoutObjMessage) returns (stream EDBObjCollectionMessage) {}
-}
-
-message NetGetLayoutObjMessage {
-  EDBObjMessage net = 1;
-  LayoutObjType obj_type = 2;
+  rpc GetLayoutObjects (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamLayoutObjects (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 }
