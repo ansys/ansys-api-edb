@@ -13,10 +13,10 @@ import "ansys/api/edb/v1/transform.proto";
 // Hierarchy object service definition
 service HierarchyObjectService {
   // Get Transform
-  rpc GetTransform(EDBObjMessage) returns (TransformMessage) {}
+  rpc GetTransform(EDBObjMessage) returns (EDBObjMessage) {}
 
   // Set Transform
-  rpc SetTransform(TransformPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetTransform(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // Get Name
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
