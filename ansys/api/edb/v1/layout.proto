@@ -60,7 +60,7 @@ service LayoutService {
   rpc ReconstructArcs (GeometrySimplificationSettingsMessage) returns (google.protobuf.Empty) {}
 
   // Union primitives on layer
-  rpc UnitePrimitives (LayerRefPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc UnitePrimitives (LayerRefsPropertyMessage) returns (google.protobuf.Empty) {}
   
   // Create via groups on layer
   rpc GroupVias (ViaGroupingSettingsMessage) returns (google.protobuf.Empty) {}
@@ -107,7 +107,7 @@ message LayoutPortRefTerminalsConnectedMessage {
 }
 
 message GeometrySimplificationSettingsMessage {
-  LayerRefPropertyMessage layout_layer = 1;
+  LayerRefsPropertyMessage layout_layers = 1;
   ValueMessage tolerance = 2;
 }
 
