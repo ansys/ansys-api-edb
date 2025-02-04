@@ -18,6 +18,11 @@ message LayerRefPropertyMessage {
   LayerRefMessage layer_ref = 2;
 }
 
+message LayerRefsPropertyMessage {
+  EDBObjMessage edb_obj = 1;
+  repeated LayerRefMessage layer_refs = 2;
+}
+
 message NetRefMessage {
   oneof ref {
     EDBObjMessage id = 1;
