@@ -89,6 +89,7 @@ message EDBObjMessage {
   uint64 impl_ptr_address = 1;
   uint64 id = 2;
   EdbObjCacheMessage cache = 3;
+  bool is_future = 4;
 }
 
 // Message containing a collection of edb objects 
