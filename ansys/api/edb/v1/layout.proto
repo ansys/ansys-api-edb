@@ -14,64 +14,100 @@ import "ansys/api/edb/v1/polygon_data.proto";
 
 // Cell service definition
 service LayoutService {
-  // Gets the cell of the provided layout
+  // summary: Gets the cell of the provided layout
+  // io_flags:
+  //   - cache
   rpc GetCell (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Gets the layer collection of the layout
+  // summary: Gets the layer collection of the layout
+  // io_flags:
+  //   - cache
   rpc GetLayerCollection (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Sets the layer collection of the layout
+  // summary: Sets the layer collection of the layout
+  // io_flags:
+  //   - buffer
   rpc SetLayerCollection (SetLayerCollectionMessage) returns (google.protobuf.Empty) {}
 
-  // Gets the layout objects that belong to the layout
+  // summary: Gets the layout objects that belong to the layout
+  // io_flags:
+  //   - read_no_cache
   rpc GetItems (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream the layout objects that belong to the layout
+  // io_flags:
+  //   - read_no_cache
   rpc StreamItems (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Get expanded extent from nets
+  // summary: Get expanded extent from nets
+  // io_flags:
+  //   - cache
   rpc GetExpandedExtentFromNets (LayoutExpandedExtentMessage) returns (PolygonDataMessage) {}
 
-  // Convert primitives to via
+  // summary: Convert primitives to via
+  // io_flags:
+  //   - buffer
   rpc ConvertPrimitivesToVias(LayoutConvertP2VMessage) returns (google.protobuf.Empty) {}
 
-  // Gets if the port reference terminals are connected
+  // summary: Gets if the port reference terminals are connected
+  // io_flags:
+  //   - cache
   rpc ArePortReferenceTerminalsConnected (EDBObjMessage) returns (LayoutPortRefTerminalsConnectedMessage) {}
 
-  // Gets list of zone primitives
+  // summary: Gets list of zone primitives
+  // io_flags:
+  //   - read_no_cache
   rpc GetZonePrimitives (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Streams list of zone primitives
+  // io_flags:
+  //   - read_no_cache
   rpc StreamZonePrimitives (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Set fixed zone primitives
+  // summary: Set fixed zone primitives
+  // io_flags:
+  //   - buffer
   rpc SetFixedZonePrimitives (PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get fixed zone primitive
+  // summary: Get fixed zone primitive
+  // io_flags:
+  //   - cache
   rpc GetFixedZonePrimitive (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get board bend definitions
+  // summary: Get board bend definitions
+  // io_flags:
+  //   - read_no_cache
   rpc GetBoardBendDefs (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Streams board bend definitions
+  // io_flags:
+  //   - read_no_cache
   rpc StreamBoardBendDefs (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Synchronize bend manager
+  // summary: Synchronize bend manager
   rpc SynchronizeBendManager (EDBObjMessage) returns (google.protobuf.Empty) {}
 
-  // Get the layout instance of the layout
+  // summary: Get the layout instance of the layout
+  // io_flags:
+  //   - cache
   rpc GetLayoutInstance (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Reconstruct arcs on layer
+  // summary: Reconstruct arcs on layer
   rpc ReconstructArcs (GeometrySimplificationSettingsMessage) returns (google.protobuf.Empty) {}
 
-  // Union primitives on layer
+  // summary: Union primitives on layer
   rpc UnitePrimitives (LayerRefsPropertyMessage) returns (google.protobuf.Empty) {}
-  
-  // Create via groups on layer
+
+  // summary: Create via groups on layer
   rpc GroupVias (ViaGroupingSettingsMessage) returns (google.protobuf.Empty) {}
-  
-  // Snap vias on layer
+
+  // summary: Snap vias on layer
   rpc SnapVias (ViaSnappingSettingsMessage) returns (google.protobuf.Empty) {}
 
-  // Snap primitives on layer
+  // summary: Snap primitives on layer
   rpc SnapPrimitives (GeometrySimplificationSettingsWithOptionMessage) returns (google.protobuf.Empty) {}
 
-  // Create mesh region
+  // summary: Create mesh region
   rpc CreateMeshRegion(CreateMeshRegionMessage) returns (google.protobuf.Empty) {}
 }
 

@@ -10,16 +10,25 @@ import "ansys/api/edb/v1/polygon_data.proto";
 
 // Circle service definition
 service CircleService {
-  // Create a circle
+  // summary: Create a circle
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (CircleCreationMessage) returns (EDBObjMessage) {}
-  
-  // Render Circle
+
+  // summary: Render Circle
+  // io_flags:
+  //   - cache
   rpc Render(CircleRenderMessage) returns (PolygonDataMessage) {}
 
-  // Get Parameters
+  // summary: Get Parameters
+  // io_flags:
+  //   - cache
   rpc GetParameters(EDBObjMessage) returns (CircleParametersMessage) {}
 
-  // Set Parameters
+  // summary: Set Parameters
+  // io_flags:
+  //   - buffer
   rpc SetParameters(SetCircleParametersMessage) returns (google.protobuf.Empty) {}
 }
 

@@ -17,19 +17,43 @@ enum EdgeType
 
 service EdgeService {
 
+  // summary: Get the edge type
+  // io_flags:
+  //   - cache
   rpc GetEdgeType (EDBObjMessage) returns (EdgeTypeMessage) {}
 
+  // summary: Create an edge
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (EdgeCreationMessage) returns (EDBObjMessage) {}
 
+  // summary: Get the edge parameters
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (EdgeParamsMessage) {}
 }
 
 service EdgeTerminalService {
+  // summary: Create an edge terminal
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (EdgeTermCreationMessage) returns (EDBObjMessage) {}
 
+  // summary: Get edges
+  // io_flags:
+  //   - read_no_cache
   rpc GetEdges (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream edges
+  // io_flags:
+  //   - read_no_cache
   rpc StreamEdges (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
+  // summary: Get edges
+  // io_flags:
+  //   - buffer
   rpc SetEdges (EdgeTermSetEdgesMessage) returns (google.protobuf.Empty) {}
 }
 

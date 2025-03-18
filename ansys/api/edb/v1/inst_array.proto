@@ -11,24 +11,53 @@ import "ansys/api/edb/v1/point_data.proto";
 
 // Instance Array service definition
 service InstArrayService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create(InstArrayCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flas:
+  //   - cache
   rpc GetOrig(EDBObjMessage) returns (PointMessage) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetXAxis(EDBObjMessage) returns (PointMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetXAxis(PointPropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetYAxis(EDBObjMessage) returns (PointMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetYAxis(PointPropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetXCount(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetXCount(ValuePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetYCount(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetYCount(ValuePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - buffer
   rpc Decompose(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 

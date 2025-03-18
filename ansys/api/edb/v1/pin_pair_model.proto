@@ -8,10 +8,26 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/rlc.proto";
 
 service PinPairModelService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (google.protobuf.Empty) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetRlc (StringPairPropertyMessage) returns (PinPairRlcMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetRlc (PinPairModelRlcPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
   rpc DeleteRlc (StringPairPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
   rpc GetPinPairs (EDBObjMessage) returns (StringPairsMessage) {}
 }
 

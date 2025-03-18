@@ -10,13 +10,19 @@ import "ansys/api/edb/v1/edb_messages.proto";
 
 // LayoutComponent service definition
 service LayoutComponentService {
-  // Exports a layout component from a provided layout
+  // summary: Exports a layout component from a provided layout
+  // io_flags:
+  //   - write_no_cache_invalidation
   rpc ExportLayoutComponent (ImportExportLayoutComponentMessage) returns (google.protobuf.Empty) {}
 
-  // Imports a layout component as a sub-design within a given layout
+  // summary: Imports a layout component as a sub-design within a given layout
+  // io_flags:
+  //   - write_no_cache_invalidation
   rpc ImportLayoutComponent (ImportExportLayoutComponentMessage) returns (EDBObjMessage) {}
 
-  // Get the underlying cell instance of the layout component
+  // summary: Get the underlying cell instance of the layout component
+  // io_flags:
+  //   - cache
   rpc GetCellInstance (EDBObjMessage) returns (EDBObjMessage) {}
 }
 

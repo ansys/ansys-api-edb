@@ -7,40 +7,101 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service VoltageRegulatorService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (VoltageRegulatorMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc IsActive(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIsActive(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetVoltage(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetVoltage(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetLoadRegulationCurrent(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetLoadRegulationCurrent(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetLoadRegulationPercent(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetLoadRegulationPercent(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPosRemoteSensePin(EDBObjMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPosRemoteSensePin(EDBObjCollectionMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetNegRemoteSensePin(EDBObjMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNegRemoteSensePin(EDBObjCollectionMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetNPowerModules(EDBObjMessage) returns (google.protobuf.Int64Value){}
+
+  // io_flags:
+  //   - cache
   rpc GetNActivePowerModules(EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPowerModule(StringPropertyMessage) returns (PowerModuleMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetAllPowerModules(EDBObjMessage) returns (PowerModulesMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc AddPowerModule(PowerModulePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
   rpc RemovePowerModule(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - buffer
   rpc AddPowerModules(PowerModulesPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
   rpc RemovePowerModules(StringsPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
   rpc RemoveAllPowerModules(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 

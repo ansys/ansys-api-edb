@@ -11,22 +11,33 @@ import "ansys/api/edb/v1/hierarchy_obj.proto";
 
 // ViaGroup service definition
 service ViaGroupService {
-  // Creates ViaGroups
+  // summary: Creates ViaGroups
   rpc CreateWithPrimitives(ViaGroupCreateWithPrimitivesMessage) returns (EDBObjCollectionMessage) {}
 
-  // Creates a ViaGroup with outline
+  // summary: Creates a ViaGroup with outline
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc CreateWithOutline(ViaGroupCreateWithOutlineMessage) returns (EDBObjMessage) {}
 
-  // Find the ViaGroup by name in the given layout
+  // summary: Find the ViaGroup by name in the given layout
+  // io_flags:
+  //   - cache
   rpc FindByName(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
-  // Get the ViaGroup outline
+  // summary: Get the ViaGroup outline
+  // io_flags:
+  //   - cache
   rpc GetOutline(EDBObjMessage) returns (PolygonDataMessage) {}
 
-  // Get conductor percentage of the ViaGroup
+  // summary: Get conductor percentage of the ViaGroup
+  // io_flags:
+  //   - cache
   rpc GetConductorPercentage(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
-  // Check if the ViaGroup is persistent
+  // summary: Check if the ViaGroup is persistent
+  // io_flags:
+  //   - cache
   rpc IsPersistent(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 }
 

@@ -15,17 +15,26 @@ enum RectangleRepresentationType {
 }
 
 service RectangleService {
-  // Create a rectangle
+  // summary: Create a rectangle
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (RectangleCreationMessage) returns (EDBObjMessage) {}
-  
-  // Return Rectangle Parameters
+
+  // summary: Return Rectangle Parameters
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (RectangleParametersMessage) {}
-  
-  // Recieve Rectangle Parameters
+
+  // summary: Receive Rectangle Parameters
+  // io_flags:
+  //   - buffer
   rpc SetParameters (SetRectangleParametersMessage) returns (google.protobuf.Empty) {}
 
-  // Render Geometry PolygonData
-  rpc Render(RectanglePolygonDataMessage) returns (PolygonDataMessage) {}
+  // summary: Render Geometry PolygonData
+  // io_flags:
+  //   - cache
+  rpc Render (RectanglePolygonDataMessage) returns (PolygonDataMessage) {}
 }
 
 // Message for Create

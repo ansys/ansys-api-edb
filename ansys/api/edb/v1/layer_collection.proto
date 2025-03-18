@@ -20,72 +20,120 @@ enum DielectricMergingMethod {
 }
 
 service LayerCollectionService {
-  // Creates an empty LayerCollection
+  // summary: Creates an empty LayerCollection
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (LayerCollectionModeMessage) returns (EDBObjMessage) {}
 
-  // Clone an existing LayerCollection
+  // summary: Clone an existing LayerCollection
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Clone (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get the LayerCollection mode
+  // summary: Get the LayerCollection mode
+  // io_flags:
+  //   - cache
+  //   - write_no_cache_invalidation
   rpc GetMode (EDBObjMessage) returns (LayerCollectionModeMessage) {}
 
-  // Set the LayerCollection mode
+  // summary: Set the LayerCollection mode
+  // io_flags:
+  //   - buffer
   rpc SetMode (SetLayerCollectionModeMessage) returns (google.protobuf.Empty) {}
 
-  // Adds the provided layers to the LayerCollection
+  // summary: Adds the provided layers to the LayerCollection
+  // io_flags:
+  //   - buffer
   rpc AddLayers (AddLayersMessage) returns (google.protobuf.Empty) {}
 
-  // Import a LayerCollection from a control file
+  // summary: Import a LayerCollection from a control file
   rpc ImportFromControlFile (ImportFromControlFileMessage) returns (google.protobuf.Empty) {}
 
-  // Add a new layer to the LayerCollection
+  // summary: Add a new layer to the LayerCollection
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc AddLayer (AddLayerMessage) returns (EDBObjMessage) {}
 
-  // Check whether there is layer overlapping or gap for laminate stackup.
-  // Check whether there is dielectric layer overlapping or gap for overlapping stackup.
+  // summary: Check whether there is layer overlapping or gap for laminate stackup. Check whether there is dielectric layer overlapping or gap for overlapping stackup.
+  // io_flags:
+  //   - cache
   rpc IsValid (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Finds a layer with the given name in the layer collection
+  // summary: Finds a layer with the given name in the layer collection
+  // io_flags:
+  //   - cache
   rpc FindByName (FindLayerByNameMessage) returns (EDBObjMessage) {}
-  
-  // Get top bottom stackup layers of specific type
+
+  // summary: Get top bottom stackup layers of specific type
+  // io_flags:
+  //   - cache
   rpc GetTopBottomStackupLayers (GetTopBottomStackupLayersMessage) returns (TopBottomStackupLayersMessage) {}
 
-  // Get a list of layers in the LayerCollection filtered by the given layer filter
+  // summary: Get a list of layers in the LayerCollection filtered by the given layer filter
+  // io_flags:
+  //   - read_no_cache
   rpc GetLayers (GetLayersMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream a list of layers in the LayerCollection filtered by the given layer filter
+  // io_flags:
+  //   - read_no_cache
   rpc StreamLayers (GetLayersMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Get the layer's product property corresponding to the given product and attribute ids
+  // summary: Get the layer's product property corresponding to the given product and attribute ids
+  // io_flags:
+  //   - cache
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
-  // Set the layer's product property corresponding to the given product and attribute ids
+  // summary: Set the layer's product property corresponding to the given product and attribute ids
+  // io_flags:
+  //   - buffer
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get a list of property ids associated with the layer for the given product
+  // summary: Get a list of property ids associated with the layer for the given product
+  // io_flags:
+  //   - cache
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
-  // Merges the dielectric layers in a range of layers into one large dielectric layer that spans the elevation range of all merged dielectric layers
+  // summary: Merges the dielectric layers in a range of layers into one large dielectric layer that spans the elevation range of all merged dielectric layers
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc MergeDielectrics (MergeDielectricsMessage) returns (EDBObjMessage) {}
 
-  // Retrieves a list of all zones in the LayerCollection
+  // summary: Retrieves a list of all zones in the LayerCollection
+  // io_flags:
+  //   - cache
   rpc GetZoneIds (EDBObjMessage) returns (ZonesMessage) {}
 
-  // Retrieves the name corresponding to the specified zone
+  // summary: Retrieves the name corresponding to the specified zone
+  // io_flags:
+  //   - cache
   rpc GetZoneName (LayerCollectionZoneMessage) returns (google.protobuf.StringValue) {}
 
-  // Set the name corresponding to the specified zone
+  // summary: Set the name corresponding to the specified zone
+  // io_flags:
+  //   - buffer
   rpc SetZoneName (SetZoneNameMessage) returns (google.protobuf.Empty) {}
 
-  // Inserts a new zone
+  // summary: Inserts a new zone
   rpc InsertZone (InsertZoneMessage) returns (google.protobuf.Int64Value) {}
 
-  // Removes a zone
+  // summary: Removes a zone
+  // io_flags:
+  //   - buffer
   rpc RemoveZone (LayerCollectionZoneMessage) returns (google.protobuf.Empty) {}
 
-  // Simplifies dielectric layers by splitting them at the boundaries of signal layers and merging them
+  // summary: Simplifies dielectric layers by splitting them at the boundaries of signal layers and merging them
   rpc SimplifyDielectricsForPhi (SimplifyDielectricsForPhiMessage) returns (EDBObjCollectionMessage) {}
 
-  // Sets the zone to the layer and updates the layer in the collection
+  // summary: Sets the zone to the layer and updates the layer in the collection
+  // io_flags:
+  //   - buffer
   rpc AddZoneToLayer (AddZoneToLayerMessage) returns (google.protobuf.Empty) {}
 }
 

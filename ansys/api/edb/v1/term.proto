@@ -48,14 +48,25 @@ enum HfssPIType {
 }
 
 service TerminalService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc FindByName (TermFindByNameMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetParams (EDBObjMessage) returns (TermParamsMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetParams (TermSetParamsMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetProductSolvers (TermGetProductSolversMessage) returns (TermProductSolversMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetProductSolverOptions (TermSetSolverOptionMessage) returns (google.protobuf.Empty) {}
 }
 

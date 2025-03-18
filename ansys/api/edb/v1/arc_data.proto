@@ -14,25 +14,39 @@ enum RotationDirection {
 }
 
 service ArcDataService {
-  // Get height of an arc
+  // summary: Get height of an arc
+  // io_flags:
+  //   - cache
   rpc GetHeight (ArcMessage) returns (google.protobuf.FloatValue) {}
 
-  // Get center point of an arc
+  // summary: Get center point of an arc
+  // io_flags:
+  //   - cache
   rpc GetCenter (ArcMessage) returns (PointMessage) {}
 
-  // Get midpoint of an arc
+  // summary: Get midpoint of an arc
+  // io_flags:
+  //   - cache
   rpc GetMidpoint (ArcMessage) returns (PointMessage) {}
 
-  // Get radius of an arc
+  // summary: Get radius of an arc
+  // io_flags:
+  //   - cache
   rpc GetRadius (ArcMessage) returns (google.protobuf.FloatValue) {}
 
-  // Get bounding box of an arc
+  // summary: Get bounding box of an arc
+  // io_flags:
+  //   - cache
   rpc GetBoundingBox (ArcMessage) returns (BoxMessage) {}
 
-  // Get angle between two arcs.
+  // summary: Get angle between two arcs.
+  // io_flags:
+  //   - cache
   rpc GetAngle (ArcMessage) returns (google.protobuf.FloatValue) {}
 
-  // Get closest points between two arcs.
+  // summary: Get closest points between two arcs.
+  // io_flags:
+  //   - cache
   rpc ClosestPoints (ArcDataTwoArcsMessage) returns (BoxMessage) {}
 }
 

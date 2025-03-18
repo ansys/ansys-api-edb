@@ -23,48 +23,80 @@ enum PathCornerStyle {
 }
 
 service PathService {
+  // summary: Create a path
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PathCreationMessage) returns (EDBObjMessage) {}
 
-  // Render Path
+  // summary: Render Path
+  // io_flags:
+  //   - cache
   rpc Render (PathRenderMessage) returns (PolygonDataMessage) {}
 
-  // Get Polygon Data
+  // summary: Get Polygon Data
+  // io_flags:
+  //   - cache
   rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
 
-  // Get Center Line
+  // summary: Get Center Line
+  // io_flags:
+  //   - cache
   rpc GetCenterLine (EDBObjMessage) returns (PolygonDataMessage) {}
 
-  // Set Center Line
+  // summary: Set Center Line
+  // io_flags:
+  //   - buffer
   rpc SetCenterLine (SetCenterLineMessage) returns (google.protobuf.Empty) {}
-  
-  // Get End Cap Style
+
+  // summary: Get End Cap Style
+  // io_flags:
+  //   - cache
   rpc GetEndCapStyle (EDBObjMessage) returns (EndCapStyleMessage) {}
-  
-  // Set End Cap Style
+
+  // summary: Set End Cap Style
+  // io_flags:
+  //   - buffer
   rpc SetEndCapStyle (SetEndCapStyleMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Clip Info
+
+  // summary: Get Clip Info
+  // io_flags:
+  //   - cache
   rpc GetClipInfo (EDBObjMessage) returns (ClipInfoMessage) {}
-  
-  // Set Clip Info
+
+  // summary: Set Clip Info
+  // io_flags:
+  //   - buffer
   rpc SetClipInfo (SetClipInfoMessage) returns (google.protobuf.Empty) {}
 
-  // Get Corner Style
+  // summary: Get Corner Style
+  // io_flags:
+  //   - cache
   rpc GetCornerStyle (EDBObjMessage) returns (CornerStyleMessage) {}
-  
-  // Set Corner Style
+
+  // summary: Set Corner Style
+  // io_flags:
+  //   - buffer
   rpc SetCornerStyle (SetCornerStyleMessage) returns (google.protobuf.Empty) {}
 
-  // Get Width
+  // summary: Get Width
+  // io_flags:
+  //   - cache
   rpc GetWidth (EDBObjMessage) returns (WidthMessage) {}
-  
-  // Set Width
+
+  // summary: Set Width
+  // io_flags:
+  //   - buffer
   rpc SetWidth (SetWidthMessage) returns (google.protobuf.Empty) {}
 
-  // Get Miter Ratio
+  // summary: Get Miter Ratio
+  // io_flags:
+  //   - cache
   rpc GetMiterRatio (EDBObjMessage) returns (MiterRatioMessage) {}
-  
-  // Set Miter Ratio
+
+  // summary: Set Miter Ratio
+  // io_flags:
+  //   - buffer
   rpc SetMiterRatio (SetMiterRatioMessage) returns (google.protobuf.Empty) {}
 }
 

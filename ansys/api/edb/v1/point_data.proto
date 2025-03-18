@@ -13,8 +13,16 @@ enum PolySense {
 }
 
 service PointDataService {
+  // io_flags:
+  //   - cache
   rpc Rotate (PointDataRotateMessage) returns (PointMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc ClosestPoint (PointDataWithLineMessage) returns (PointMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Distance (PointDataWithLineMessage) returns (google.protobuf.FloatValue) {}
 }
 

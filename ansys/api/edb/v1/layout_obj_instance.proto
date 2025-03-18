@@ -10,16 +10,35 @@ import "ansys/api/edb/v1/point_data.proto";
 import "ansys/api/edb/v1/layout_obj_instance_geometry.proto";
 
 service LayoutObjInstanceService {
+
+  // summary: Get layers
+  // io_flags:
+  //   - cache
   rpc GetLayers(EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
+  // summary: Get geometries
+  // io_flags:
+  //   - cache
   rpc GetGeometries(LayerRefPropertyMessage) returns (FetchedLayoutObjInstanceGeometriesMessage) {}
 
+  // summary: Get context
+  // io_flags:
+  //   - cache
   rpc GetContext(EDBObjMessage) returns (StringsMessage) {}
 
+  // summary: Get layout instance context
+  // io_flags:
+  //   - cache
   rpc GetLayoutInstanceContext(EDBObjMessage) returns (EDBObjMessage) {}
 
+  // summary: Get layout object
+  // io_flags:
+  //   - cache
   rpc GetLayoutObj(EDBObjMessage) returns (EDBObjMessage) {}
 
+  // summary: Get bounding box
+  // io_flags:
+  //   - cache
   rpc GetBBox(BoolPropertyMessage) returns (BoxMessage) {}
 }
 

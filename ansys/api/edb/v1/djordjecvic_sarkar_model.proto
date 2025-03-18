@@ -9,23 +9,70 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service DjordjecvicSarkarModelService {
+  // summary: Create a djordjecvic sarkar model
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.Empty) returns (EDBObjMessage) {}
-  
+
+  // summary: Get frequency
+  // io_flags:
+  //   - cache
   rpc GetFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set frequency
+  // io_flags:
+  //   - buffer
   rpc SetFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Get relative permitivity at frequency
+  // io_flags:
+  //   - cache
   rpc GetRelativePermitivityAtFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set relative permitivity at frequency
+  // io_flags:
+  //   - buffer
   rpc SetRelativePermitivityAtFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get loss tangent at frequency
+  // io_flags:
+  //   - cache
   rpc GetLossTangentAtFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set loss tangent at frequency
+  // io_flags:
+  //   - buffer
   rpc SetLossTangentAtFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Get use dc relative permitivity
+  // io_flags:
+  //   - cache
   rpc UseDCRelativePermitivity(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // summary: Set use dc relative permitivity
+  // io_flags:
+  //   - buffer
   rpc SetUseDCRelativePermitivity(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get dc relative permitivity
+  // io_flags:
+  //   - cache
   rpc GetDCRelativePermitivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set dc relative permitivity
+  // io_flags:
+  //   - buffer
   rpc SetDCRelativePermitivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get dc conductivity
+  // io_flags:
+  //   - cache
   rpc GetDCConductivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set dc conductivity
+  // io_flags:
+  //   - buffer
   rpc SetDCConductivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 }

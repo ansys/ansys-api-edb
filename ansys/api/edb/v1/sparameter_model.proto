@@ -7,11 +7,22 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service SParameterModelService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (SParameterModelMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetProperties (EDBObjMessage) returns (SParameterModelMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetComponentModelName (StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+    // io_flags:
+  //   - buffer
   rpc SetReferenceNet (StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

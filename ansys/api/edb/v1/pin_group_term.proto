@@ -7,14 +7,25 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/refs.proto";
 
 service PinGroupTerminalService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PinGroupTermCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPinGroup (EDBObjMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetPinGroup (PinGroupTermSetPinGroupMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetLayer (EDBObjMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetLayer (PinGroupTermSetLayerMessage) returns (google.protobuf.Empty) {}
 }
 

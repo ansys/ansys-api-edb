@@ -10,13 +10,25 @@ import "ansys/api/edb/v1/refs.proto";
 import "ansys/api/edb/v1/polygon_data.proto";
 
 service LayoutInstanceService {
+  // summary: Refresh the layout instance
   rpc Refresh(EDBObjMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc QueryLayoutObjInstances(LayoutObjInstancesQueryMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetLayoutObjInstanceInContext(GetLayoutObjInstanceInContextMessage) returns (EDBObjMessage) {}
 
+  // summary: Get connected objects
+  // io_flags:
+  //   - read_no_cache
   rpc GetConnectedObjects(GetConnectedObjectsMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream connected objects
+  // io_flags:
+  //   - read_no_cache
   rpc StreamConnectedObjects(GetConnectedObjectsMessage) returns (stream EDBObjCollectionMessage) {}
 }
 

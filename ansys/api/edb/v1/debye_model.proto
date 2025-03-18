@@ -9,27 +9,81 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service DebyeModelService {
+  // summary: Create a DebyeModelService
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.Empty) returns (EDBObjMessage) {}
-  
+
+  // summary: Get frequency range
+  // io_flags:
+  //   - cache
   rpc GetFrequencyRange(EDBObjMessage) returns (FrequencyRangeMessage) {}
+
+  // summary: Get frequency range
+  // io_flags:
+  //   - buffer
   rpc SetFrequencyRange(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get the relative permitivity at high low frequency
+  // io_flags:
+  //   - cache
   rpc GetRelativePermitivityAtHighLowFrequency(EDBObjMessage) returns (FrequencyRangeMessage) {}
+
+  // summary: Set the relative permitivity at high low frequency
+  // io_flags:
+  //   - buffer
   rpc SetRelativePermitivityAtHighLowFrequency(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Is relative permitivity enabled at optical frequency
+  // io_flags:
+  //   - cache
   rpc IsRelativePermitivityEnabledAtOpticalFrequency(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // summary: Set is relative permitivity enabled at optical frequency
+  // io_flags:
+  //   - buffer
   rpc SetRelativePermitivityEnabledAtOpticalFrequency(BoolPropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Get relative permitivity at optical frequency
+  // io_flags:
+  //   - cache
   rpc GetRelativePermitivityAtOpticalFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Set relative permitivity at optical frequency
+  // io_flags:
+  //   - buffer
   rpc SetRelativePermitivityAtOpticalFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Get use dc conductivity
+  // io_flags:
+  //   - cache
   rpc UseDCConductivity(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // summary: Set use dc conductivity
+  // io_flags:
+  //   - buffer
   rpc SetUseDCConductivity(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get dc conductivity
+  // io_flags:
+  //   - cache
   rpc GetDCConductivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // summary: Get dc conductivity
+  // io_flags:
+  //   - buffer
   rpc SetDCConductivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get dc conductivity
+  // io_flags:
+  //   - cache
   rpc GetLossTangentAtHighLowFrequency(EDBObjMessage) returns (FrequencyRangeMessage) {}
+
+  // summary: Get dc conductivity
+  // io_flags:
+  //   - buffer
   rpc SetLossTangentAtHighLowFrequency(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
 }
 

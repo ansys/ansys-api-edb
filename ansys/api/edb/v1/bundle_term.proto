@@ -6,10 +6,24 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service BundleTerminalService {
+  // summary: Create a bundle terminal
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (EDBObjCollectionMessage) returns (EDBObjMessage) {}
 
+  // summary: Ungroup the bundle terminal
+  // io_flags:
+  //   - buffer
   rpc Ungroup (EDBObjMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get terminals in the bundle terminal
+  // io_flags:
+  //   - read_no_cache
   rpc GetTerminals (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream terminals in the bundle terminal
+  // io_flags:
+  //   - read_no_cache
   rpc StreamTerminals (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 }

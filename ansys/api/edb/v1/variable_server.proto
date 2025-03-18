@@ -7,22 +7,40 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service VariableServerService {
+  // io_flags:
+  //   - buffer
   rpc AddVariable (AddVariableMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - buffer
   rpc AddMenuVariable (AddMenuVariableMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - buffer
   rpc DeleteVariable (VariableNameMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetVariableValue (SetVariableMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetVariableValue (VariableNameMessage) returns (ValueMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc IsParameter (VariableNameMessage) returns (google.protobuf.BoolValue) {}
 
+  // io_flags:
+  //   - cache
   rpc GetAllVariableNames (EDBObjMessage) returns (GetVariableNamesMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetVariableDesc (VariableNameMessage) returns (google.protobuf.StringValue) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetVariableDesc (SetDescriptionMessage) returns (google.protobuf.Empty) {}
 }
 

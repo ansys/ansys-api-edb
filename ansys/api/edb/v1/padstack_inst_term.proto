@@ -7,10 +7,17 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/refs.proto";
 
 service PadstackInstanceTerminalService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PadstackInstTermCreationsMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (PadstackInstTermParamsMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetParameters (PadstackInstTermSetParamsMessage) returns (google.protobuf.Empty) {}
 }
 

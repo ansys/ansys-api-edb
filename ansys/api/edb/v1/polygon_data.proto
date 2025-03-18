@@ -18,28 +18,96 @@ enum IntersectionType
 
 // Polygon Data service definition
 service PolygonDataService {
+  // io_flags:
+  //   - cache
   rpc GetNormalizedPoints (PolygonDataMessage) returns (PointsMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc IsCircle (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc IsBox (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc HasSelfIntersections (PolygonDataWithToleranceMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc RemoveSelfIntersections (PolygonDataWithToleranceMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc IsConvex (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc GetArea (PolygonDataMessage) returns (google.protobuf.FloatValue) {}
+
+  // io_flags:
+  //   - cache
   rpc Transform (PolygonDataTransformMessage) returns (PolygonDataMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetBBox (PolygonDataListMessage) returns (BoxMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetConvexHull (PolygonDataListMessage) returns (PolygonDataMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc RemoveArcs (PolygonDataRemoveArcMessage) returns (PolygonDataMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Defeature (PolygonDataWithToleranceMessage) returns (PolygonDataMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetBoundingCircle (PolygonDataMessage) returns (CircleMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc IsInside (PolygonDataWithPointMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc CircleIntersectsPolygon (PolygonDataWithCircleMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc GetIntersectionType (PolygonDataPairWithToleranceMessage) returns (IntersectionTypeMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetClosestPoints (PolygonDataWithPointsMessage) returns (PointsMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetUnion (PolygonDataListMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetIntersection (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Subtract (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Xor (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Expand (PolygonDataExpandMessage) returns (PolygonDataListMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc Get2DAlphaShape (PolygonDataGetAlphaShapeMessage) returns (PolygonDataListMessage) {}
 }
 

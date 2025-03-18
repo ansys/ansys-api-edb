@@ -23,62 +23,101 @@ enum BondwireCrossSectionType {
 
 // Bondwire service definition
 service BondwireService {
-  // Create Bondwire
+  // summary: Create Bondwire
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (BondwireCreateMessage) returns (EDBObjMessage) {}
 
-  // Get Material
+  // summary: Get Material
+  // io_flags:
+  //   - cache
   rpc GetMaterial (BondwireBoolMessage) returns (google.protobuf.StringValue) {}
 
-  // Set Material
+  // summary: Set Material
+  // io_flags:
+  //   - buffer
   rpc SetMaterial (SetMaterialMessage) returns (google.protobuf.Empty) {}
 
-  // Get Bondwire Type
+  // summary: Get Bondwire Type
+  // io_flags:
+  //   - cache
   rpc GetType (EDBObjMessage) returns (BondwireTypeMessage) {}
 
-  // Set Bondwire Type
+  // summary: Set Bondwire Type
+  // io_flags:
+  //   - buffer
   rpc SetType (SetBondwireTypeMessage) returns (google.protobuf.Empty) {}
 
-  // Get Cross Section Type
+  // summary: Get Cross Section Type
+  // io_flags:
+  //   - cache
   rpc GetCrossSectionType (EDBObjMessage) returns (GetCrossSectionTypeMessage) {}
 
-  // Set Type
+  // summary: Set Type
+  // io_flags:
+  //   - buffer
   rpc SetCrossSectionType (SetCrossSectionTypeMessage) returns (google.protobuf.Empty) {}
 
-  // Get Cross Section Type
+  // summary: Get Cross Section Type
+  // io_flags:
+  //   - cache
   rpc GetCrossSectionHeight (EDBObjMessage) returns (ValueMessage) {}
 
-  // Set Type
+  // summary: Set Type
+  // io_flags:
+  //   - buffer
   rpc SetCrossSectionHeight (SetCrossSectionHeightMessage) returns (google.protobuf.Empty) {}
 
-  // Get Bondwire Definition Name
+  // summary: Get Bondwire Definition Name
+  // io_flags:
+  //   - cache
   rpc GetDefinitionName (BondwireBoolMessage) returns (google.protobuf.StringValue) {}
-  
-  // Set Bondwire Definition Name
+
+  // summary: Set Bondwire Definition Name
+  // io_flags:
+  //   - buffer
   rpc SetDefinitionName (SetDefinitionNameMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Start Elevation Layer
+
+  // summary: Get Start Elevation Layer
+  // io_flags:
+  //   - cache
   rpc GetStartElevation (GetElevationMessage) returns (EDBObjMessage) {}
-  
-  // Set Start Elevation Layer
+
+  // summary: Set Start Elevation Layer
+  // io_flags:
+  //   - buffer
   rpc SetStartElevation (SetElevationMessage) returns (google.protobuf.Empty) {}
-  
-  // Get End Elevation Layer
+
+  // summary: Get End Elevation Layer
+  // io_flags:
+  //   - cache
   rpc GetEndElevation (GetElevationMessage) returns (EDBObjMessage) {}
-  
-  // Set End Elevation Layer
+
+  // summary: Set End Elevation Layer
+  // io_flags:
+  //   - buffer
   rpc SetEndElevation (SetElevationMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Trajectory Values
+
+  // summary: Get Trajectory Values
+  // io_flags:
+  //   - cache
   rpc GetTraj (EDBObjMessage) returns (BondwireTrajMessage) {}
-  
-  // Set Trajectory Values
+
+  // summary: Set Trajectory Values
+  // io_flags:
+  //   - buffer
   rpc SetTraj (SetBondwireTrajMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Width Value
+
+  // summary: Get Width Value
+  // io_flags:
+  //   - cache
   rpc GetWidthValue (EDBObjMessage) returns (ValueMessage) {}
-  
-  // Get Width Value
-  rpc SetWidthValue (BondwireValueMessage) returns (google.protobuf.Empty) {} 
+
+  // summary: Set Width Value
+  // io_flags:
+  //   - buffer
+  rpc SetWidthValue (BondwireValueMessage) returns (google.protobuf.Empty) {}
 }
 
 message BondwireCreateMessage {

@@ -8,14 +8,25 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/refs.proto";
 
 service DifferentialPairService {
-  // create a differential pair
+  // summary: create a differential pair
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (DifferentialPairCreationMessage) returns (EDBObjMessage) {}
 
-  // find a differential pair
+  // summary: find a differential pair
+  // io_flags:
+  //   - cache
   rpc FindByName (StringPropertyMessage) returns (EDBObjMessage) {}
 
-  // differential pair accessors
+  // summary: Get differential pair
+  // io_flags:
+  //   - cache
   rpc GetDifferentialPair (EDBObjMessage) returns (DifferentialPairNetRefsMessage) {}
+
+  // summary: Set differential pair
+  // io_flags:
+  //   - buffer
   rpc SetDifferentialPair (DifferentialPairNetRefsMessage) returns (google.protobuf.Empty) {}
 }
 

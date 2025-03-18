@@ -10,32 +10,52 @@ import "ansys/api/edb/v1/edb_messages.proto";
 
 // Component Definition Service
 service ComponentModelService {
-  // Set reference file
+  // summary: Set reference file
+  // io_flags:
+  //   - buffer
   rpc SetReferenceFile(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get reference file
+  // summary: Get reference file
+  // io_flags:
+  //   - cache
   rpc GetReferenceFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
-  // Find component model by name
+  // summary: Find component model by name
+  // io_flags:
+  //   - cache
   rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
 
-  // Find component model by id
+  // summary: Find component model by id
+  // io_flags:
+  //   - cache
   rpc FindById(IntPropertyMessage) returns (EDBObjMessage) {}
 }
 
 service NPortComponentModelService {
-  // Create nport component model
+  // summary: Create nport component model
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.StringValue) returns (EDBObjMessage) {}
 }
 
 service DynamicLinkComponentModelService {
-  // Create dynamic link component model
+  // summary: Create dynamic link component model
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.StringValue) returns (EDBObjMessage) {}
-  
-  // Set design name
+
+  // summary: Set design name
+  // io_flags:
+  //   - buffer
   rpc SetDesignName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get design name
+  // summary: Get design name
+  // io_flags:
+  //   - cache
   rpc GetDesignName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

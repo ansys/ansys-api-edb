@@ -7,7 +7,17 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service NetlistModelService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (google.protobuf.StringValue) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetNetlist (EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNetlist (StringPropertyMessage) returns (google.protobuf.Empty) {}
 }

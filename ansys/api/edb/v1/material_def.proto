@@ -25,48 +25,79 @@ enum MaterialPropertyID {
 }
 
 service MaterialDefService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create(MaterialDefCreationMessage) returns (EDBObjMessage) {}
 
   // DEPRECATED: use Create instead
+  // io_flags:
+  //   - buffer
   rpc SetProperty(MaterialDefSetPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Find Material Definition by name
+  // summary: Find Material Definition by name
+  // io_flags:
+  //   - cache
   rpc FindByName(EDBObjNameMessage) returns (EDBObjMessage) {}
-  
-  // Delete Material Definition
+
+  // summary: Delete Material Definition
+  // io_flags:
+  //   - buffer
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Property
+
+  // summary: Get Property
+  // io_flags:
+  //   - cache
   rpc GetProperty(MaterialDefGetPropertyMessage) returns (ValueMessage) {}
-  
-  // Get All Properties
+
+  // summary: Get All Properties
+  // io_flags:
+  //   - cache
   rpc GetAllProperties(EDBObjMessage) returns (MaterialDefGetAllPropertiesMessage) {}
 
-  // Remove Property
+  // summary: Remove Property
+  // io_flags:
+  //   - buffer
   rpc RemoveProperty(MaterialDefGetPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get Name of Material Def
+  // summary: Get Name of Material Def
+  // io_flags:
+  //   - cache
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
-  
-  // Get Dielectric Material Model
+
+  // summary: Get Dielectric Material Model
+  // io_flags:
+  //   - cache
   rpc GetDielectricMaterialModel(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Set Dielectric Material Model 
+
+  // summary: Set Dielectric Material Model
+  // io_flags:
+  //   - buffer
   rpc SetDielectricMaterialModel(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get Dimensions
+  // summary: Get Dimensions
+  // io_flags:
+  //   - cache
   rpc GetDimensions(MaterialDefPropertyMessage) returns (MaterialDefGetDimensionMessage) {}
-  
-  // Set Thermal Modifier
+
+  // summary: Set Thermal Modifier
+  // io_flags:
+  //   - buffer
   rpc SetThermalModifier(SetMaterialDefPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Set Anisotropic Thermal Modifier
+  // summary: Set Anisotropic Thermal Modifier
+  // io_flags:
+  //   - buffer
   rpc SetAnisotropicThermalModifier(SetMaterialDefPropertyComponentMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Thermal Modifier
+
+  // summary: Get Thermal Modifier
+  // io_flags:
+  //   - cache
   rpc GetThermalModifier(MaterialDefPropertyMessage) returns (EDBObjMessage) {}
-  
-  // Get Anisotropic Thermal Modifier 
+
+  // summary: Get Anisotropic Thermal Modifier
+  // io_flags:
+  //   - cache
   rpc GetAnisotropicThermalModifier(MaterialDefPropertyComponentMessage) returns (EDBObjMessage) {}
 }
 

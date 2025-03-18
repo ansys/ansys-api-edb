@@ -13,28 +13,44 @@ import "ansys/api/edb/v1/layout_obj.proto";
 // Connectable Service definition
 service ConnectableService {
 
-  // Gets the layout object type.
+  // summary: Gets the layout object type.
+  // io_flags:
+  //   - cache
   rpc GetObjType(EDBObjMessage) returns (LayoutObjTypeMessage) {}
 
-  // Find a Connectable object by Database ID and type.
+  // summary: Find a Connectable object by Database ID and type.
+  // io_flags:
+  //   - cache
   rpc FindByIdAndType(FindByIdLayoutObjMessage) returns (EDBObjMessage) {}
 
-  // Get the unique, persistent ID for the Connectable object.
+  // summary: Get the unique, persistent ID for the Connectable object.
+  // io_flags:
+  //   - cache
   rpc GetId(EDBObjMessage) returns (EDBInternalIdMessage) {}
-  
-  // Gets the Component of the connectable object.
+
+  // summary: Gets the Component of the connectable object.
+  // io_flags:
+  //   - cache
   rpc GetComponent(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Gets the group of the connectable object.
+
+  // summary: Gets the group of the connectable object.
+  // io_flags:
+  //   - cache
   rpc GetGroup(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Sets the group of the connectable object.
+
+  // summary: Sets the group of the connectable object.
+  // io_flags:
+  //   - buffer
   rpc SetGroup(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Gets the net of the connectable object.
+  // summary: Gets the net of the connectable object.
+  // io_flags:
+  //   - cache
   rpc GetNet(EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Sets the net of the connectable object.
+  // summary: Sets the net of the connectable object.
+  // io_flags:
+  //   - buffer
   rpc SetNet(SetNetMessage) returns (google.protobuf.Empty) {}
   }
 

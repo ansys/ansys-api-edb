@@ -16,19 +16,31 @@ enum LayerMapUniqueDirection {
 // LayerMap service definition
 service LayerMapService {
 
-  // Create a layer map
+  // summary: Create a layer map
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (LayerMapUniqueDirectionMessage) returns (EDBObjMessage) {}
 
-  // Clear a layer map
+  // summary: Clear a layer map
+  // io_flags:
+  //   - buffer
   rpc Clear (EDBObjMessage) returns (google.protobuf.Empty) {}
-  
-  // SetMapping of a layer map
+
+  // summary: SetMapping of a layer map
+  // io_flags:
+  //   - buffer
   rpc SetMapping (LayerMapTwoIntPropertiesMessage) returns (google.protobuf.Empty) {}
-  
-  // GetMapping of a layer map
+
+  // summary: GetMapping of a layer map
+  // io_flags:
+  //   - cache
   rpc GetMappingForward (IntPropertyMessage) returns (ProductPropertyIdsMessage) {}
-  
-  // GetMapping of a layer map
+
+  // summary: GetMapping of a layer map
+  // io_flags:
+  //   - cache
   rpc GetMappingBackward (IntPropertyMessage) returns (ProductPropertyIdsMessage) {}
 }
 

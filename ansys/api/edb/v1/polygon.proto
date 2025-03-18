@@ -10,13 +10,20 @@ import "ansys/api/edb/v1/refs.proto";
 
 // Polygon service definition
 service PolygonService {
-  // Create a polygon
+  // summary: Create a polygon
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PolygonCreationMessage) returns (EDBObjMessage) {}
-  
-  // Get PolygonData
+
+  // summary: Get PolygonData
+  // io_flags:
+  //   - cache
   rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
-  
-  // Set PolygonData
+
+  // summary: Set PolygonData
+  // io_flags:
+  //   - buffer
   rpc SetPolygonData (SetPolygonDataMessage) returns (google.protobuf.Empty) {}
 }
 

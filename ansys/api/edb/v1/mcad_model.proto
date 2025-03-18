@@ -8,38 +8,108 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/point_3d_data.proto";
 
 service McadModelService {
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc CreateStride (McadModelCreationMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc CreateHfss (McadModelHfssCreationMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create3dComp (McadModelCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc IsMcad (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc IsMcadStride (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc IsMcadHfss (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc IsMcad3dComp (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
+  // io_flags:
+  //   - cache
   rpc GetOrigin (EDBObjMessage) returns (Point3DMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetOrigin (Point3DPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetRotation (EDBObjMessage) returns (McadModelRotationMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetRotation (McadModelSetRotationMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetScale (EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetScale (DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaterial (IntPropertyMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaterial (McadModelStringMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetVisible (IntPropertyMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetVisible (McadModelBoolMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetModeled (IntPropertyMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetModeled (McadModelBoolMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetCellInst (EDBObjMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetPartCount (EDBObjMessage) returns (google.protobuf.Int64Value) {}
+
+  // io_flags:
+  //   - cache
   rpc GetPartName (IntPropertyMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - cache
   rpc GetPartIndex (StringPropertyMessage) returns (google.protobuf.Int64Value) {}
+
+  // io_flags:
+  //   - cache
   rpc GetModelName (EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - cache
   rpc GetDesignName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

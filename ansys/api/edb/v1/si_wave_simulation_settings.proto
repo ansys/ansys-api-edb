@@ -7,16 +7,36 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service SIWaveGeneralSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetUseSISettings(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseSISettings(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseCustomSettings(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseCustomSettings(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetSISliderPos(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetSISliderPos(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPISliderPos(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPISliderPos(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -36,125 +56,320 @@ message ACDCMergeModePropertyMessage {
 }
 
 service SIWaveAdvancedSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetIncludeCoPlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeCoPlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeInterPlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeInterPlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeSplitPlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeSplitPlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeFringePlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeFringePlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeTracePlaneCoupling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeTracePlaneCoupling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetCrossTalkThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetCrossTalkThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaxCoupledLines(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaxCoupledLines(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMinVoidArea(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMinVoidArea(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMinPadAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMinPadAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMinPlaneAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMinPlaneAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetSnapLengthThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetSnapLengthThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMeshAutomatic(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMeshAutomatic(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMeshFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMeshFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetAcDcMergeMode(EDBObjMessage) returns (ACDCMergeModeMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetAcDcMergeMode(ACDCMergeModePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc Get3DReturnCurrentDistribution(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc Set3DReturnCurrentDistribution(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeVISources(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeVISources(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIncludeInfGnd(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIncludeInfGnd(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetInfGndLocation(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetInfGndLocation(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPerformERC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPerformERC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetIgnoreNonFunctionalPads(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIgnoreNonFunctionalPads(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 service SIWaveDCSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetUseDCCustomSettings(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseDCCustomSettings(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetComputeInductance(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetComputeInductance(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPlotJV(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPlotJV(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetContactRadius(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetContactRadius(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDCSliderPos(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetDCSliderPos(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 service SIWaveDCAdvancedSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetDCMinPlaneAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetDCMinPlaneAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDCMinVoidAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetDCMinVoidAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaxInitMeshEdgeLength(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaxInitMeshEdgeLength(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPerformAdaptiveRefinement(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPerformAdaptiveRefinement(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaxNumPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaxNumPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMinNumPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMinNumPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPercentLocalRefinement(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPercentLocalRefinement(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetEnergyError(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetEnergyError(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMeshBws(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMeshBws(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetRefineBws(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetRefineBws(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMeshVias(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMeshVias(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetRefineVias(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetRefineVias(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetNumBwSides(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNumBwSides(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetNumViaSides(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNumViaSides(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -184,16 +399,36 @@ enum SParamDCBehavior
 }
 
 service SIWaveSParameterSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetUseStateSpace(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseStateSpace(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetInterpolation(EDBObjMessage) returns (SParamInterpolationMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetInterpolation(SParamInterpolationPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetExtrapolation(EDBObjMessage) returns (SParamExtrapolationMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetExtrapolation(SParamExtrapolationPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDCBehavior(EDBObjMessage) returns (SParamDCBehaviorMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetDCBehavior(SParamDCBehaviorPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
