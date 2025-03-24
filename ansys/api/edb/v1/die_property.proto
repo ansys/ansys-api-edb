@@ -18,21 +18,53 @@ DIE_TYPE_NONE = 0;
 DIE_TYPE_FLIPCHIP = 1;
 DIE_TYPE_WIREBOND = 2;
 }
-  
+
 // Die Property service definition
 service DiePropertyService {
 
+  // summary: Create a die property
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.Empty) returns (EDBObjMessage) {}
+
+  // summary: Clone a die property
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Clone(EDBObjMessage) returns (EDBObjMessage) {}
-  
+
+  // summary: Get the die property type
+  // io_flags:
+  //   - cache
   rpc GetDieType(EDBObjMessage) returns (DieTypeMessage) {}
-  rpc SetDieType(DieTypePropertyMessage) returns (google.protobuf.Empty) {} 
-  
+
+  // summary: Set the die property type
+  // io_flags:
+  //   - buffer
+  rpc SetDieType(DieTypePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the die property height
+  // io_flags:
+  //   - cache
   rpc GetHeight(EDBObjMessage) returns (ValueMessage) {}
+
+  // summary: Set the die property height
+  // io_flags:
+  //   - buffer
   rpc SetHeight(ValuePropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // summary: Get the die property orientation
+  // io_flags:
+  //   - cache
   rpc GetOrientation(EDBObjMessage) returns (DieOrientationMessage) {}
-  rpc SetOrientation(DieOrientationPropertyMessage) returns (google.protobuf.Empty) {} 
+
+  // summary: Set the die property orientation
+  // io_flags:
+  //   - buffer
+  rpc SetOrientation(DieOrientationPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 

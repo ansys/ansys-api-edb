@@ -9,11 +9,18 @@ import "ansys/api/edb/v1/point_data.proto";
 import "ansys/api/edb/v1/refs.proto";
 
 service PointTerminalService {
-  // Create a point term
+  // summary: Create a point term
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PointTermCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetParameters(EDBObjMessage) returns (PointTermParamsMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc SetParameters(PointTermSetParamsMessage) returns (google.protobuf.Empty) {}
 }
 

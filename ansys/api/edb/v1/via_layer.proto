@@ -8,13 +8,21 @@ import "ansys/api/edb/v1/edb_messages.proto";
 
 // Via layer service definition
 service ViaLayerService {
-  // Creates a via layer
+  // summary: Creates a via layer
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (ViaLayerCreationMessage) returns (EDBObjMessage) {}
 
-  // Get the name of the upper or lower reference layer of the via layer.
+  // summary: Get the name of the upper or lower reference layer of the via layer.
+  // io_flags:
+  //   - cache
   rpc GetRefLayerName (ViaLayerRefLayerIdMessage) returns (google.protobuf.StringValue) {}
 
-  // Sets the upper or lower reference layer of the via layer
+  // summary: Sets the upper or lower reference layer of the via layer
+  // io_flags:
+  //   - buffer
   rpc SetRefLayer (SetViaLayerRefLayerMessage) returns (google.protobuf.Empty) {}
 }
 

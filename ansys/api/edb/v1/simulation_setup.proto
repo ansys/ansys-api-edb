@@ -1,4 +1,4 @@
-// Proto file representing simulation setup 
+// Proto file representing simulation setup
 
 syntax = "proto3";
 
@@ -8,17 +8,38 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/edb_defs.proto";
 
 service SimulationSetupService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(SimulationSetupCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
-  
-  rpc GetPosition (EDBObjMessage) returns (google.protobuf.UInt64Value) {} 
+
+    // io_flags:
+  //   - cache
+  rpc GetPosition (EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPosition (UInt64PropertyMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetSweepData (EDBObjMessage) returns (SweepDataListMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetSweepData (SweepDataListPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetType (EDBObjMessage) returns (SimulationSetupTypeMessage) {}
 }
 

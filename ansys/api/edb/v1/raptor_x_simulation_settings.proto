@@ -7,99 +7,254 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service RaptorXGeneralSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetUseGoldEMSolver(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseGoldEMSolver(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaxFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaxFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetGlobalTemperature(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetGlobalTemperature(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetSaveNetlist(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetSaveNetlist(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetNetlistExportSpectre(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNetlistExportSpectre(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetSaveRFM(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetSaveRFM(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 service RaptorXAdvancedSettingsService {
+  // io_flags:
+  //   - cache
   rpc GetUseMeshFrequency(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseMeshFrequency(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMeshFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMeshFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEdgeMesh(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEdgeMesh(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetEdgeMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetEdgeMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseCellsPerWavelength(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseCellsPerWavelength(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetCellsPerWavelength(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetCellsPerWavelength(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUsePlaneProjectionFactor(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUsePlaneProjectionFactor(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPlaneProjectionFactor(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPlaneProjectionFactor(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseRelaxedZAxis(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseRelaxedZAxis(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEliminateSlitPerHoles(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEliminateSlitPerHoles(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetEliminateSlitPerHoles(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetEliminateSlitPerHoles(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseAutoRemovalSliverPoly(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseAutoRemovalSliverPoly(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetAutoRemovalSliverPoly(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetAutoRemovalSliverPoly(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseAccelerateViaExtraction(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseAccelerateViaExtraction(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEnableSubstrateNetworkExtraction(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEnableSubstrateNetworkExtraction(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseLDE(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseLDE(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseExtractFloatingMetalsDummy(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseExtractFloatingMetalsDummy(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseExtractFloatingMetalsFloating(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseExtractFloatingMetalsFloating(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEnableEtchTransform(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEnableEtchTransform(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEnableHybridExtraction(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEnableHybridExtraction(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseEnableAdvancedCapEffects(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseEnableAdvancedCapEffects(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetUseOverrideShrinkFac(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetUseOverrideShrinkFac(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetOverrideShrinkFac(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetOverrideShrinkFac(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetAdvancedOptions(EDBObjMessage) returns (RaptorXSimSettingsOptionsMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetAdvancedOptions(RaptorXSimSettingsOptionsPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetNetSettingsOptions(EDBObjMessage) returns (RaptorXSimSettingsOptionsMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetNetSettingsOptions(RaptorXSimSettingsOptionsPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

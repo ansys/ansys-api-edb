@@ -9,32 +9,62 @@ import "ansys/api/edb/v1/point_data.proto";
 import "ansys/api/edb/v1/polygon_data.proto";
 
 service RTreeService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (google.protobuf.DoubleValue) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetExtent (EDBObjMessage) returns (BoxMessage) {}
-  
+
+  // io_flags:
+  //   - buffer
   rpc InsertIntObject (RTreeObjMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - buffer
   rpc DeleteIntObject (RTreeObjMessage) returns (google.protobuf.Empty) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc Empty (EDBObjMessage) returns (google.protobuf.BoolValue) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc Search (RTreeSearchMessage) returns (IntegersPropertyMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc NearestNeighbor(RTreeObjMessage) returns (NearestNeighborResponseMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc TouchingGeometry (RTreeGeometryRequestMessage) returns (IntegersPropertyMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc ConnectedGeometry(RTreeGeometryRequestMessage) returns (IntegersPropertyMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetConnectedGeometrySets (EDBObjMessage) returns (GeometrySetsMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc IncrementVisit(EDBObjMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc IsVisited (RTreeObjMessage) returns (google.protobuf.BoolValue) {}
 
+  // io_flags:
+  //   - buffer
   rpc Visit(RTreeObjMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetVisit(EDBObjMessage) returns (google.protobuf.Int64Value) {}
 }
 

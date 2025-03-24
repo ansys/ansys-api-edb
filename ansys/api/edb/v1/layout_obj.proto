@@ -29,19 +29,29 @@ enum LayoutObjType {
 
 // LayoutObj service definition
 service LayoutObjService {
-  // Gets the layout of the layout object
+  // summary: Gets the layout of the layout object
+  // io_flags:
+  //   - cache
   rpc GetLayout (LayoutObjTargetMessage) returns (EDBObjMessage) {}
-  
-  // Delete the layout object
+
+  // summary: Delete the layout object
+  // io_flags:
+  //   - buffer
   rpc Delete (LayoutObjTargetMessage) returns (google.protobuf.Empty) {}
-  
-  // Gets a double product property by product id and attribute id
+
+  // summary: Gets a double product property by product id and attribute id
+  // io_flags:
+  //   - cache
   rpc GetProductProperty (GetProductPropertyTypeMessage) returns (google.protobuf.StringValue) {}
-  
-  // Sets a integer property by product id and attribute id
+
+  // summary: Sets a integer property by product id and attribute id
+  // io_flags:
+  //   - buffer
   rpc SetProductProperty (SetProductPropertyTypeMessage) returns (google.protobuf.Empty) {}
-  
-  // Gets a list of property ids associated with the layout object for the given product
+
+  // summary: Gets a list of property ids associated with the layout object for the given product
+  // io_flags:
+  //   - cache
   rpc GetProductPropertyIds (GetProductPropertyIdsTypeMessage) returns (ProductPropertyIdsMessage) {}
 }
 

@@ -17,5 +17,9 @@ enum ModelType {
 }
 
 service ModelService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Clone (EDBObjMessage) returns (EDBObjMessage) {}
 }

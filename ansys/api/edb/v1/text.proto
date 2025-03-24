@@ -9,13 +9,20 @@ import "ansys/api/edb/v1/refs.proto";
 
 // Text service definition
 service TextService {
-  // Create a text
+  // summary: Create a text
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (TextCreationMessage) returns (EDBObjMessage) {}
-  
-  // Get text values
+
+  // summary: Get text values
+  // io_flags:
+  //   - cache
   rpc GetTextData (EDBObjMessage) returns (TextDataMessage) {}
-  
-  // Set text values
+
+  // summary: Set text values
+  // io_flags:
+  //   - buffer
   rpc SetTextData (SetTextDataMessage) returns (google.protobuf.Empty) {}
 }
 

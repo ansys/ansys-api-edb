@@ -9,79 +9,131 @@ import "ansys/api/edb/v1/layer.proto";
 
 // Stackup layer service definition
 service StackupLayerService {
-  // Creates a stackup layer
+  // summary: Creates a stackup layer
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create (StackupLayerCreationMessage) returns (EDBObjMessage) {}
 
-  // Get the negative property of the stackup layer
+  // summary: Get the negative property of the stackup layer
+  // io_flags:
+  //   - cache
   rpc GetNegative (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Set the negative property of the stackup layer
+  // summary: Set the negative property of the stackup layer
+  // io_flags:
+  //   - buffer
   rpc SetNegative (SetNegativeMessage) returns (google.protobuf.Empty) {}
 
-  // Get the thickness of the layer
+  // summary: Get the thickness of the layer
+  // io_flags:
+  //   - cache
   rpc GetThickness(EDBObjMessage) returns (ValueMessage) {}
 
-  // Set the thickness of the layer
+  // summary: Set the thickness of the layer
+  // io_flags:
+  //   - buffer
   rpc SetThickness(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
-  // Get the lower elevation of the layer
+  // summary: Get the lower elevation of the layer
+  // io_flags:
+  //   - cache
   rpc GetLowerElevation(EDBObjMessage) returns (ValueMessage) {}
 
-  // Set the lower elevation of the layer
+  // summary: Set the lower elevation of the layer
+  // io_flags:
+  //   - buffer
   rpc SetLowerElevation(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
-  // Get the upper elevation of the layer
+  // summary: Get the upper elevation of the layer
+  // io_flags:
+  //   - cache
   rpc GetUpperElevation(EDBObjMessage) returns (ValueMessage) {}
 
-  // Get the material of the layer
+  // summary: Get the material of the layer
+  // io_flags:
+  //   - cache
   rpc GetMaterial(GetLayerMaterialMessage) returns (google.protobuf.StringValue) {}
 
-  // Set the material of the layer
+  // summary: Set the material of the layer
+  // io_flags:
+  //   - buffer
   rpc SetMaterial(SetLayerMaterialMessage) returns (google.protobuf.Empty) {}
 
-  // Get the fill material of the layer
+  // summary: Get the fill material of the layer
+  // io_flags:
+  //   - cache
   rpc GetFillMaterial(GetLayerMaterialMessage) returns (google.protobuf.StringValue) {}
 
-  // Set the fill material of the layer
+  // summary: Set the fill material of the layer
+  // io_flags:
+  //   - buffer
   rpc SetFillMaterial(SetLayerMaterialMessage) returns (google.protobuf.Empty) {}
 
-  // Enable/Disable surface roughness for the layer
+  // summary: Enable/Disable surface roughness for the layer
+  // io_flags:
+  //   - buffer
   rpc SetRoughnessEnabled(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
-  // Check if surface roughness is enabled for the layer
+  // summary: Check if surface roughness is enabled for the layer
+  // io_flags:
+  //   - cache
   rpc IsRoughnessEnabled(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Get the roughness model of the layer
+  // summary: Get the roughness model of the layer
+  // io_flags:
+  //   - cache
   rpc GetRoughnessModel(LayerRoughnessRegionMessage) returns (RoughnessModelMessage) {}
 
-  // Set the roughness model of the layer
+  // summary: Set the roughness model of the layer
+  // io_flags:
+  //   - buffer
   rpc SetRoughnessModel(SetRoughnessModelMessage) returns (google.protobuf.Empty) {}
 
-  // Check if etch factor is enabled for the layer
+  // summary: Check if etch factor is enabled for the layer
+  // io_flags:
+  //   - cache
   rpc IsEtchFactorEnabled(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Enable/Disable etch factor for the layer
+  // summary: Enable/Disable etch factor for the layer
+  // io_flags:
+  //   - buffer
   rpc SetEtchFactorEnabled(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
-  // Set the etch factor of the layer
+  // summary: Set the etch factor of the layer
+  // io_flags:
+  //   - buffer
   rpc SetEtchFactor(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
-  // Get the etch factor of the layer
+  // summary: Get the etch factor of the layer
+  // io_flags:
+  //   - cache
   rpc GetEtchFactor(EDBObjMessage) returns (ValueMessage) {}
 
-  // Check if solver properties are enabled for the layer
+  // summary: Check if solver properties are enabled for the layer
+  // io_flags:
+  //   - cache
   rpc GetUseSolverProperties(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Enable/Disable solver properties for the layer
+  // summary: Enable/Disable solver properties for the layer
+  // io_flags:
+  //   - buffer
   rpc SetUseSolverProperties(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
-  // Get the HFSS solver-specific properties of the layer
+  // summary: Get the HFSS solver-specific properties of the layer
+  // io_flags:
+  //   - cache
   rpc GetHFSSSolverProperties(EDBObjMessage) returns (HFSSSolverPropertiesMessage) {}
 
-  // Set the HFSS solver-specific properties of the layer
+  // summary: Set the HFSS solver-specific properties of the layer
+  // io_flags:
+  //   - buffer
   rpc SetHFSSSolverProperties(SetHFSSSolverPropertiesMessage) returns (google.protobuf.Empty) {}
 
-  // Retrieves the layer ids of all via layers referencing the layer.
+  // summary: Retrieves the layer ids of all via layers referencing the layer.
+  // io_flags:
+  //   - cache
   rpc GetReferencingViaLayerIds(EDBObjMessage) returns (ViaLayerIdsMessage) {}
 }
 

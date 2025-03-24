@@ -15,70 +15,137 @@ enum AccessLevel {
 }
 
 service DatabaseService {
-  // Creates a database
+  // summary: Creates a database
   rpc Create (google.protobuf.StringValue) returns (EDBObjMessage) {}
 
-  // Opens a database
+  // summary: Opens a database
   rpc Open (OpenDatabaseMessage) returns (EDBObjMessage) {}
 
-  // Deletes a database
+  // summary: Deletes a database
   rpc Delete (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
-  
-  // Saves a database
-  rpc Save (EDBObjMessage) returns (google.protobuf.Empty) {}
-  
-  // Closes a database
-  rpc Close (EDBObjMessage) returns (google.protobuf.Empty) {} 
 
-  // Determines whether the database is read only
+  // summary: Saves a database
+  rpc Save (EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Closes a database
+  rpc Close (EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Determines whether the database is read only
+  // io_flags:
+  //   - cache
   rpc IsReadOnly(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Gets the top circuits in a database
+  // summary: Gets the top circuits in a database
+  // io_flags:
+  //   - cache
   rpc GetTopCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Streams the top circuits in a database
   rpc StreamTopCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Gets the id of a database
-  rpc GetId (EDBObjMessage) returns (google.protobuf.Int64Value) {} 
+  // summary: Gets the id of a database
+  // io_flags:
+  //   - cache
+  rpc GetId (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
-  // Finds a database with the provided id
+  // summary: Finds a database with the provided id
+  // io_flags:
+  //   - cache
   rpc FindById (google.protobuf.Int64Value) returns (EDBObjMessage) {}
-  
-  // Save the database to new location and optionaly to older edb version
+
+  // summary: Save the database to new location and optionally to older edb version
   rpc SaveAs (SaveAsDatabaseMessage) returns (google.protobuf.Empty) {}
-  
-  // Get EDB version by release name
+
+  // summary: Get EDB version by release name
+  // io_flags:
+  //   - cache
   rpc GetVersionByRelease (google.protobuf.StringValue) returns (google.protobuf.StringValue) {}
-  
-  // Get the directory of the Database
+
+  // summary: Get the directory of the Database
+  // io_flags:
+  //   - cache
   rpc GetDirectory (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
+  // summary: Get the product property of the Database
+  // io_flags:
+  //   - cache
   rpc GetProductProperty(GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Set the product property of the Database
+  // io_flags:
+  //   - buffer
   rpc SetProductProperty(SetProductPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the product property ids of the Database
+  // io_flags:
+  //   - cache
   rpc GetProductPropertyIds(GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
+  // summary: Get the product property ids of the Database
   rpc ImportMaterialFromControlFile(ImportMaterialFromControlFileMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the version of the Database
+  // io_flags:
+  //   - cache
   rpc GetVersion(EDBObjMessage) returns (GetVersionMessage) {}
+
+  // summary: Scale the geometry of the Database
+  // io_flags:
+  //   - buffer
   rpc Scale(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get the source of the Database
+  // io_flags:
+  //   - cache
   rpc GetSource(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Set the source of the Database
+  // io_flags:
+  //   - buffer
   rpc SetSource(EDBObjNameMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the source version of the Database
+  // io_flags:
+  //   - cache
   rpc GetSourceVersion(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Set the source version of the Database
+  // io_flags:
+  //   - buffer
   rpc SetSourceVersion(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
-  // copy cells
+  // summary: copy cells
   rpc CopyCells (CopyCellsMessage) returns (EDBObjCollectionMessage) {}
 
-  // Get defs
+  // summary: Get defs
+  // io_flags:
+  //   - cache
   rpc GetDefinitionObjs (GetDefinitionObjsMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream defs
   rpc StreamDefinitionObjs (GetDefinitionObjsMessage) returns (stream EDBObjCollectionMessage) {}
-  
-  // get cells
+
+  // summary: Get top cells
+  // io_flags:
+  //   - cache
   rpc TopCircuitCells (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Get cells
+  // io_flags:
+  //   - cache
   rpc GetCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream cells
   rpc StreamCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
+
+  // summary: Get footprint cells
+  // io_flags:
+  //   - cache
   rpc GetFootprints (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream footprint cells
   rpc StreamFootprints (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
-  
+
 }
 
 // Message for Open

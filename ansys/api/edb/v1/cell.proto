@@ -10,101 +10,166 @@ import "ansys/api/edb/v1/polygon_data.proto";
 
 
 service CellService {
-  // Creates a cell
+  // summary: Creates a cell
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (CellCreationMessage) returns (EDBObjMessage) {}
 
-  // Gets the layout of the provided cell
+  // summary: Gets the layout of the provided cell
+  // io_flags:
+  //   - cache
   rpc GetLayout (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get the flattened layout
+  // summary: Get the flattened layout
   rpc GetFlattenedLayout (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Find cell by name or id
+  // summary: Find cell by name or id
+  // io_flags:
+  //   - cache
   rpc Find (CellFindMessage) returns (EDBObjMessage) {}
 
-  // Delete a cell
+  // summary: Delete a cell
+  // io_flags:
+  //   - buffer
   rpc Delete (EDBObjMessage) returns (google.protobuf.Empty) {}
 
-  // Get the database
+  // summary: Get the database
+  // io_flags:
+  //   - cache
   rpc GetDatabase (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get whether the cell is of type footprint
+  // summary: Get whether the cell is of type footprint
+  // io_flags:
+  //   - cache
   rpc IsFootprint (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Get whether the cell is a black box
+  // summary: Get whether the cell is a black box
+  // io_flags:
+  //   - cache
   rpc IsBlackBox (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Set whether the cell is a black box
+  // summary: Set whether the cell is a black box
+  // io_flags:
+  //   - buffer
   rpc SetBlackBox (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get whether the cell supresses pads
+  // summary: Get whether the cell suppresses pads
+  // io_flags:
+  //   - cache
   rpc GetSuppressPads (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Set whether the cell supresses pads
+  // summary: Set whether the cell suppresses pads
+  // io_flags:
+  //   - buffer
   rpc SetSuppressPads (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get whether the anti pads is always on
+  // summary: Get whether the anti pads is always on
+  // io_flags:
+  //   - cache
   rpc GetAntiPadsAlwaysOn (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Set whether the anti pads is always on
+  // summary: Set whether the anti pads is always on
+  // io_flags:
+  //   - buffer
   rpc SetAntiPadsAlwaysOn (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get the option for anti pads
+  // summary: Get the option for anti pads
+  // io_flags:
+  //   - cache
   rpc GetAntiPadsOption (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
-  // Set the option for anti pads
+  // summary: Set the option for anti pads
+  // io_flags:
+  //   - buffer
   rpc SetAntiPadsOption (IntPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get whether the cell is a symbolic footprint
+  // summary: Get whether the cell is a symbolic footprint
+  // io_flags:
+  //   - cache
   rpc IsSymbolicFootprint (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Get the name of the cell
+  // summary: Get the name of the cell
+  // io_flags:
+  //   - cache
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
-  // Set the name of the cell
+  // summary: Set the name of the cell
+  // io_flags:
+  //   - buffer
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get the cell's design mode
+  // summary: Get the cell's design mode
+  // io_flags:
+  //   - cache
   rpc GetDesignMode (EDBObjMessage) returns (DesignModeMessage) {}
 
-  // Set the cell's design mode
+  // summary: Set the cell's design mode
+  // io_flags:
+  //   - buffer
   rpc SetDesignMode (DesignModePropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get HFSS extent info
+  // summary: Get HFSS extent info
+  // io_flags:
+  //   - cache
   rpc GetHfssExtentInfo (EDBObjMessage) returns (HfssExtentInfoMessage) {}
 
-  // Set HFSS extent info
+  // summary: Set HFSS extent info
+  // io_flags:
+  //   - buffer
   rpc SetHfssExtentInfo (CellSetHfssExtentsMessage) returns (google.protobuf.Empty) {}
 
-  // Get temperature settings
+  // summary: Get temperature settings
+  // io_flags:
+  //   - cache
   rpc GetTemperatureSettings (EDBObjMessage) returns (TemperatureSettingsMessage) {}
 
-  // Set temperature settings
+  // summary: Set temperature settings
+  // io_flags:
+  //   - buffer
   rpc SetTemperatureSettings (CellSetTemperatureSettingsMessage) returns (google.protobuf.Empty) {}
 
-  // Cut out a polygon
+  // summary: Cut out a polygon
   rpc CutOut (CellCutOutMessage) returns (EDBObjMessage) {}
 
-  // Get a list of property ids.
+  // summary: Get a list of property ids.
+  // io_flags:
+  //   - cache
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
-  // Get product properies
+  // summary: Get product properties
+  // io_flags:
+  //   - cache
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
-  // Set a product property value
+  // summary: Set a product property value
+  // io_flags:
+  //   - buffer
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Delete a simulation setup by name
+  // summary: Delete a simulation setup by name
+  // io_flags:
+  //   - buffer
   rpc DeleteSimulationSetup (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get simulation setups
+  // summary: Get simulation setups
+  // io_flags:
+  //   - read_no_cache
   rpc GetSimulationSetups (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream the simulation setups
+  // io_flags:
+  //   - read_no_cache
   rpc StreamSimulationSetups (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Generate auto HFSS regions
+  // summary: Generate auto HFSS regions
+  // io_flags:
+  //   - buffer
   rpc GenerateAutoHFSSRegions (EDBObjMessage) returns (google.protobuf.Empty) {}
 
-  // Generate via smart box
+  // summary: Generate via smart box
+  // io_flags:
+  //   - cache
   rpc GenerateViaSmartBox (StringPropertyMessage) returns (PolygonDataListMessage) {}
 }
 

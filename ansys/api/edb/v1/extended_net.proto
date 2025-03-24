@@ -7,15 +7,31 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service ExtendedNetService {
+  // summary: Create an extended net
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (ExtendedNetCreationMessage) returns (EDBObjMessage) {}
-  
+
+  // summary: Find an extended net by name
+  // io_flags:
+  //   - cache
   rpc FindByName(ExtendedNetLookupMessage) returns (EDBObjMessage) {}
 
+  // summary: Remove net
+  // io_flags:
+  //   - buffer
   rpc RemoveNet(ExtendedNetModifyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Add net
+  // io_flags:
+  //   - buffer
   rpc AddNet(ExtendedNetModifyMessage) returns (google.protobuf.Empty) {}
-  
-  rpc RemoveAllNets(EDBObjMessage) returns (google.protobuf.Empty) {}  
+
+  // summary: Remove all nets
+  // io_flags:
+  //   - buffer
+  rpc RemoveAllNets(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 
 message ExtendedNetCreationMessage {

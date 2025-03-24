@@ -25,53 +25,89 @@ enum PrimitiveType {
 
 // Primitive service definition
 service PrimitiveService {
-  // Gets the primitive type of this primitive
+  // summary: Gets the primitive type of this primitive
+  // io_flags:
+  //   - cache
   rpc GetPrimitiveType (EDBObjMessage) returns (PrimitiveTypeMessage) {}
 
-  // Adds a void
+  // summary: Adds a void
+  // io_flags:
+  //   - buffer
   rpc AddVoid (PrimitiveVoidCreationMessage) returns (google.protobuf.Empty) {}
 
-  // Sets HFSS Properties
+  // summary: Sets HFSS Properties
+  // io_flags:
+  //   - buffer
   rpc SetHfssProp (PrimitiveHfssPropMessage) returns (google.protobuf.Empty) {}
 
-  // Get Layer
+  // summary: Get Layer
+  // io_flags:
+  //   - cache
   rpc GetLayer (EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Set Layer
+
+  // summary: Set Layer
+  // io_flags:
+  //   - buffer
   rpc SetLayer (SetLayerMessage) returns (google.protobuf.Empty) {}
 
-  // Get IsNegative
+  // summary: Get IsNegative
+  // io_flags:
+  //   - cache
   rpc GetIsNegative (EDBObjMessage) returns (google.protobuf.BoolValue) {}
-  
-  // Set IsNegative
+
+  // summary: Set IsNegative
+  // io_flags:
+  //   - buffer
   rpc SetIsNegative (SetIsNegativeMessage) returns (google.protobuf.Empty) {}
-  
-  // Get isVoid
+
+  // summary: Get isVoid
+  // io_flags:
+  //   - cache
   rpc IsVoid (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Get HasVoids
-  rpc HasVoids(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  // summary: Get HasVoids
+  // io_flags:
+  //   - cache
+  rpc HasVoids (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Gets an iterator of the voids in the Primitive
-  rpc Voids(EDBObjMessage) returns (EDBObjCollectionMessage) {}
-  rpc StreamVoids(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
+  // summary: Gets an iterator of the voids in the Primitive
+  // io_flags:
+  //   - read_no_cache
+  rpc Voids (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
-  // Get Owner
-  rpc GetOwner(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Get isParametrized
-  rpc IsParameterized(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  // summary: Streams an iterator of the voids in the Primitive
+  // io_flags:
+  //   - read_no_cache
+  rpc StreamVoids (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Get HFSS Properties
+  // summary: Get Owner
+  // io_flags:
+  //   - cache
+  rpc GetOwner (EDBObjMessage) returns (EDBObjMessage) {}
+
+  // summary: Get isParametrized
+  // io_flags:
+  //   - cache
+  rpc IsParameterized (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // summary: Get HFSS Properties
+  // io_flags:
+  //   - cache
   rpc GetHfssProp (EDBObjMessage) returns (GetPrimitiveHfssPropMessage) {}
-  
-  // Remove HFSS Properties
+
+  // summary: Remove HFSS Properties
+  // io_flags:
+  //   - buffer
   rpc RemoveHfssProp (EDBObjMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Is Zone Primitive
+
+  // summary: Get Is Zone Primitive
+  // io_flags:
+  //   - cache
   rpc IsZonePrimitive (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Make primitive a zone primitive in the specified zone
+  // summary: Make primitive a zone primitive in the specified zone
+  // io_flags:
+  //   - buffer
   rpc MakeZonePrimitive (IntPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

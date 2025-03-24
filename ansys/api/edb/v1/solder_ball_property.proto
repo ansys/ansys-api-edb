@@ -6,25 +6,60 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/padstack_def_data.proto";
 
 service SolderBallPropertyService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(google.protobuf.Empty) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetShape(EDBObjMessage) returns (PadstackDefDataSolderballShapeMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetShape(PadstackDefDataSetSolderballShapeMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetPlacement(EDBObjMessage) returns (PadstackDefDataSolderballPlacementMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetPlacement(PadstackDefDataSetSolderballPlacementMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDiameter(EDBObjMessage) returns (DiameterMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetDiameter(SetDiameterMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetHeight(EDBObjMessage) returns (ValueMessage) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetHeight(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc GetMaterialName(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetMaterialName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc UsesSolderball(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Clone(EDBObjMessage) returns (EDBObjMessage) {}
 }
 

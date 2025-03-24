@@ -14,10 +14,14 @@ enum BondwireDefType {
 
 // BondwireDef service definition
 service BondwireDefService {
-  // Delete BondwireDef.
+  // summary: Delete BondwireDef.
+  // io_flags:
+  //   - buffer
   rpc Delete (EDBObjMessage) returns (google.protobuf.Empty) {}
 
-  // Get the name of the BondwireDef.
+  // summary: Get the name of the BondwireDef.
+  // io_flags:
+  //   - cache
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 
@@ -28,33 +32,51 @@ message BondwireDefStrMessage{
 
 // Apd BondwireDef service definition
 service ApdBondwireDefService {
-  // Creates an Apd BondwireDef.
+  // summary: Creates an Apd BondwireDef.
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
-  // Loads Definitions From File.
+  // summary: Loads Definitions From File.
   rpc LoadDefinitionsFromFile (BondwireDefStrMessage) returns (google.protobuf.Empty) {}
 
-  // Find Apd BondwireDef By Name.
+  // summary: Find Apd BondwireDef By Name.
+  // io_flags:
+  //   - cache
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
-  
-  // Get Apd BondwireDef parameters in cblock string format.
+
+  // summary: Get Apd BondwireDef parameters in cblock string format.
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
-  // Set Apd BondwireDef parameters by passing cblock string.
+  // summary: Set Apd BondwireDef parameters by passing cblock string.
+  // io_flags:
+  //   - buffer
   rpc SetParameters (BondwireDefStrMessage) returns (google.protobuf.Empty) {}
 }
 
 service Jedec4BondwireDefService {
-  // Creates an Jedec4BondwireDef.
+  // summary: Creates an Jedec4BondwireDef.
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (BondwireDefStrMessage) returns (EDBObjMessage) {}
-  
-  // Find Jedec4BondwireDef By Name.
+
+  // summary: Find Jedec4BondwireDef By Name.
+  // io_flags:
+  //   - cache
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
-  
-  // Get Jedec4BondwireDef parameters in cblock string format.
+
+  // summary: Get Jedec4BondwireDef parameters in cblock string format.
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (ValueMessage) {}
-  
-  // Set Jedec4BondwireDef parameters by passing cblock string.
+
+  // summary: Set Jedec4BondwireDef parameters by passing cblock string.
+  // io_flags:
+  //   - buffer
   rpc SetParameters (Jedec4BondwireDefSetParametersMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -64,16 +86,25 @@ message Jedec4BondwireDefSetParametersMessage{
 }
 
 service Jedec5BondwireDefService {
-  // Creates an Jedec5BondwireDef.
+  // summary: Creates an Jedec5BondwireDef.
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (BondwireDefStrMessage) returns (EDBObjMessage) {}
-  
-  // Find Jedec5BondwireDef By Name.
+
+  // summary: Find Jedec5BondwireDef By Name.
+  // io_flags:
+  //   - cache
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
-  
-  // Get Jedec5BondwireDef parameters in cblock string format.
+
+  // summary: Get Jedec5BondwireDef parameters in cblock string format.
+  // io_flags:
+  //   - cache
   rpc GetParameters (EDBObjMessage) returns (Jedec5BondwireDefParametersMessage) {}
-  
-  // Set Jedec5BondwireDef parameters by passing cblock string.
+
+  // summary: Set Jedec5BondwireDef parameters by passing cblock string.
+  // io_flags:
+  //   - buffer
   rpc SetParameters (Jedec5BondwireDefSetParametersMessage) returns (google.protobuf.Empty) {}
 }
 

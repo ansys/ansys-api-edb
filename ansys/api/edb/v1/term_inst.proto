@@ -8,12 +8,21 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/refs.proto";
 
 service TerminalInstanceService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (TermInstCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetOwningCellInstance (EDBObjMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDefinitionTerminal (EDBObjMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetDefinitionTerminalName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

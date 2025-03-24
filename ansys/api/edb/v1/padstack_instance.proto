@@ -13,77 +13,130 @@ enum BackDrillType {
 }
 
 service PadstackInstanceService {
-  // create a PadstackInst
+  // summary: create a PadstackInst
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create(PadstackInstCreateMessage) returns (EDBObjMessage) {}
-  
-  // Get PadstackDef from PadstackInst
+
+  // summary: Get PadstackDef from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetPadstackDef(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Get name of PadstackInst
+
+  // summary: Get name of PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
-  // Set name of PadstackInst
+  // summary: Set name of PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
-  
-  // Get position and rotation from PadstackInst
+
+  // summary: Get position and rotation from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetPositionAndRotation(EDBObjMessage) returns (PadstackInstPositionAndRotationMessage) {}
 
-  // Set position and rotation of PadstackInst
+  // summary: Set position and rotation of PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetPositionAndRotation(PadstackInstSetPositionAndRotationMessage) returns (google.protobuf.Empty) {}
-  
-  // Get layer range from PadstackInst
+
+  // summary: Get layer range from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetLayerRange(EDBObjMessage) returns (PadstackInstLayerRangeMessage) {}
-  
-  // Set layer range of PadstackInst
+
+  // summary: Set layer range of PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetLayerRange(PadstackInstSetLayerRangeMessage) returns (google.protobuf.Empty) {}
-  
-  // Get SolderBall Layer from PadstackInst
+
+  // summary: Get SolderBall Layer from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetSolderBallLayer(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Set SolderBall Layer of PadstackInst
+
+  // summary: Set SolderBall Layer of PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetSolderBallLayer(PadstackInstSetSolderBallLayerMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Layer Map from PadstackInst
+
+  // summary: Get Layer Map from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetLayerMap(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Set Layer Map from PadstackInst
+
+  // summary: Set Layer Map from PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetLayerMap(PointerPropertyMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Hole Overrides from PadstackInst
+
+  // summary: Get Hole Overrides from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetHoleOverrides(EDBObjMessage) returns (PadstackInstHoleOverridesMessage) {}
-  
-  // Set Hole Overrides of PadstackInst
+
+  // summary: Set Hole Overrides of PadstackInst
+  // io_flags:
+  //   - buffer
   rpc SetHoleOverrides(PadstackInstSetHoleOverridesMessage) returns (google.protobuf.Empty) {}
-  
-  // Check if PadstackInst is layout pin
+
+  // summary: Check if PadstackInst is layout pin
+  // io_flags:
+  //   - cache
   rpc GetIsLayoutPin(EDBObjMessage) returns (google.protobuf.BoolValue) {}
-  
-  // Set PadstackInst to be layout pin
+
+  // summary: Set PadstackInst to be layout pin
+  // io_flags:
+  //   - buffer
   rpc SetIsLayoutPin(PadstackInstSetIsLayoutPinMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Back Drill Type from PadstackInst
+
+  // summary: Get Back Drill Type from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetBackDrillType(PadstackInstGetBackDrillMessage) returns (PadstackInstBackDrillTypeMessage) {}
-  
-  // Get back drill by layer from PadstackInst
+
+  // summary: Get back drill by layer from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetBackDrillByLayer(PadstackInstGetBackDrillMessage) returns (PadstackInstBackDrillByLayerMessage) {}
-  
-  // Get back drill by depth from PadstackInst
+
+  // summary: Get back drill by depth from PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetBackDrillByDepth(PadstackInstGetBackDrillMessage) returns (PadstackInstBackDrillByDepthMessage) {}
-  
-  // Set back drill of PadstackInst by layer by Layer
+
+  // summary: Set back drill of PadstackInst by layer by Layer
+  // io_flags:
+  //   - buffer
   rpc SetBackDrillByLayer(PadstackInstSetBackDrillByLayerMessage) returns (google.protobuf.Empty) {}
-  
-  // Set back drill of PadstackInst by layer by Depth
+
+  // summary: Set back drill of PadstackInst by layer by Depth
+  // io_flags:
+  //   - buffer
   rpc SetBackDrillByDepth(PadstackInstSetBackDrillByDepthMessage) returns (google.protobuf.Empty) {}
-  
-  // Get Terminal of PadstackInst
+
+  // summary: Get Terminal of PadstackInst
+  // io_flags:
+  //   - cache
   rpc GetPadstackInstanceTerminal(EDBObjMessage) returns (EDBObjMessage) {}
-  
-  // Check if PadstackInst is in pin group
+
+  // summary: Check if PadstackInst is in pin group
+  // io_flags:
+  //   - cache
   rpc IsInPinGroup(PadstackInstIsInPinGroupMessage) returns (google.protobuf.BoolValue) {}
-  
-  // Get pin groups of PadstackInst
+
+  // summary: Get pin groups of PadstackInst
+  // io_flags:
+  //   - read_no_cache
   rpc GetPinGroups(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream pin groups in PadstackInst
+  // io_flags:
+  //   - read_no_cache
   rpc StreamPinGroups(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
 }

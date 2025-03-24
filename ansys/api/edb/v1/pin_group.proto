@@ -7,21 +7,39 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 
 service PinGroupService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (PinGroupCreationMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc FindByName (PinGroupLookupMessage) returns (EDBObjMessage) {}
 
+  // summary: Get unique name
   rpc GetUniqueName (PinGroupGetUniqueNameMessage) returns (google.protobuf.StringValue) {}
 
+  // io_flags:
+  //   - cache
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
+  // io_flags:
+  //   - buffer
   rpc AddPins (PinGroupPinsModifyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - buffer
   rpc RemovePins (PinGroupPinsModifyMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get pins
   rpc GetPins (EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream pins
   rpc StreamPins (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
-  
+
+  // summary: Get pin group terminal
+  // io_flags:
+  //   - cache
   rpc GetPinGroupTerminal (EDBObjMessage) returns (EDBObjMessage) {}
 }
 

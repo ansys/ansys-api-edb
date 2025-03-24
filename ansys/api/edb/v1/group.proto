@@ -11,26 +11,45 @@ import "ansys/api/edb/v1/hierarchy_obj.proto";
 
 // Group service definition
 service GroupService {
-  // Create a group
+  // summary: Create a group
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
-  // Finds a group by name in the given layout
+  // summary: Finds a group by name in the given layout
+  // io_flags:
+  //   - cache
   rpc FindByName(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
-  // Add a member to the group
+  // summary: Add a member to the group
+  // io_flags:
+  //   - buffer
   rpc AddMember(GroupModifyMemberMessage) returns (google.protobuf.Empty) {}
 
-  // Remove a member from the group
+  // summary: Remove a member from the group
+  // io_flags:
+  //   - buffer
   rpc RemoveMember(GroupModifyMemberMessage) returns (google.protobuf.Empty) {}
 
-  // Ungroup this group
+  // summary: Ungroup this group
+  // io_flags:
+  //   - buffer
   rpc Ungroup(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get iterable for group members
+  // summary: Get iterable for group members
+  // io_flags:
+  //   - read_no_cache
   rpc GetMembers(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream iterable for group members
+  // io_flags:
+  //   - read_no_cache
   rpc StreamMembers(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Get the type of the group
+  // summary: Get the type of the group
+  // io_flags:
+  //   - cache
   rpc GetGroupType(EDBObjMessage) returns (GroupTypeMessage) {}
 }
 

@@ -12,25 +12,40 @@ import "ansys/api/edb/v1/hierarchy_obj.proto";
 
 // Component Group service definition
 service ComponentGroupService {
-  // Create a component group
+  // summary: Create a component group
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create(ComponentGroupCreateMessage) returns (EDBObjMessage) {}
 
-  // Get number of pins in the component group
+  // summary: Get number of pins in the component group
+  // io_flags:
+  //   - cache
   rpc GetNumberOfPins(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 
-  // Get component property
+  // summary: Get component property
+  // io_flags:
+  //   - cache
   rpc GetComponentProperty(EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Set component property
+  // summary: Set component property
+  // io_flags:
+  //   - buffer
   rpc SetComponentProperty(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get component types
+  // summary: Get component types
+  // io_flags:
+  //   - cache
   rpc GetComponentType(EDBObjMessage) returns (ComponentTypeMessage) {}
 
-  // Set component type
+  // summary: Set component type
+  // io_flags:
+  //   - buffer
   rpc SetComponentType(SetComponentGroupTypeMessage) returns (google.protobuf.Empty) {}
 
-  // Find component group by component definition
+  // summary: Find component group by component definition
+  // io_flags:
+  //   - cache
   rpc FindByDef(ObjectNameInLayoutMessage) returns (EDBObjCollectionMessage) {}
 }
 

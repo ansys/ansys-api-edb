@@ -9,21 +9,42 @@ import "ansys/api/edb/v1/layout_obj.proto";
 
 // Net service definition
 service NetService {
-  // Creates a net
+  // summary: Creates a net
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (StringPropertyMessage) returns (EDBObjMessage) {}
 
-  // Finds a net on a layer by name
+  // summary: Finds a net on a layer by name
+  // io_flags:
+  //   - cache
   rpc FindByName (StringPropertyMessage) returns (EDBObjMessage) {}
 
-  // name accessors
+  // summary: Get name
+  // io_flags:
+  //   - cache
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // is_power_ground accessors
+  // summary: Get is power ground
+  // io_flags:
+  //   - cache
   rpc GetIsPowerGround (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
   rpc SetIsPowerGround (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // layout objects getter
+  // summary: layout objects getter
+  // io_flags:
+  //   - read_no_cache
   rpc GetLayoutObjects (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
+
+  // summary: Stream layout objects getter
+  // io_flags:
+  //   - read_no_cache
   rpc StreamLayoutObjects (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 }

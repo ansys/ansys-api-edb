@@ -10,37 +10,108 @@ import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/point_3d_data.proto";
 
 service Transform3DService {
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateIdentity (google.protobuf.Empty) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateCopy (EDBObjMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateOffset (CPos3DMessage) returns (EDBObjMessage) {}
 
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateCenterScale (CPos3DDoubleMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateRotationFromAngle (CPos3DMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateRotationFromAxis (CPos3DTripleMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateRotationFromAxisAndAngle (CPos3DDoubleMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateRotationFromToAxis (CPos3DPairMessage) returns (EDBObjMessage) {}
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateTransform2D (DoublePropertyMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc OperatorPlus (PointerPropertyMessage) returns (EDBObjMessage) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc TransformPoint (CPos3DPropertyMessage) returns (CPos3DMessage) {}
 
+  // io_flags:
+  //   - cache
   rpc GetZYXRotation (EDBObjMessage) returns (CPos3DMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetAxis (EDBObjMessage) returns (CPos3DTripleMessage) {}
 
+  // io_flags:
+  //   - buffer
   rpc Transpose (EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
   rpc Invert (EDBObjMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
   rpc IsIdentity (IsIdentityMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - cache
   rpc IsEqual (IsEqualMessage) returns (google.protobuf.BoolValue) {}
-  
+
+  // io_flags:
+  //   - cache
   rpc GetScaling (EDBObjMessage) returns (CPos3DMessage) {}
+
+  // io_flags:
+  //   - cache
   rpc GetShift (EDBObjMessage) returns (CPos3DMessage) {}
-  
+
+  // io_flags:
+  //   - buffer
   rpc SetMatrix (DoublesPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
   rpc GetMatrix (EDBObjMessage) returns (DoublesMessage) {}
 }
 

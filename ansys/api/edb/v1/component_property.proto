@@ -11,19 +11,38 @@ import "ansys/api/edb/v1/model.proto";
 
 // Component Property service definition
 service ComponentPropertyService {
-  // Clone a component property
+  // summary: Clone a component property
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Clone(EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get/Set Package mounting offset
+  // summary: Get Package mounting offset
+  // io_flags:
+  //   - cache
   rpc GetPackageMountingOffset(EDBObjMessage) returns (ValueMessage) {}
+  
+  // io_flags:
+  //   - buffer
   rpc SetPackageMountingOffset(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get/Set Package def
+  // summary: Get Package def
+  // io_flags:
+  //   - cache
   rpc GetPackageDef(EDBObjMessage) returns (EDBObjMessage) {}
+  
+  // io_flags:
+  //   - buffer
   rpc SetPackageDef(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get/Set Model
+  // summary: Get Model
+  // io_flags:
+  //   - cache
   rpc GetModel(EDBObjMessage) returns (ComponentPropModelMessage) {}
+  
+  // io_flags:
+  //   - buffer
   rpc SetModel(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

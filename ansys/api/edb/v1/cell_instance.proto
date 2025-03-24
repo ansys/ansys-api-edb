@@ -8,43 +8,67 @@ package ansys.api.edb.v1;
 // Imports
 import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/hierarchy_obj.proto";
-import "ansys/api/edb/v1/transform3d.proto";
+import "ansys/api/edb/v1/transform_3d.proto";
 
 // CellInstance Service definition
 service CellInstanceService {
-  // Create a cellinstance with ref layout
-  rpc Create(CellInstanceCreationMessage) returns (EDBObjMessage) {}
+  // summary: Create a cellinstance with ref layout
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  rpc Create (CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
-  // Create a cellinstance with component
+  // summary: Create a cellinstance with component
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc CreateWithComponent(CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
-  // Finds a cellinstance by name in the given layout
-  rpc FindByName(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
+  // summary: Finds a cellinstance by name in the given layout
+  // io_flags:
+  //   - cache
+  rpc FindByName (ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
-  // Get the reference layout
+  // summary: Get the reference layout
+  // io_flags:
+  //   - cache
   rpc GetReferenceLayout(EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Terminal Instances
-  rpc GetTermInsts(EDBObjMessage) returns (EDBObjCollectionMessage) {}
-  rpc StreamTermInsts(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
+  // summary: Terminal Instances
+  rpc GetTermInsts (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
-  // Get if component is 3dplaced
-  rpc GetIs3DPlacement(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  // summary: Stream terminal instances
+  rpc StreamTermInsts (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // Set if component is 3dplaced
-  rpc Set3DPlacement(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+  // summary: Get if component is 3dplaced
+  // io_flags:
+  //   - cache
+  rpc GetIs3DPlacement (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
-  // Get 3d transform values
-  rpc Get3DTransform(EDBObjMessage) returns (EDBObjMessage) {}
+  // summary: Set if component is 3dplaced
+  // io_flags:
+  //   - buffer
+  rpc Set3DPlacement (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Set 3d transform values
-  rpc Set3DTransform(PointerPropertyMessage) returns (google.protobuf.Empty) {}
+  // summary: Get 3d transform values
+  // io_flags:
+  //   - cache
+  rpc Get3DTransform (EDBObjMessage) returns (EDBObjMessage) {}
 
-  // Get Parameter Override
-  rpc GetParameterOverride(StringPropertyMessage) returns (ValueMessage) {}
+  // summary: Set 3d transform values
+  // io_flags:
+  //   - buffer
+  rpc Set3DTransform (PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Set Parameter Override
-  rpc SetParameterOverride(CellInstanceParameterOverride) returns (google.protobuf.Empty) {}
+  // summary: Get Parameter Override
+  // io_flags:
+  //   - cache
+  rpc GetParameterOverride (StringPropertyMessage) returns (ValueMessage) {}
+
+  // summary: Set Parameter Override
+  // io_flags:
+  //   - buffer
+  rpc SetParameterOverride (CellInstanceParameterOverride) returns (google.protobuf.Empty) {}
 }
 
 message CellInstanceCreationMessage {

@@ -9,6 +9,8 @@ import "ansys/api/edb/v1/point_3d_data.proto";
 import "ansys/api/edb/v1/layout_obj_instance_geometry.proto";
 
 service LayoutObjInstance3DGeometryService {
+  // io_flags:
+  //   - cache
   rpc GetTesselationData(LayoutObjInstanceGeometryMessage) returns (TesselationDataMessage) {}
 }
 

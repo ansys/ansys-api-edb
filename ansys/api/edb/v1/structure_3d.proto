@@ -19,25 +19,41 @@ enum Closure {
 
 // Structure3D service definition
 service Structure3DService {
-  // Create a structure3D
+  // summary: Create a structure3D
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
-  // Get material
+  // summary: Get material
+  // io_flags:
+  //   - cache
   rpc GetMaterial(BoolPropertyMessage) returns (google.protobuf.StringValue) {}
 
-  // Set material
+  // summary: Set material
+  // io_flags:
+  //   - buffer
   rpc SetMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get thickness
+  // summary: Get thickness
+  // io_flags:
+  //   - cache
   rpc GetThickness(EDBObjMessage) returns (ValueMessage) {}
-  
-  // Set thickness
+
+  // summary: Set thickness
+  // io_flags:
+  //   - buffer
   rpc SetThickness(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
-  // Get mesh closure property
+  // summary: Get mesh closure property
+  // io_flags:
+  //   - cache
   rpc GetMeshClosureProp(EDBObjMessage) returns (ClosureMessage) {}
 
-  // Set mesh closure property
+  // summary: Set mesh closure property
+  // io_flags:
+  //   - buffer
   rpc SetMeshClosureProp(SetClosureMessage) returns (google.protobuf.Empty) {}
 }
 

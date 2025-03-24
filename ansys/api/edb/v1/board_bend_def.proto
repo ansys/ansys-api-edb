@@ -9,22 +9,51 @@ import "ansys/api/edb/v1/point_data.proto";
 import "ansys/api/edb/v1/polygon_data.proto";
 
 service BoardBendDefService {
+
+  // summary: Create a board bend definition
+  // io_flags:
+  //   - buffer
+  //   - returns_future
   rpc Create (BoardBendDefCreateMessage) returns (EDBObjMessage) {}
 
+  // Summary: Get the boundary prim
+  // io_flags:
+  //   - cache
   rpc GetBoundaryPrim (EDBObjMessage) returns (EDBObjMessage) {}
 
+  // Summary: Get the bend middle
+  // io_flags:
+  //   - cache
   rpc GetBendMiddle (EDBObjMessage) returns (PointPairMessage) {}
 
+  // Summary: Set the bend middle
+  // io_flags:
+  //   - buffer
   rpc SetBendMiddle (PointPairPropertyMessage) returns (google.protobuf.Empty) {}
 
+  // Summary: Get the bend radius
+  // io_flags:
+  //   - cache
   rpc GetRadius (EDBObjMessage) returns (ValueMessage) {}
 
+  // Summary: Set the bend radius
+  // io_flags:
+  //   - buffer
   rpc SetRadius (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // Summary: Get the bend angle
+  // io_flags:
+  //   - cache
   rpc GetAngle (EDBObjMessage) returns (ValueMessage) {}
 
+  // Summary: Set the bend angle
+  // io_flags:
+  //   - buffer
   rpc SetAngle (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // Summary: Get the bent regions
+  // io_flags:
+  //   - cache
   rpc GetBentRegions (EDBObjMessage) returns (PolygonDataListMessage) {}
 }
 
