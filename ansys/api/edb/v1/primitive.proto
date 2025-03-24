@@ -20,6 +20,7 @@ enum PrimitiveType {
   TEXT = 6;
   PATH_3D = 7;
   BOARD_BEND = 8;
+  PRIM_INST_COLLECTION = 11;
   INVALID_TYPE = 9;
 }
 
