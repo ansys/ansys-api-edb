@@ -1,0 +1,30 @@
+// Proto file representing the EDB Error Manager class
+
+syntax = "proto3";
+
+package ansys.api.edb.v1;
+
+import "ansys/api/edb/v1/edb_messages.proto";
+
+enum EDBErrorSeverity {
+  INFO = 0;
+  WARNING = 1;
+  ERROR = 2;
+  FATAL = 3;
+}
+
+service EDBErrorManagerService {
+  // summary: Get all the errors stored in the EDB error manager (clears existing error messages)
+  // io_flags:
+  //   - read_no_cache
+  rpc GetErrors (google.protobuf.Empty) returns (stream EDBErrorMessages) {}
+}
+
+message EDBErrorMessage {
+  string message = 1;
+  EDBErrorSeverity severity = 2;
+}
+
+message EDBErrorMessages {
+  repeated EDBErrorMessage messages = 1;
+}
