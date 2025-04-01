@@ -109,6 +109,11 @@ service LayoutService {
 
   // summary: Create mesh region
   rpc CreateMeshRegion(CreateMeshRegionMessage) returns (google.protobuf.Empty) {}
+  
+  // summary: Compress primitives into primitive instance collections
+  // io_flags:
+  //   - buffer
+  rpc CompressPrimitives(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {

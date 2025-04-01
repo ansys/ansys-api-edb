@@ -1,0 +1,51 @@
+// Proto file representing the primitive instance collection class
+
+syntax = "proto3";
+
+package ansys.api.edb.v1;
+
+import "ansys/api/edb/v1/edb_messages.proto";
+import "ansys/api/edb/v1/point_data.proto";
+import "ansys/api/edb/v1/refs.proto";
+import "ansys/api/edb/v1/polygon_data.proto";
+
+service PrimitiveInstanceCollectionService {
+  // summary: Create a primitive instance collection height of an arc
+  rpc Create (stream PrimitiveInstanceCollectionDataMessage) returns (EDBObjMessage) {}
+
+  // summary: Get the underlying geometry of the primitive instance collection
+  // io_flags:
+  //   - cache
+  rpc GetGeometry(EDBObjMessage) returns (PolygonDataMessage) {}
+
+  // summary: Set the underlying geometry of the primitive instance collection
+  // io_flags:
+  //   - buffer
+  rpc SetGeometry(PolygonDataPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the positions the geometry is instantiated at
+  // io_flags:
+  //   - read_no_cache
+  rpc GetPositions(EDBObjMessage) returns (stream PointsMessage) {}
+
+  // summary: Set the positions the geometry is instantiated at
+  rpc SetPositions(stream PrimitiveInstanceCollectionDataMessage) returns (google.protobuf.Empty) {}
+  
+  // summary: Get all the instantiated geometry in the primitive instance collection
+  // io_flags:
+  //   - read_no_cache
+  rpc GetInstantiatedGeometry(EDBObjMessage) returns (stream PolygonDataListMessage) {}
+  
+  // summary: Decompose the primitive instance collection into invidual primitives
+  // io_flags:
+  //   - buffer
+  rpc Decompose(EDBObjMessage) returns (google.protobuf.Empty) {}
+}
+
+message PrimitiveInstanceCollectionDataMessage {
+  EDBObjMessage lyt_or_prim_inst_col = 1;
+  LayerRefMessage layer = 2;
+  NetRefMessage net = 3;
+  PolygonDataMessage geometry = 4;
+  PointsMessage points = 5;
+}
