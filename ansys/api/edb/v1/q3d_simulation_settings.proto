@@ -1,0 +1,216 @@
+// Proto file representing q3d simulation setup settings 
+
+syntax = "proto3";
+
+package ansys.api.edb.v1;
+
+import "ansys/api/edb/v1/edb_messages.proto";
+import "ansys/api/edb/v1/hfss_simulation_settings.proto";
+
+service Q3DGeneralSettingsService {
+
+  // io_flags:
+  //   - cache
+  rpc GetSolutionFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSolutionFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDoDC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetDoDC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDoDCResOnly(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetDoDCResOnly(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDoCG(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetDoCG(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDoAC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetDoAC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSaveFields(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSaveFields(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+enum Q3DSolutionOrder {
+  NORMAL = 0;
+  HIGH = 1;
+  HIGHER = 2;
+  HIGHEST = 3;
+  NUM_SOLUTION_ORDER = 4;
+}
+
+service Q3DSettingsService {
+    
+  // io_flags:
+  //   - cache
+  rpc GetMaxPasses(Q3DSettingsMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMaxPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinPasses(Q3DSettingsMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMinPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinConvergedPasses(Q3DSettingsMessage) returns (google.protobuf.UInt64Value) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetMinConvergedPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetPercentError(Q3DSettingsMessage) returns (google.protobuf.DoubleValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetPercentError(Q3DSettingsDoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMaxRefinePerPass(Q3DSettingsMessage) returns (google.protobuf.DoubleValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetMaxRefinePerPass(Q3DSettingsDoublePropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+enum Q3DSettingsType {
+  DC = 0;
+  AC = 1;
+  CG = 2;
+}
+
+message Q3DSettingsMessage {
+  EDBObjMessage target = 1;
+  Q3DSettingsType q3d_settings_type = 2;
+}
+
+message Q3DSettingsUInt64PropertyMessage {
+  Q3DSettingsMessage q3d_settings = 1;
+  uint64 value = 2;
+}
+
+message Q3DSettingsDoublePropertyMessage {
+  Q3DSettingsMessage q3d_settings = 1;
+  double value = 2;
+}
+
+service Q3DDCRLSettingsService {
+  
+  // io_flags:
+  //   - cache
+  rpc GetSolutionOrder(EDBObjMessage) returns (Q3DSolutionOrderMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSolutionOrder(Q3DSolutionOrderPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+message Q3DSolutionOrderMessage {
+  Q3DSolutionOrder q3d_solution_order = 1;
+}
+
+message Q3DSolutionOrderPropertyMessage {
+  EDBObjMessage target = 1;
+  Q3DSolutionOrder q3d_solution_order = 2;
+}
+
+service Q3DCGSettingsService {
+  
+  // io_flags:
+  //   - cache
+  rpc GetAutoIncrSolOrder(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetAutoIncrSolOrder(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSolutionOrder(EDBObjMessage) returns (Q3DSolutionOrderMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSolutionOrder(Q3DSolutionOrderPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSolverType(EDBObjMessage) returns (SolverTypeMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSolverType(SolverTypePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetCompressionTol(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetCompressionTol(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+service Q3DAdvancedSettingsService {
+  
+  // io_flags:
+  //   - cache
+  rpc GetICModeAutoResolution(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetICModeAutoResolution(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetICModeLength(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetICModeLength(StringPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+service Q3DAdvancedMeshingSettingsService {
+
+  // io_flags:
+  //   - cache
+  rpc GetLayerAlignment(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetLayerAlignment(StringPropertyMessage) returns (google.protobuf.Empty) {}
+}

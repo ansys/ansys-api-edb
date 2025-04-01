@@ -32,7 +32,9 @@ enum SimulationSetupType {
   HFSS_SIM = 0;
   SI_WAVE_SIM = 2;
   SI_WAVE_DCIR_SIM = 9;
+  HFSS_PI_SIM = 11;
   RAPTOR_X_SIM = 12;
+  Q3D_SIM = 14;
 }
 
 //------------------------------------------------------------------------------

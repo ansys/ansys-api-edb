@@ -1,0 +1,265 @@
+// Proto file representing hfss pi simulation setup settings 
+
+syntax = "proto3";
+
+package ansys.api.edb.v1;
+
+import "ansys/api/edb/v1/edb_messages.proto";
+
+enum HFSSPISimulationPreference {
+  BALANCED = 0;
+  ACCURACY = 1;
+}
+
+enum HFSSPIModelType {
+  RDL = 0;
+  PACKAGE = 1;
+  PCB = 2;
+}
+
+enum SurfaceRoughnessModel {
+  NONE = 0;
+  EXPONENTIAL = 1;
+  HAMMERSTAD = 2;
+}
+
+enum ImprovedLossModel {
+  LEVEL_1 = 0;
+  LEVEL_2 = 1;
+  LEVEL_3 = 2;
+}
+
+enum ConductorModeling {
+  MESH_INSIDE = 0;
+  IMPEDANCE_BOUNDARY = 1;
+}
+
+enum ErrorTolerance {
+  ET_0_0 = 0;
+  ET_0_02 = 1;
+  ET_0_04 = 2;
+  ET_0_06 = 3;
+  ET_0_08 = 4;
+  ET_0_1 = 5;
+  ET_0_2 = 6;
+  ET_0_5 = 7;
+  ET_1_0 = 8;
+}
+
+service HFSSPIGeneralSettingsService {
+
+  // io_flags:
+  //   - cache
+  rpc GetPISliderPos(EDBObjMessage) returns (HFSSPISimulationPreferenceMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetPISliderPos(HFSSPISimulationPreferencePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHFSSPIModelType(EDBObjMessage) returns (HFSSPIModelTypeMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetHFSSPIModelType(HFSSPIModelTypePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinPlaneAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetMinPlaneAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinVoidAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetMinVoidAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSnapLengthThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSnapLengthThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIncludeEnhancedBondWireModeling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetIncludeEnhancedBondWireModeling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSurfaceRoughnessModel(EDBObjMessage) returns (SurfaceRoughnessModelMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSurfaceRoughnessModel(SurfaceRoughnessModelPropertyMessage) returns (google.protobuf.Empty) {}
+  
+  // io_flags:
+  //   - cache
+  rpc GetRMSSurfaceRoughness(EDBObjMessage) returns (google.protobuf.StringValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetRMSSurfaceRoughness(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetPerformERC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetPerformERC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+message HFSSPISimulationPreferenceMessage {
+  HFSSPISimulationPreference hfss_pi_simulation_preference = 1;
+}
+
+message HFSSPISimulationPreferencePropertyMessage {
+  EDBObjMessage target = 1;
+  HFSSPISimulationPreference hfss_pi_simulation_preference = 2;
+}
+
+message HFSSPIModelTypeMessage {
+  HFSSPIModelType hfss_pi_model_type = 1;
+}
+
+message HFSSPIModelTypePropertyMessage {
+  EDBObjMessage target = 1;
+  HFSSPIModelType hfss_pi_model_type = 2;
+}
+
+message SurfaceRoughnessModelMessage {
+  SurfaceRoughnessModel surface_roughness_model = 1;
+}
+
+message SurfaceRoughnessModelPropertyMessage {
+  EDBObjMessage target = 1;
+  SurfaceRoughnessModel surface_roughness_model = 2;
+}
+
+service HFSSPINetProcessingSettingsService {
+
+  // io_flags:
+  //   - cache
+  rpc GetAutoSelectNetsForSimulation(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetAutoSelectNetsForSimulation(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIgnoreDummyNetsForSelectedNets(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetIgnoreDummyNetsForSelectedNets(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIncludeNets(EDBObjMessage) returns (StringsMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIncludeNets(StringsPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+service HFSSPIPowerGroundNetsService {
+  
+  // io_flags:
+  //   - cache
+  rpc GetImprovedLossModel(EDBObjMessage) returns (ImprovedLossModelMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetImprovedLossModel(ImprovedLossModelPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetAutoDetectIgnoreSmallHolesMinDiameter(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetAutoDetectIgnoreSmallHolesMinDiameter(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIgnoreSmallHolesMinDiameter(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIgnoreSmallHolesMinDiameter(StringPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+message ImprovedLossModelMessage {
+  ImprovedLossModel improved_loss_model = 1;
+}
+
+message ImprovedLossModelPropertyMessage {
+  EDBObjMessage target = 1;
+  ImprovedLossModel improved_loss_model = 2;
+}
+
+service HFSSPISignalNetsSettingsService {
+  
+  // io_flags:
+  //   - cache
+  rpc GetSignalNetsErrorTolerance(EDBObjMessage) returns (ErrorToleranceMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSignalNetsErrorTolerance(ErrorTolerancePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSignalNetsConductorModeling(EDBObjMessage) returns (ConductorModelingMessage) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSignalNetsConductorModeling(ConductorModelingPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSignalNetsIncludeImprovedLossHandling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSignalNetsIncludeImprovedLossHandling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSignalNetsIncludeImprovedDielectricFillRefinement(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+  
+  // io_flags:
+  //   - buffer
+  rpc SetSignalNetsIncludeImprovedDielectricFillRefinement(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+message ConductorModelingMessage {
+  ConductorModeling conductor_modeling = 1;
+}
+
+message ConductorModelingPropertyMessage {
+  EDBObjMessage target = 1;
+  ConductorModeling conductor_modeling = 2;
+}
+
+message ErrorToleranceMessage {
+  ErrorTolerance error_tolerance = 1;
+}
+
+message ErrorTolerancePropertyMessage {
+  EDBObjMessage target = 1;
+  ErrorTolerance error_tolerance = 2;
+}
