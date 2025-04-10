@@ -16,6 +16,10 @@ service LayoutInstanceService {
   // io_flags:
   //   - cache
   rpc QueryLayoutObjInstances(LayoutObjInstancesQueryMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
+  
+  // io_flags:
+  //   - read_no_cache
+  rpc StreamLayoutObjInstancesQuery(LayoutObjInstancesQueryMessage) returns (stream LayoutObjInstancesQueryResultsMessage) {}
 
   // io_flags:
   //   - cache

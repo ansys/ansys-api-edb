@@ -15,6 +15,7 @@ service LayoutObjInstanceService {
   // io_flags:
   //   - cache
   rpc GetLayers(EDBObjMessage) returns (EDBObjCollectionMessage) {}
+  rpc StreamLayers(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get geometries
   // io_flags:

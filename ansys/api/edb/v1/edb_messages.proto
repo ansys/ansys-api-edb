@@ -233,3 +233,7 @@ message EdbObjCacheEntryMessage {
 message EdbObjCacheMessage {
   repeated EdbObjCacheEntryMessage cache = 1;
 }
+
+message StringMapMessage {
+  map<string, string> string_map = 1;
+}

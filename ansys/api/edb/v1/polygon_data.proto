@@ -53,6 +53,10 @@ service PolygonDataService {
   // io_flags:
   //   - cache
   rpc GetBBox (PolygonDataListMessage) returns (BoxMessage) {}
+  
+  // io_flags:
+  //   - read_no_cache
+  rpc GetStreamedBBox (stream PolygonDataListMessage) returns (BoxMessage) {}
 
   // io_flags:
   //   - cache
@@ -145,9 +149,9 @@ message PolygonDataTransformMessage {
   }
 
   PolygonDataMessage polygon = 1;
-    oneof op {
-      PointMessage move = 2;
-      PointValueMessage rotate = 3;
+  oneof op {
+    PointMessage move = 2;
+    PointValueMessage rotate = 3;
     PointValueMessage scale = 4;
     float mirror_x = 5;
   }
