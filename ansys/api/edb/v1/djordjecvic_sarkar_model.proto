@@ -46,6 +46,14 @@ service DjordjecvicSarkarModelService {
   //   - buffer
   rpc SetLossTangentAtFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
+  // io_flags:
+  //   - cache
+  rpc GetHighFrequencyCorner(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHighFrequencyCorner(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+  
   // summary: Get use dc relative permitivity
   // io_flags:
   //   - cache

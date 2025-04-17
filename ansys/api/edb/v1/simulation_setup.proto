@@ -74,7 +74,7 @@ message InterpolatingSweepDataMessage {
   bool fast_sweep = 10;
   bool adaptive_sampling = 11;
   reserved 12;
-  reserved "enforce_psi_dc_point";
+  reserved "enforce_dc_and_causality";
   repeated MatrixConvergenceEntryMessage matrix_conv_entry_list = 13;
   int64 interp_min_subranges = 14;
   int64 interp_min_solutions = 15;
@@ -100,7 +100,8 @@ message SweepDataMessage {
   repeated HFSSRegionComputeResourceMessage parallel_hfss_regions_sim_cfg = 17;
   bool auto_s_mat_only_solve = 18;
   string min_freq_s_mat_only_solve = 19;
-  repeated string frequencies = 20;
+  reserved 20;
+  reserved "frequencies";
   double steady_state_start = 21;
   int64 mesh_freq_choice = 22;
   repeated string mesh_freq_points = 23;

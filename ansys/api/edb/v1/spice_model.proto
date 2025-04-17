@@ -36,6 +36,10 @@ service SpiceModelService {
   // io_flags:
   //   - buffer
   rpc RemoveTerminalPinPair (StringPropertyMessage) returns (google.protobuf.Empty) {}
+  
+  // io_flags:
+  //   - cache
+  rpc GetTerminalPinPairs (EDBObjMessage) returns (StringMapMessage) {}
 }
 
 message SpiceModelMessage {

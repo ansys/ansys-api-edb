@@ -7,6 +7,11 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/layer.proto";
 
+enum EtchNetClass {
+  NO_ETCH_POWER_GROUND = 0;
+  ETCH_ALL_NETS = 1;
+}
+
 // Stackup layer service definition
 service StackupLayerService {
   // summary: Creates a stackup layer
@@ -110,6 +115,16 @@ service StackupLayerService {
   // io_flags:
   //   - cache
   rpc GetEtchFactor(EDBObjMessage) returns (ValueMessage) {}
+
+  // summary: Set the etch net class of the layer
+  // io_flags:
+  //   - buffer
+  rpc SetEtchNetClass(StackupLayerEtchNetClassMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the etch net class of the layer
+  // io_flags:
+  //   - cache
+  rpc GetEtchNetClass(EDBObjMessage) returns (EtchNetClassMessage) {}
 
   // summary: Check if solver properties are enabled for the layer
   // io_flags:
@@ -221,4 +236,13 @@ message SetHFSSSolverPropertiesMessage {
 
 message ViaLayerIdsMessage {
   repeated int64 ref_layer_ids = 1;
+}
+
+message EtchNetClassMessage {
+  EtchNetClass etch_net_class = 1;
+}
+
+message StackupLayerEtchNetClassMessage {
+  EDBObjMessage layer = 1;
+  EtchNetClass etch_net_class = 2;
 }
