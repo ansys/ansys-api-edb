@@ -180,6 +180,11 @@ message EDBObjPairMessage {
   EDBObjMessage edb_obj_1 = 2;
 }
 
+message EDBObjCollectionPropertyMessage {
+  EDBObjMessage target = 1;
+  EDBObjCollectionMessage edb_objs = 2;
+}
+
 message StringPairMessage {
   string first = 1;
   string second = 2;
