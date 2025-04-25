@@ -70,6 +70,28 @@ service ComponentDefService {
   // io_flags:
   //   - buffer
   rpc RemoveComponentModel(EDBObjPairMessage) returns (google.protobuf.Empty) {}
+  
+  // summary: Re-order pins by providing all the pins in this component in the desired order.
+  // io_flags:
+  //   - buffer
+  rpc ReorderPins(EDBObjCollectionPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Removes the pin from this component and sets the pin to null.
+  // io_flags:
+  //   - buffer
+  rpc RemovePin(EDBObjPairMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 }
 
 
