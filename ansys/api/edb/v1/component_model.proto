@@ -8,6 +8,12 @@ package ansys.api.edb.v1;
 // Imports
 import "ansys/api/edb/v1/edb_messages.proto";
 
+enum ComponentModelType {
+  N_PORT = 0;
+  DYNAMIC_LINK = 1;
+  UNKNOWN_MODEL_TYPE = 2;
+}
+
 // Component Definition Service
 service ComponentModelService {
   // summary: Set reference file
@@ -29,6 +35,25 @@ service ComponentModelService {
   // io_flags:
   //   - cache
   rpc FindById(IntPropertyMessage) returns (EDBObjMessage) {}
+
+  // summary: Get the name of the component model
+  // io_flags:
+  //   - cache
+  rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Get the type of the component model
+  // io_flags:
+  //   - cache
+  rpc GetType(EDBObjMessage) returns (ComponentModelTypeMessage) {}
+  
+  // summary: Get the id of the component model
+  // io_flags:
+  //   - cache
+  rpc GetId(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+}
+
+message ComponentModelTypeMessage {
+  ComponentModelType type = 1;
 }
 
 service NPortComponentModelService {
