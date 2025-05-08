@@ -35,6 +35,11 @@ service RectangleService {
   // io_flags:
   //   - cache
   rpc Render (RectanglePolygonDataMessage) returns (PolygonDataMessage) {}
+  
+  // summary: Get PolygonData
+  // io_flags:
+  //   - cache
+  rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
 }
 
 // Message for Create
