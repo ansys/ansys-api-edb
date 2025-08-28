@@ -4,6 +4,7 @@ package ansys.api.edb.v1;
 
 import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/point_data.proto";
+import "ansys/api/edb/v1/refs.proto";
 
 // BACK_DRILL_TYPE type enum
 enum BackDrillType {
@@ -143,13 +144,13 @@ service PadstackInstanceService {
 
 message PadstackInstCreateMessage{
   EDBObjMessage layout = 1;
-  EDBObjMessage net = 2;
+  NetRefMessage net = 2;
   string name = 3;
   EDBObjMessage padstack_def = 4;
   ValueMessage rotation = 5;
-  EDBObjMessage top_layer = 6;
-  EDBObjMessage bottom_layer = 7;
-  EDBObjMessage solder_ball_layer = 8;
+  LayerRefMessage top_layer = 6;
+  LayerRefMessage bottom_layer = 7;
+  LayerRefMessage solder_ball_layer = 8;
   EDBObjMessage layer_map = 9;
 }
 
