@@ -24,6 +24,34 @@ service ViaLayerService {
   // io_flags:
   //   - buffer
   rpc SetRefLayer (SetViaLayerRefLayerMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIsTSV (EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIsTSV (BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
+  rpc AddOxideLayers (OxideLayersPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
+  rpc RemoveOxideLayers (IntPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetNumOxideLayers (EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetOxideLayers (IntPropertyMessage) returns (OxideLayersMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetOxideLayerData (SetOxideDataLayerMessage) returns (google.protobuf.Empty) {}
 }
 
 // Message for ViaLayerService::Create
@@ -42,4 +70,23 @@ message ViaLayerRefLayerIdMessage {
 message SetViaLayerRefLayerMessage {
   ViaLayerRefLayerIdMessage via_layer_ref_layer_id = 1;
   EDBObjMessage new_ref_layer = 2;
+}
+
+message OxideLayerMessage {
+  ValueMessage thickness = 1;
+  string material = 2;
+}
+
+message OxideLayersMessage {
+  repeated OxideLayerMessage oxide_layers = 1;
+}
+
+message OxideLayersPropertyMessage {
+  EDBObjMessage target = 1;
+  repeated OxideLayerMessage oxide_layers = 2;
+}
+
+message SetOxideDataLayerMessage {
+  IntPropertyMessage target = 1;
+  OxideLayerMessage oxide_layer_data = 2;
 }
