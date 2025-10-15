@@ -114,6 +114,9 @@ service LayoutService {
   // io_flags:
   //   - buffer
   rpc CompressPrimitives(EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Flatten cell instances
+  rpc FlattenCellInstances(FlattenCellInstancesMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
@@ -182,4 +185,10 @@ message CreateMeshRegionMessage {
 	GeometryExtentType ext = 7;
 	uint64 num_x_partitions = 8;
 	uint64 num_y_partitions = 9;
+}
+
+message FlattenCellInstancesMessage {
+	EDBObjMessage layout = 1;
+	bool use_net_mapping = 2;
+	bool delete_dummy_net = 3;
 }
