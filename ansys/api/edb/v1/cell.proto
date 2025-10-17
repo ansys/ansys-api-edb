@@ -190,6 +190,7 @@ message CellCutOutMessage {
   EDBObjCollectionMessage clipped_nets = 3;
   PolygonDataMessage clipping_polygon = 4;
   bool clean_clipping = 5;
+  bool flatten_in_place = 6;
 }
 
 message CellFindMessage {
