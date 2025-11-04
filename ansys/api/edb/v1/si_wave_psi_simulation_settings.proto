@@ -6,12 +6,12 @@ package ansys.api.edb.v1;
 
 import "ansys/api/edb/v1/edb_messages.proto";
 
-enum SIwavePSISimulationPreference {
+enum SIWavePSISimulationPreference {
   BALANCED = 0;
   ACCURACY = 1;
 }
 
-enum SIwavePSIModelType {
+enum SIWavePSIModelType {
   RDL = 0;
   PACKAGE = 1;
   PCB = 2;
@@ -46,23 +46,23 @@ enum ErrorTolerance {
   ET_1_0 = 8;
 }
 
-service SIwavePSIGeneralSettingsService {
+service SIWavePSIGeneralSettingsService {
 
   // io_flags:
   //   - cache
-  rpc GetPISliderPos(EDBObjMessage) returns (SIwavePSISimulationPreferenceMessage) {}
+  rpc GetPISliderPos(EDBObjMessage) returns (SIWavePSISimulationPreferenceMessage) {}
   
   // io_flags:
   //   - buffer
-  rpc SetPISliderPos(SIwavePSISimulationPreferencePropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetPISliderPos(SIWavePSISimulationPreferencePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
-  rpc GetSIwavePSIModelType(EDBObjMessage) returns (SIwavePSIModelTypeMessage) {}
+  rpc GetSIWavePSIModelType(EDBObjMessage) returns (SIWavePSIModelTypeMessage) {}
   
   // io_flags:
   //   - buffer
-  rpc SetSIwavePSIModelType(SIwavePSIModelTypePropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetSIWavePSIModelType(SIWavePSIModelTypePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
@@ -121,22 +121,22 @@ service SIwavePSIGeneralSettingsService {
   rpc SetPerformERC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
-message SIwavePSISimulationPreferenceMessage {
-  SIwavePSISimulationPreference si_wave_psi_simulation_preference = 1;
+message SIWavePSISimulationPreferenceMessage {
+  SIWavePSISimulationPreference si_wave_psi_simulation_preference = 1;
 }
 
-message SIwavePSISimulationPreferencePropertyMessage {
+message SIWavePSISimulationPreferencePropertyMessage {
   EDBObjMessage target = 1;
-  SIwavePSISimulationPreference si_wave_psi_simulation_preference = 2;
+  SIWavePSISimulationPreference si_wave_psi_simulation_preference = 2;
 }
 
-message SIwavePSIModelTypeMessage {
-  SIwavePSIModelType si_wave_psi_model_type = 1;
+message SIWavePSIModelTypeMessage {
+  SIWavePSIModelType si_wave_psi_model_type = 1;
 }
 
-message SIwavePSIModelTypePropertyMessage {
+message SIWavePSIModelTypePropertyMessage {
   EDBObjMessage target = 1;
-  SIwavePSIModelType si_wave_psi_model_type = 2;
+  SIWavePSIModelType si_wave_psi_model_type = 2;
 }
 
 message SurfaceRoughnessModelMessage {
@@ -148,7 +148,7 @@ message SurfaceRoughnessModelPropertyMessage {
   SurfaceRoughnessModel surface_roughness_model = 2;
 }
 
-service SIwavePSINetProcessingSettingsService {
+service SIWavePSINetProcessingSettingsService {
 
   // io_flags:
   //   - cache
@@ -175,7 +175,7 @@ service SIwavePSINetProcessingSettingsService {
   rpc SetIncludeNets(StringsPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
-service SIwavePSIPowerGroundNetsService {
+service SIWavePSIPowerGroundNetsService {
   
   // io_flags:
   //   - cache
@@ -211,7 +211,7 @@ message ImprovedLossModelPropertyMessage {
   ImprovedLossModel improved_loss_model = 2;
 }
 
-service SIwavePSISignalNetsSettingsService {
+service SIWavePSISignalNetsSettingsService {
   
   // io_flags:
   //   - cache
