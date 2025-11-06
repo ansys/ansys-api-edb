@@ -9,6 +9,7 @@ package ansys.api.edb.v1;
 import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/point_data.proto";
 import "ansys/api/edb/v1/transform.proto";
+import "ansys/api/edb/v1/refs.proto";
 
 // Hierarchy object service definition
 service HierarchyObjectService {
@@ -45,7 +46,7 @@ service HierarchyObjectService {
   // summary: Set Placement Layer
   // io_flags:
   //   - buffer
-  rpc SetPlacementLayer(PointerPropertyMessage) returns (google.protobuf.Empty) {}
+  rpc SetPlacementLayer(LayerRefPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Location
   // io_flags:

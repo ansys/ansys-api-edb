@@ -10,7 +10,8 @@ service IOManagerService {
   // Flushes buffered data from to client to the server
   rpc FlushBuffer (BufferMessage) returns (ResolvedFuturesMessage) {}
   rpc FlushBufferStream (stream BufferMessage) returns (stream ResolvedFuturesMessage) {}
-
+  rpc FlushBufferNoFutureResolutionStream (stream BufferMessage) returns (google.protobuf.Empty) {}
+	
   // Refreshes the cache of the provided edb objs
   rpc RefreshCache (EDBObjCollectionMessage) returns (EDBObjCollectionMessage) {}
 
