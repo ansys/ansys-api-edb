@@ -82,7 +82,7 @@ service BondwireService {
   // summary: Get Start Elevation Layer
   // io_flags:
   //   - cache
-  rpc GetStartElevation (GetElevationMessage) returns (EDBObjMessage) {}
+  rpc GetStartElevation (EDBObjMessage) returns (EDBObjPairMessage) {}
 
   // summary: Set Start Elevation Layer
   // io_flags:
@@ -92,7 +92,7 @@ service BondwireService {
   // summary: Get End Elevation Layer
   // io_flags:
   //   - cache
-  rpc GetEndElevation (GetElevationMessage) returns (EDBObjMessage) {}
+  rpc GetEndElevation (EDBObjMessage) returns (EDBObjPairMessage) {}
 
   // summary: Set End Elevation Layer
   // io_flags:
@@ -176,13 +176,13 @@ message SetDefinitionNameMessage {
   string definition_name = 2;
 }
 
-message GetElevationMessage {
+message ElevationMessage {
   EDBObjMessage bw = 1;
   EDBObjMessage cell_instance = 2;
 }
 
 message SetElevationMessage {
-  GetElevationMessage target = 1;
+  ElevationMessage target = 1;
   string lyrname = 2;
 }
 
