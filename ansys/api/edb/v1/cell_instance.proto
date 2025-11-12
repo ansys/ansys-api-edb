@@ -8,7 +8,6 @@ package ansys.api.edb.v1;
 // Imports
 import "ansys/api/edb/v1/edb_messages.proto";
 import "ansys/api/edb/v1/hierarchy_obj.proto";
-import "ansys/api/edb/v1/transform_3d.proto";
 
 // CellInstance Service definition
 service CellInstanceService {
