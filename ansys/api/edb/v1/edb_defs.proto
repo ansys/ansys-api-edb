@@ -73,3 +73,11 @@ enum ComponentType {
   IO = 5;
   INVALID = -1;
 }
+
+//------------------------------------------------------------------------------
+// Via clustering method enum
+enum ViaClusteringMethod {
+  VIA_CLUSTERING_PROXIMITY = 0;   // Proximity-based clustering (default for backward compatibility)
+  VIA_CLUSTERING_DENSITY = 1;     // Density-based clustering (HDBSCAN)
+  VIA_CLUSTERING_RANGE = 2;       // Range-based clustering (DBSCAN-like)
+}
