@@ -168,6 +168,7 @@ message ViaSimplificationSettingsMessage {
 message ViaGroupingSettingsMessage {
   ViaSimplificationSettingsMessage via_simplification_settings = 1;
   bool persistent = 2;
+  ViaClusteringMethod clustering_method = 3;
 }
 
 message ViaSnappingSettingsMessage {
