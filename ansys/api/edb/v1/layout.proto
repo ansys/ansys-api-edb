@@ -117,6 +117,9 @@ service LayoutService {
 
   // summary: Flatten cell instances
   rpc FlattenCellInstances(FlattenCellInstancesMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Remove holes except on critical nets
+  rpc RemoveHolesExceptOnCriticalNets(RemoveHolesMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
@@ -192,4 +195,14 @@ message FlattenCellInstancesMessage {
 	EDBObjMessage layout = 1;
 	bool use_net_mapping = 2;
 	bool delete_dummy_net = 3;
+}
+
+message RemoveHolesMessage {
+  EDBObjMessage layout = 1;
+  repeated CriticalNetGroupMessage critical_net_groups = 2;
+  ValueMessage hole_area_minimum = 3;
+}
+message CriticalNetGroupMessage {
+  repeated string nets = 1;
+  ValueMessage tolerance = 2;
 }

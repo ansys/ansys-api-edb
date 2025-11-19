@@ -129,6 +129,16 @@ service CellService {
   //   - buffer
   rpc SetTemperatureSettings (CellSetTemperatureSettingsMessage) returns (google.protobuf.Empty) {}
 
+  // summary: Get touchstone settings
+  // io_flags:
+  //   - cache
+  rpc GetTouchstoneExportSettings (EDBObjMessage) returns (TouchstoneExportSettingsMessage) {}
+
+  // summary: Set touchstone settings
+  // io_flags:
+  //   - buffer
+  rpc SetTouchstoneExportSettings (CellSetTouchstoneExportSettingsMessage) returns (google.protobuf.Empty) {}
+
   // summary: Cut out a polygon
   rpc CutOut (CellCutOutMessage) returns (EDBObjMessage) {}
 
@@ -204,4 +214,9 @@ message CellFindMessage {
 message CellSetTemperatureSettingsMessage {
   EDBObjMessage cell = 1;
   TemperatureSettingsMessage temp_settings = 2;
+}
+
+message CellSetTouchstoneExportSettingsMessage {
+  EDBObjMessage cell = 1;
+  TouchstoneExportSettingsMessage ts_settings = 2;
 }

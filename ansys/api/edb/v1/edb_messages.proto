@@ -48,6 +48,31 @@ message TemperatureSettingsMessage {
 }
 
 //------------------------------------------------------------------------------
+// TouchstoneExport Settings
+
+message TouchstoneExportSettingsMessage {
+  bool export_after_solve = 1;
+  string export_dir = 2;
+  int64 export_type = 3;
+  bool enforce_passivity = 4;
+  bool enforce_causality = 5;
+  bool use_common_ground = 6;
+  bool show_gamma_comments = 7;
+  bool do_renormalize = 8;
+  double renorm_impedance = 9;
+  double fitting_error = 10;
+  int64 max_poles = 11;
+  int64 passivity_algorithm = 12;
+  int64 column_fitting_algorithm = 13;
+  int64 ss_fitting_algorithm = 14;
+  bool relative_error_tolerance = 15;
+  bool ensure_accurate_zfit = 16;
+  string touchstone_format = 17;
+  string touchstone_units = 18;
+  int64 touchstone_precision = 19;
+}
+
+//------------------------------------------------------------------------------
 // HFSS Extents
 
 message HfssExtentMessage {
