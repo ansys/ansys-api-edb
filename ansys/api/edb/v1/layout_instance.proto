@@ -19,7 +19,7 @@ service LayoutInstanceService {
   
   // io_flags:
   //   - read_no_cache
-  rpc StreamLayoutObjInstancesQuery(LayoutObjInstancesQueryMessage) returns (stream LayoutObjInstancesQueryResultsMessage) {}
+  rpc StreamLayoutObjInstancesQuery(stream LayoutObjInstancesQueriesMessage) returns (stream LayoutObjInstancesQueryResultsMessage) {}
 
   // io_flags:
   //   - cache
@@ -46,11 +46,18 @@ message LayoutObjInstancesQueryMessage {
   repeated NetRefMessage net_filter = 5;
 }
 
+message LayoutObjInstancesQueriesMessage {
+  repeated LayoutObjInstancesQueryMessage queries = 1;
+}
+
+message LayoutObjInstancesQueryResultMessage {
+  EDBObjMessage edb_obj = 1;
+  bool is_partial = 2;
+  bool is_end_of_query_results_group = 3;
+}
+
 message LayoutObjInstancesQueryResultsMessage {
-  oneof results {
-    EDBObjCollectionMessage hits = 1;
-	FullPartialHitsMessage full_partial_hits = 2;
-  }
+  repeated LayoutObjInstancesQueryResultMessage query_results = 1;
 }
 
 message FullPartialHitsMessage {
