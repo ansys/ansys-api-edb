@@ -20,7 +20,40 @@ valid_io_flags = {
     "returns_future",
     "read_no_cache",
     "write_no_cache_invalidation",
+    "invalidations"
 }
+
+class IOFlags:
+    def __init__(self, flags: list[str | dict]):
+        self._str_flags = set()
+        self._obj_flags = {}
+        for flag in flags:
+            if isinstance(flag, str):
+                self._str_flags.add(flag)
+            else:
+                flag_name, flag_values = next(iter(flag.items()))
+                self._obj_flags[flag_name] = flag_values
+
+    def __contains__(self, item):
+        return item in self._str_flags or item in self._obj_flags
+
+    def get_dict_flag(self, item):
+        return self._obj_flags.get(item, [])
+
+    @property
+    def flags(self):
+        flags = list(self._str_flags)
+        for flag_name in self._obj_flags.keys():
+            flags.append(flag_name)
+        return flags
+
+    @property
+    def str_flags(self):
+        return self._str_flags
+
+    @property
+    def obj_flags(self):
+        return self._obj_flags
 
 
 class RpcData:
@@ -33,7 +66,7 @@ class RpcData:
         rpc_name: str,
         request_type: str,
         response_type: str,
-        io_flags: List[str],
+        io_flags: List[str | dict],
         proto_file_name: str,
     ):
         """Create an RpcData object."""
@@ -44,7 +77,8 @@ class RpcData:
         self._full_rpc_name = f"{self.full_service_name}.{self.rpc_name}"
         self._request_type = request_type
         self._response_type = response_type
-        self._io_flags = set(io_flags)
+        self._io_flags = IOFlags(io_flags)
+        self._additional_io_flags_data = {}
         self._proto_file_name = proto_file_name
 
     @property
@@ -99,7 +133,7 @@ class RpcData:
 
     def validate_io_flags(self):
         """Validate the parsed rpc method IO flags."""
-        for io_flag in self.io_flags:
+        for io_flag in self.io_flags.flags:
             if io_flag not in valid_io_flags:
                 raise ProtoParserException(
                     f"encountered invalid io flag '{io_flag}' in rpc '{self.full_rpc_name}'"
@@ -109,6 +143,15 @@ class RpcData:
     def proto_file_name(self):
         """Name of the proto file defining the rpc method."""
         return self._proto_file_name
+
+    @property
+    def has_smart_invalidations(self):
+        return "invalidations" in self.io_flags
+
+    @property
+    def invalidations(self):
+        return self.io_flags.get_dict_flag("invalidations")
+
 
 
 def _process_rpc(
