@@ -181,6 +181,11 @@ service CellService {
   // io_flags:
   //   - cache
   rpc GenerateViaSmartBox (StringPropertyMessage) returns (PolygonDataListMessage) {}
+
+  // summary: Apply technology
+  // io_flags:
+  //   - buffer
+  rpc ApplyTechnology (CellApplyTechnologyMessage) returns (google.protobuf.Empty) {}
 }
 
 message CellCreationMessage {
@@ -219,4 +224,9 @@ message CellSetTemperatureSettingsMessage {
 message CellSetTouchstoneExportSettingsMessage {
   EDBObjMessage cell = 1;
   TouchstoneExportSettingsMessage ts_settings = 2;
+}
+
+message CellApplyTechnologyMessage {
+  EDBObjMessage cell = 1;
+  string definition_name = 2;
 }

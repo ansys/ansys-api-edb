@@ -1,0 +1,62 @@
+// Proto file representing the technology definition class
+
+syntax = "proto3";
+
+// Package
+package ansys.api.edb.v1;
+
+// Imports
+import "ansys/api/edb/v1/edb_messages.proto";
+
+// Technology Definition Service
+service TechnologyDefService {
+  // summary: Create a technology def in the given database
+  // io_flags:
+  //   - buffer
+  //   - returns_future
+  rpc Create(TechnologyDefCreateMessage) returns (EDBObjMessage) {}
+
+  // summary: Find a technology def in the given database
+  // io_flags:
+  //   - cache
+  rpc FindByName(EDBObjNameMessage) returns (EDBObjMessage) {}
+
+  // summary: Delete a technology definition
+  // io_flags:
+  //   - buffer
+  rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get the technology file
+  // io_flags:
+  //   - cache
+  rpc GetTechFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Get the GFD file
+  // io_flags:
+  //   - cache
+  rpc GetGFDFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Get the layer filter file
+  // io_flags:
+  //   - cache
+  rpc GetLayerFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Get the definition name of the technology
+  // io_flags:
+  //   - cache
+  rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Get whether the technology definition creates a backplane
+  // io_flags:
+  //   - cache
+  rpc GetIsCreateBackplane(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+}
+
+message TechnologyDefCreateMessage {
+  EDBObjMessage database = 1;
+  string definition_name = 2;
+  string vlc_tech_file = 3;
+  string gfd_file = 4;
+  string layer_filter_file = 5;
+  bool create_backplane = 6;
+}
