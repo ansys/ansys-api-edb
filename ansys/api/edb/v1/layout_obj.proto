@@ -32,6 +32,8 @@ service LayoutObjService {
   // summary: Gets the layout of the layout object
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayout (LayoutObjTargetMessage) returns (EDBObjMessage) {}
 
   // summary: Delete the layout object
@@ -42,16 +44,24 @@ service LayoutObjService {
   // summary: Gets a double product property by product id and attribute id
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetProductProperty (GetProductPropertyTypeMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Sets a integer property by product id and attribute id
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyTypeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Gets a list of property ids associated with the layout object for the given product
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetProductPropertyIds (GetProductPropertyIdsTypeMessage) returns (ProductPropertyIdsMessage) {}
 }
 
