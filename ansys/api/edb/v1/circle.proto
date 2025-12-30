@@ -14,6 +14,9 @@ service CircleService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (CircleCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Render Circle
@@ -24,11 +27,16 @@ service CircleService {
   // summary: Get Parameters
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters(EDBObjMessage) returns (CircleParametersMessage) {}
 
   // summary: Set Parameters
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetParameters
   rpc SetParameters(SetCircleParametersMessage) returns (google.protobuf.Empty) {}
 }
 

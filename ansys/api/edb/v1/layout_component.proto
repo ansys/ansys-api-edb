@@ -23,6 +23,8 @@ service LayoutComponentService {
   // summary: Get the underlying cell instance of the layout component
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCellInstance (EDBObjMessage) returns (EDBObjMessage) {}
 }
 

@@ -15,21 +15,39 @@ service GroupService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - FindByName
+  //       - Connectable.FindByIdAndType
   rpc Create(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a group by name in the given layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layout
   rpc FindByName(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
   // summary: Add a member to the group
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - ComponentGroup.GetNumberOfPins
+  //     - .member:
+  //       - Connectable.GetComponent
+  //       - Connectable.GetGroup
   rpc AddMember(GroupModifyMemberMessage) returns (google.protobuf.Empty) {}
 
   // summary: Remove a member from the group
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - ComponentGroup.GetNumberOfPins
+  //     - .member:
+  //       - Connectable.GetComponent
+  //       - Connectable.GetGroup
   rpc RemoveMember(GroupModifyMemberMessage) returns (google.protobuf.Empty) {}
 
   // summary: Ungroup this group
@@ -50,6 +68,8 @@ service GroupService {
   // summary: Get the type of the group
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetGroupType(EDBObjMessage) returns (GroupTypeMessage) {}
 }
 

@@ -17,11 +17,15 @@ service LayoutService {
   // summary: Gets the cell of the provided layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCell (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Gets the layer collection of the layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayerCollection (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Sets the layer collection of the layout

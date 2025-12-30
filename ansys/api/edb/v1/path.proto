@@ -27,6 +27,9 @@ service PathService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (PathCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Render Path
@@ -37,66 +40,103 @@ service PathService {
   // summary: Get Polygon Data
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
 
   // summary: Get Center Line
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCenterLine (EDBObjMessage) returns (PolygonDataMessage) {}
 
   // summary: Set Center Line
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetCenterLine
+  //       - GetPolygonData
   rpc SetCenterLine (SetCenterLineMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get End Cap Style
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEndCapStyle (EDBObjMessage) returns (EndCapStyleMessage) {}
 
   // summary: Set End Cap Style
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetEndCapStyle
+  //       - GetPolygonData
   rpc SetEndCapStyle (SetEndCapStyleMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Clip Info
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetClipInfo (EDBObjMessage) returns (ClipInfoMessage) {}
 
   // summary: Set Clip Info
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetClipInfo
   rpc SetClipInfo (SetClipInfoMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Corner Style
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCornerStyle (EDBObjMessage) returns (CornerStyleMessage) {}
 
   // summary: Set Corner Style
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetCornerStyle
+  //       - GetPolygonData
   rpc SetCornerStyle (SetCornerStyleMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Width
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetWidth (EDBObjMessage) returns (WidthMessage) {}
 
   // summary: Set Width
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetWidth
+  //       - GetPolygonData
   rpc SetWidth (SetWidthMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Miter Ratio
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMiterRatio (EDBObjMessage) returns (MiterRatioMessage) {}
 
   // summary: Set Miter Ratio
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMiterRatio
+  //       - GetPolygonData
   rpc SetMiterRatio (SetMiterRatioMessage) returns (google.protobuf.Empty) {}
 }
 

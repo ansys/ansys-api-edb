@@ -18,26 +18,38 @@ service ViaGroupService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - FindByName
   rpc CreateWithOutline(ViaGroupCreateWithOutlineMessage) returns (EDBObjMessage) {}
 
   // summary: Find the ViaGroup by name in the given layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layout
   rpc FindByName(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
   // summary: Get the ViaGroup outline
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOutline(EDBObjMessage) returns (PolygonDataMessage) {}
 
   // summary: Get conductor percentage of the ViaGroup
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetConductorPercentage(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Check if the ViaGroup is persistent
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsPersistent(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 }
 

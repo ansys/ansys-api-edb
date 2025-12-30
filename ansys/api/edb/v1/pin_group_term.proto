@@ -10,6 +10,12 @@ service PinGroupTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Terminal.FindByName
+  //       - Connectable.FindByIdAndType
+  //     - .pin_group:
+  //       - PinGroup.GetPinGroupTerminal
   rpc Create (PinGroupTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:

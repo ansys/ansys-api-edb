@@ -16,36 +16,55 @@ service ComponentGroupService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target.layout:
+  //       - Connectable.FindByIdAndType
+  //       - Group.FindByName
+  //       - FindByDef
   rpc Create(ComponentGroupCreateMessage) returns (EDBObjMessage) {}
 
   // summary: Get number of pins in the component group
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNumberOfPins(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 
   // summary: Get component property
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetComponentProperty(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set component property
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetComponentProperty
   rpc SetComponentProperty(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get component types
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetComponentType(EDBObjMessage) returns (ComponentTypeMessage) {}
 
   // summary: Set component type
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetComponentType
   rpc SetComponentType(SetComponentGroupTypeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Find component group by component definition
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByDef(ObjectNameInLayoutMessage) returns (EDBObjCollectionMessage) {}
 }
 

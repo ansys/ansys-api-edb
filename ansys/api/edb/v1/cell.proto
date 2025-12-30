@@ -19,6 +19,8 @@ service CellService {
   // summary: Gets the layout of the provided cell
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayout (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get the flattened layout
