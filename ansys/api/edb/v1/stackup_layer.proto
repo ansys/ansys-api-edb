@@ -24,16 +24,23 @@ service StackupLayerService {
   // summary: Get the negative property of the stackup layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNegative (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set the negative property of the stackup layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetNegative
   rpc SetNegative (SetNegativeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the thickness of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetThickness(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: Set the thickness of the layer
@@ -44,6 +51,8 @@ service StackupLayerService {
   // summary: Get the lower elevation of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLowerElevation(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: Set the lower elevation of the layer
@@ -54,101 +63,150 @@ service StackupLayerService {
   // summary: Get the upper elevation of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUpperElevation(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: Get the material of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layer
   rpc GetMaterial(GetLayerMaterialMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the material of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetMaterial
   rpc SetMaterial(SetLayerMaterialMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the fill material of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layer
   rpc GetFillMaterial(GetLayerMaterialMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the fill material of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetFillMaterial
   rpc SetFillMaterial(SetLayerMaterialMessage) returns (google.protobuf.Empty) {}
 
   // summary: Enable/Disable surface roughness for the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - IsRoughnessEnabled
   rpc SetRoughnessEnabled(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
   // summary: Check if surface roughness is enabled for the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsRoughnessEnabled(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Get the roughness model of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layer
   rpc GetRoughnessModel(LayerRoughnessRegionMessage) returns (RoughnessModelMessage) {}
 
   // summary: Set the roughness model of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer_rough_region.layer:
+  //       - GetRoughnessModel
   rpc SetRoughnessModel(SetRoughnessModelMessage) returns (google.protobuf.Empty) {}
 
   // summary: Check if etch factor is enabled for the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsEtchFactorEnabled(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Enable/Disable etch factor for the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - IsEtchFactorEnabled
   rpc SetEtchFactorEnabled(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
   // summary: Set the etch factor of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetEtchFactor
   rpc SetEtchFactor(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the etch factor of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEtchFactor(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: Set the etch net class of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetEtchNetClass
   rpc SetEtchNetClass(StackupLayerEtchNetClassMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the etch net class of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEtchNetClass(EDBObjMessage) returns (EtchNetClassMessage) {}
 
   // summary: Check if solver properties are enabled for the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUseSolverProperties(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Enable/Disable solver properties for the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetUseSolverProperties
   rpc SetUseSolverProperties(SetLayerPropEnabledMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the HFSS solver-specific properties of the layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHFSSSolverProperties(EDBObjMessage) returns (HFSSSolverPropertiesMessage) {}
 
   // summary: Set the HFSS solver-specific properties of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetHFSSSolverProperties
   rpc SetHFSSSolverProperties(SetHFSSSolverPropertiesMessage) returns (google.protobuf.Empty) {}
 
   // summary: Retrieves the layer ids of all via layers referencing the layer.
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferencingViaLayerIds(EDBObjMessage) returns (ViaLayerIdsMessage) {}
 }
 

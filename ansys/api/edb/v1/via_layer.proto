@@ -18,6 +18,8 @@ service ViaLayerService {
   // summary: Get the name of the upper or lower reference layer of the via layer.
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRefLayerName (ViaLayerRefLayerIdMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Sets the upper or lower reference layer of the via layer

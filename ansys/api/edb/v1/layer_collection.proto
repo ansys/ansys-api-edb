@@ -37,17 +37,24 @@ service LayerCollectionService {
   // summary: Get the LayerCollection mode
   // io_flags:
   //   - cache
-  //   - write_no_cache_invalidation
+  //   - invalidations:
+  //     - .
   rpc GetMode (EDBObjMessage) returns (LayerCollectionModeMessage) {}
 
   // summary: Set the LayerCollection mode
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - GetMode
   rpc SetMode (SetLayerCollectionModeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Adds the provided layers to the LayerCollection
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - FindByName
   rpc AddLayers (AddLayersMessage) returns (google.protobuf.Empty) {}
 
   // summary: Import a LayerCollection from a control file
@@ -57,16 +64,23 @@ service LayerCollectionService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - FindByName
   rpc AddLayer (AddLayerMessage) returns (EDBObjMessage) {}
 
   // summary: Check whether there is layer overlapping or gap for laminate stackup. Check whether there is dielectric layer overlapping or gap for overlapping stackup.
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsValid (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Finds a layer with the given name in the layer collection
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layer_collection
   rpc FindByName (FindLayerByNameMessage) returns (EDBObjMessage) {}
 
   // summary: Get top bottom stackup layers of specific type
@@ -87,16 +101,24 @@ service LayerCollectionService {
   // summary: Get the layer's product property corresponding to the given product and attribute ids
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the layer's product property corresponding to the given product and attribute ids
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get a list of property ids associated with the layer for the given product
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
   // summary: Merges the dielectric layers in a range of layers into one large dielectric layer that spans the elevation range of all merged dielectric layers
@@ -108,16 +130,23 @@ service LayerCollectionService {
   // summary: Retrieves a list of all zones in the LayerCollection
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetZoneIds (EDBObjMessage) returns (ZonesMessage) {}
 
   // summary: Retrieves the name corresponding to the specified zone
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layer_collection
   rpc GetZoneName (LayerCollectionZoneMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the name corresponding to the specified zone
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - GetZoneName
   rpc SetZoneName (SetZoneNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Inserts a new zone
@@ -134,6 +163,11 @@ service LayerCollectionService {
   // summary: Sets the zone to the layer and updates the layer in the collection
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - Layer.IsInZone
+  //       - Layer.GetZones
+  //       - Layer.GetZone
   rpc AddZoneToLayer (AddZoneToLayerMessage) returns (google.protobuf.Empty) {}
 }
 
