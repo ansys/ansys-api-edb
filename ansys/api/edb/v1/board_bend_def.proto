@@ -14,46 +14,71 @@ service BoardBendDefService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (BoardBendDefCreateMessage) returns (EDBObjMessage) {}
 
   // Summary: Get the boundary prim
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetBoundaryPrim (EDBObjMessage) returns (EDBObjMessage) {}
 
   // Summary: Get the bend middle
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetBendMiddle (EDBObjMessage) returns (PointPairMessage) {}
 
   // Summary: Set the bend middle
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetBendMiddle
+  //       - GetBentRegions
   rpc SetBendMiddle (PointPairPropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bend radius
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRadius (EDBObjMessage) returns (ValueMessage) {}
 
   // Summary: Set the bend radius
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRadius
+  //       - GetBentRegions
   rpc SetRadius (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bend angle
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAngle (EDBObjMessage) returns (ValueMessage) {}
 
   // Summary: Set the bend angle
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAngle
+  //       - GetBentRegions
   rpc SetAngle (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bent regions
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetBentRegions (EDBObjMessage) returns (PolygonDataListMessage) {}
 }
 
