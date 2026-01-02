@@ -17,6 +17,10 @@ service CellService {
   //   - invalidations:
   //     - .database:
   //       - Find
+  //       - GetTopCircuits
+  //       - TopCircuitCells
+  //       - GetCircuits
+  //       - GetFootprints
   rpc Create (CellCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Gets the layout of the provided cell
