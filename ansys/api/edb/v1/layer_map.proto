@@ -26,11 +26,19 @@ service LayerMapService {
   // summary: Clear a layer map
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetMappingForward
+  //       - GetMappingBackward
   rpc Clear (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: SetMapping of a layer map
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetMappingForward
+  //       - GetMappingBackward
   rpc SetMapping (LayerMapTwoIntPropertiesMessage) returns (google.protobuf.Empty) {}
 
   // summary: GetMapping of a layer map

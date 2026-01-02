@@ -13,6 +13,8 @@ import "ansys/api/edb/v1/polygon_data.proto";
 service TransformService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Rotate (PointDataRotateMessage) returns (PointMessage) {}
 
   // io_flags:
@@ -23,59 +25,106 @@ service TransformService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetScale (EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetScale
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - TransformPolygon
   rpc SetScale (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMirror (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMirror
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - TransformPolygon
   rpc SetMirror (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRotation (EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRotation
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - TransformPolygon
   rpc SetRotation (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOffsetX (EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetOffsetX
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - TransformPolygon
   rpc SetOffsetX (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOffsetY (EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetOffsetY
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - TransformPolygon
   rpc SetOffsetY (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - write_no_cache_invalidation
   rpc TransformPlus (TransformOperatorMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsIdentity (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc TransformPoint (PointPropertyMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc TransformPolygon (PolygonDataPropertyMessage) returns (PolygonDataMessage) {}
 }
 

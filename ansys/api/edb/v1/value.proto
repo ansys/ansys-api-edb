@@ -8,14 +8,20 @@ import "ansys/api/edb/v1/edb_messages.proto";
 
 service ValueService {
   // summary: Create a value
+  // io_flags:
+  //   - write_no_cache_invalidation
   rpc CreateValue (ValueTextMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDouble (ValueTextMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetComplex (ValueTextMessage) returns (ComplexMessage) {}
 }
 
