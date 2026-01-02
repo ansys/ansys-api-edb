@@ -11,10 +11,15 @@ service SimulationSettingsService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEnabled (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetEnabled
   rpc SetEnabled (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -22,34 +27,54 @@ service SimulationSettingsService {
 service SettingsOptionsService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDoLamdaRefineFlag(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDoLamdaRefineFlag
   rpc SetDoLamdaRefineFlag(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLamdaTarget(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLamdaTarget
   rpc SetLamdaTarget(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMeshSizefactor(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMeshSizefactor
   rpc SetMeshSizefactor(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUseDefaultLamda(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetUseDefaultLamda
   rpc SetUseDefaultLamda(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -72,114 +97,184 @@ enum DefeatureModelType
 service AdvancedSettingsService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUnionPolygons(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetUnionPolygons
   rpc SetUnionPolygons(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRemoveFloatingGeometry(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRemoveFloatingGeometry
   rpc SetRemoveFloatingGeometry(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHealingOption(EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHealingOption
   rpc SetHealingOption(IntPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSmallVoidArea(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSmallVoidArea
   rpc SetSmallVoidArea(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUseDefeature(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetUseDefeature
   rpc SetUseDefeature(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUseDefeatureAbsoluteLength(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetUseDefeatureAbsoluteLength
   rpc SetUseDefeatureAbsoluteLength(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDefeatureAbsoluteLength(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDefeatureAbsoluteLength
   rpc SetDefeatureAbsoluteLength(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDefeatureRatio(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDefeatureRatio
   rpc SetDefeatureRatio(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetViaModelType(EDBObjMessage) returns (ViaModelTypeMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetViaModelType
   rpc SetViaModelType(ViaModelTypePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNumViaSides(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetNumViaSides
   rpc SetNumViaSides(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetViaDensity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetViaDensity
   rpc SetViaDensity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetViaMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetViaMaterial
   rpc SetViaMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMeshForViaPlating(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMeshForViaPlating
   rpc SetMeshForViaPlating(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetModelType(EDBObjMessage) returns (DefeatureModelTypeMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetModelType
   rpc SetModelType(DefeatureModelTypePropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -205,42 +300,67 @@ message DefeatureModelTypePropertyMessage {
 service AdvancedMeshingSettingsService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetArcStepSize(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetArcStepSize
   rpc SetArcStepSize(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCircleStartAzimuth(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetCircleStartAzimuth
   rpc SetCircleStartAzimuth(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaxNumArcPoints(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMaxNumArcPoints
   rpc SetMaxNumArcPoints(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetUseArcChordErrorApprox(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetUseArcChordErrorApprox
   rpc SetUseArcChordErrorApprox(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetArcChordErrorApprox(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetArcChordErrorApprox
   rpc SetArcChordErrorApprox(StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -248,17 +368,27 @@ service AdvancedMeshingSettingsService {
 service SolverSettingsService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetThinSignalLayerThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetThinSignalLayerThreshold
   rpc SetThinSignalLayerThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetThinDielectricLayerThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetThinDielectricLayerThreshold
   rpc SetThinDielectricLayerThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
 }

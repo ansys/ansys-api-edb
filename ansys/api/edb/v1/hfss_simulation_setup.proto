@@ -9,10 +9,15 @@ import "ansys/api/edb/v1/edb_messages.proto";
 service HfssSimulationSetupService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMeshOperations (EDBObjMessage) returns (MeshOperationsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMeshOperations
   rpc SetMeshOperations (MeshOperationsPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

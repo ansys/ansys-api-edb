@@ -50,74 +50,119 @@ service HFSSPIGeneralSettingsService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPISliderPos(EDBObjMessage) returns (HFSSPISimulationPreferenceMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPISliderPos
   rpc SetPISliderPos(HFSSPISimulationPreferencePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHFSSPIModelType(EDBObjMessage) returns (HFSSPIModelTypeMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHFSSPIModelType
   rpc SetHFSSPIModelType(HFSSPIModelTypePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMinPlaneAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMinPlaneAreaToMesh
   rpc SetMinPlaneAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMinVoidAreaToMesh(EDBObjMessage) returns (google.protobuf.StringValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMinVoidAreaToMesh
   rpc SetMinVoidAreaToMesh(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSnapLengthThreshold(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSnapLengthThreshold
   rpc SetSnapLengthThreshold(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIncludeEnhancedBondWireModeling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetIncludeEnhancedBondWireModeling
   rpc SetIncludeEnhancedBondWireModeling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSurfaceRoughnessModel(EDBObjMessage) returns (SurfaceRoughnessModelMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSurfaceRoughnessModel
   rpc SetSurfaceRoughnessModel(SurfaceRoughnessModelPropertyMessage) returns (google.protobuf.Empty) {}
   
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRMSSurfaceRoughness(EDBObjMessage) returns (google.protobuf.StringValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRMSSurfaceRoughness
   rpc SetRMSSurfaceRoughness(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPerformERC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPerformERC
   rpc SetPerformERC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -152,26 +197,41 @@ service HFSSPINetProcessingSettingsService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAutoSelectNetsForSimulation(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAutoSelectNetsForSimulation
   rpc SetAutoSelectNetsForSimulation(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIgnoreDummyNetsForSelectedNets(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetIgnoreDummyNetsForSelectedNets
   rpc SetIgnoreDummyNetsForSelectedNets(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIncludeNets(EDBObjMessage) returns (StringsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetIncludeNets
   rpc SetIncludeNets(StringsPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -179,26 +239,41 @@ service HFSSPIPowerGroundNetsService {
   
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetImprovedLossModel(EDBObjMessage) returns (ImprovedLossModelMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetImprovedLossModel
   rpc SetImprovedLossModel(ImprovedLossModelPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAutoDetectIgnoreSmallHolesMinDiameter(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAutoDetectIgnoreSmallHolesMinDiameter
   rpc SetAutoDetectIgnoreSmallHolesMinDiameter(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIgnoreSmallHolesMinDiameter(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetIgnoreSmallHolesMinDiameter
   rpc SetIgnoreSmallHolesMinDiameter(StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
@@ -215,34 +290,54 @@ service HFSSPISignalNetsSettingsService {
   
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSignalNetsErrorTolerance(EDBObjMessage) returns (ErrorToleranceMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSignalNetsErrorTolerance
   rpc SetSignalNetsErrorTolerance(ErrorTolerancePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSignalNetsConductorModeling(EDBObjMessage) returns (ConductorModelingMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSignalNetsConductorModeling
   rpc SetSignalNetsConductorModeling(ConductorModelingPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSignalNetsIncludeImprovedLossHandling(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSignalNetsIncludeImprovedLossHandling
   rpc SetSignalNetsIncludeImprovedLossHandling(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSignalNetsIncludeImprovedDielectricFillRefinement(EDBObjMessage) returns (google.protobuf.BoolValue) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSignalNetsIncludeImprovedDielectricFillRefinement
   rpc SetSignalNetsIncludeImprovedDielectricFillRefinement(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

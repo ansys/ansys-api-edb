@@ -16,30 +16,47 @@ service SimulationSetupService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-    // io_flags:
+  // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPosition (EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPosition
   rpc SetPosition (UInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSweepData (EDBObjMessage) returns (SweepDataListMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSweepData
   rpc SetSweepData (SweepDataListPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetType (EDBObjMessage) returns (SimulationSetupTypeMessage) {}
 }
 
