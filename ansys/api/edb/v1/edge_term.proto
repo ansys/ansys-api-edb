@@ -20,17 +20,24 @@ service EdgeService {
   // summary: Get the edge type
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEdgeType (EDBObjMessage) returns (EdgeTypeMessage) {}
 
   // summary: Create an edge
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (EdgeCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get the edge parameters
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters (EDBObjMessage) returns (EdgeParamsMessage) {}
 }
 

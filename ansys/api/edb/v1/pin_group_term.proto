@@ -20,18 +20,30 @@ service PinGroupTerminalService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPinGroup (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetPinGroup
+  //     - .pin_group:
+  //       - PinGroup.GetPinGroupTerminal
   rpc SetPinGroup (PinGroupTermSetPinGroupMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayer (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetLayer
   rpc SetLayer (PinGroupTermSetLayerMessage) returns (google.protobuf.Empty) {}
 }
 

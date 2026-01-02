@@ -11,18 +11,27 @@ service TerminalInstanceService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (TermInstCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOwningCellInstance (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDefinitionTerminal (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDefinitionTerminalName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

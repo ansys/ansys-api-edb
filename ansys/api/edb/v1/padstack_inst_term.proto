@@ -10,14 +10,23 @@ service PadstackInstanceTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Terminal.FindByName
   rpc Create (PadstackInstTermCreationsMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters (EDBObjMessage) returns (PadstackInstTermParamsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetParameters
   rpc SetParameters (PadstackInstTermSetParamsMessage) returns (google.protobuf.Empty) {}
 }
 
