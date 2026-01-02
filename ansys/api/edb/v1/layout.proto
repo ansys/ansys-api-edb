@@ -71,11 +71,16 @@ service LayoutService {
   // summary: Set fixed zone primitives
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetFixedZonePrimitive
   rpc SetFixedZonePrimitives (PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get fixed zone primitive
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetFixedZonePrimitive (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get board bend definitions
@@ -112,6 +117,7 @@ service LayoutService {
   rpc SnapPrimitives (GeometrySimplificationSettingsWithOptionMessage) returns (google.protobuf.Empty) {}
 
   // summary: Create mesh region
+  //   - write_no_cache_invalidation
   rpc CreateMeshRegion(CreateMeshRegionMessage) returns (google.protobuf.Empty) {}
   
   // summary: Compress primitives into primitive instance collections

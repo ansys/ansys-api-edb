@@ -12,104 +12,157 @@ service McadModelService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateStride (McadModelCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - write_no_cache_invalidation
   rpc CreateHfss (McadModelHfssCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - write_no_cache_invalidation
   rpc Create3dComp (McadModelCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsMcad (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsMcadStride (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsMcadHfss (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsMcad3dComp (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOrigin (EDBObjMessage) returns (Point3DMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetOrigin
   rpc SetOrigin (Point3DPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRotation (EDBObjMessage) returns (McadModelRotationMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .model:
+  //       - GetRotation
   rpc SetRotation (McadModelSetRotationMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetScale (EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetScale
   rpc SetScale (DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaterial (IntPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .model:
+  //       - GetMaterial
   rpc SetMaterial (McadModelStringMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetVisible (IntPropertyMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .model:
+  //       - GetVisible
   rpc SetVisible (McadModelBoolMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetModeled (IntPropertyMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .model:
+  //       - GetModeled
   rpc SetModeled (McadModelBoolMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetCellInst (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPartCount (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPartName (IntPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPartIndex (StringPropertyMessage) returns (google.protobuf.Int64Value) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetModelName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDesignName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

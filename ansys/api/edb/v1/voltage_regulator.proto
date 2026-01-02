@@ -10,98 +10,164 @@ service VoltageRegulatorService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
   rpc Create (VoltageRegulatorMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsActive(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - IsActive
   rpc SetIsActive(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetVoltage(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetVoltage
   rpc SetVoltage(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLoadRegulationCurrent(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLoadRegulationCurrent
   rpc SetLoadRegulationCurrent(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLoadRegulationPercent(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLoadRegulationPercent
   rpc SetLoadRegulationPercent(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPosRemoteSensePin(EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPosRemoteSensePin
   rpc SetPosRemoteSensePin(EDBObjCollectionMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNegRemoteSensePin(EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetNegRemoteSensePin
   rpc SetNegRemoteSensePin(EDBObjCollectionMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNPowerModules(EDBObjMessage) returns (google.protobuf.Int64Value){}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNActivePowerModules(EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPowerModule(StringPropertyMessage) returns (PowerModuleMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAllPowerModules(EDBObjMessage) returns (PowerModulesMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .vrm:
+  //       - GetAllPowerModules
+  //       - GetPowerModule
   rpc AddPowerModule(PowerModulePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAllPowerModules
+  //       - GetPowerModule
   rpc RemovePowerModule(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .vrm:
+  //       - GetAllPowerModules
+  //       - GetPowerModule
   rpc AddPowerModules(PowerModulesPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetAllPowerModules
+  //       - GetPowerModule
   rpc RemovePowerModules(StringsPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetAllPowerModules
+  //       - GetPowerModule
   rpc RemoveAllPowerModules(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 
