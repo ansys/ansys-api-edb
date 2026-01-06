@@ -12,6 +12,9 @@ service DatasetDefService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target:
+  //       - FindByName
   rpc Create (StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Find Dataset Definition by name
@@ -32,10 +35,15 @@ service DatasetDefService {
   // summary: Get Data of Dataset Definition
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetData(EDBObjMessage) returns (PointsMessage) {}
 
   // summary: Set Data Dataset Definition
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetData
   rpc SetData(PointsPropertyMessage) returns (google.protobuf.Empty) {}
 }

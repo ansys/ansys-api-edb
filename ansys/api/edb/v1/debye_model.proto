@@ -19,71 +19,106 @@ service DebyeModelService {
   // summary: Get frequency range
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetFrequencyRange(EDBObjMessage) returns (FrequencyRangeMessage) {}
 
   // summary: Get frequency range
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetFrequencyRange
   rpc SetFrequencyRange(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the relative permitivity at high low frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRelativePermitivityAtHighLowFrequency(EDBObjMessage) returns (FrequencyRangeMessage) {}
 
   // summary: Set the relative permitivity at high low frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRelativePermitivityAtHighLowFrequency
   rpc SetRelativePermitivityAtHighLowFrequency(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Is relative permitivity enabled at optical frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsRelativePermitivityEnabledAtOpticalFrequency(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set is relative permitivity enabled at optical frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - IsRelativePermitivityEnabledAtOpticalFrequency
   rpc SetRelativePermitivityEnabledAtOpticalFrequency(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get relative permitivity at optical frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRelativePermitivityAtOpticalFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set relative permitivity at optical frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRelativePermitivityAtOpticalFrequency
   rpc SetRelativePermitivityAtOpticalFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get use dc conductivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc UseDCConductivity(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set use dc conductivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - UseDCConductivity
   rpc SetUseDCConductivity(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get dc conductivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDCConductivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Get dc conductivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDCConductivity
   rpc SetDCConductivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get dc conductivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLossTangentAtHighLowFrequency(EDBObjMessage) returns (FrequencyRangeMessage) {}
 
   // summary: Get dc conductivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLossTangentAtHighLowFrequency
   rpc SetLossTangentAtHighLowFrequency(SetFrequencyRangeMessage) returns (google.protobuf.Empty) {}
 }
 

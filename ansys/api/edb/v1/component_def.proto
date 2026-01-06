@@ -14,11 +14,16 @@ service ComponentDefService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .db:
+  //       - FindByName
   rpc Create(ComponentDefCreateMessage) returns (EDBObjMessage) {}
 
   // summary: Find a component def in the given database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName(EDBObjNameMessage) returns (EDBObjMessage) {}
 
   // summary: Set the name of the component def
@@ -29,16 +34,23 @@ service ComponentDefService {
   // summary: Get the name of the component def
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the footprint name for the component def
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj_0:
+  //       - GetFootprintCell
   rpc SetFootprintCell(EDBObjPairMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the footprint name of the component def
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetFootprintCell(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get the component models owned by this component def
@@ -83,14 +95,22 @@ service ComponentDefService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 }
 

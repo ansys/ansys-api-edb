@@ -40,5 +40,7 @@ service ComponentPinService {
   // summary: Get component def this pin belongs to
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetComponentDef(EDBObjMessage) returns (EDBObjMessage) {}
 }

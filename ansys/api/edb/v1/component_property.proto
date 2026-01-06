@@ -21,28 +21,43 @@ service ComponentPropertyService {
   // summary: Get Package mounting offset
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPackageMountingOffset(EDBObjMessage) returns (ValueMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPackageMountingOffset
   rpc SetPackageMountingOffset(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Package def
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPackageDef(EDBObjMessage) returns (EDBObjMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .GetPackageDef:
+  //       - GetPackageDef
   rpc SetPackageDef(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Model
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetModel(EDBObjMessage) returns (ComponentPropModelMessage) {}
   
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetModel
   rpc SetModel(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

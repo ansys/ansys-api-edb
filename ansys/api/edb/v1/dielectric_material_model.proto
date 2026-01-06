@@ -12,5 +12,7 @@ service DielectricMaterialModelService {
   // summary: Get the dielectric material model type
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetType(EDBObjMessage) returns (google.protobuf.Int32Value) {}
 }
