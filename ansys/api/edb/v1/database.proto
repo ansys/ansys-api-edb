@@ -146,6 +146,8 @@ service DatabaseService {
   // summary: Stream footprint cells
   rpc StreamFootprints (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
+  rpc Encrypt (DatabaseEncryptionMessage) returns (google.protobuf.Empty) {}
+
 }
 
 // Message for Open
@@ -188,4 +190,9 @@ message GetDefinitionObjsMessage {
   EDBObjMessage target = 1;
   DefinitionObjType type = 2;
   BondwireType subtype = 3;
+}
+
+message DatabaseEncryptionMessage {
+  EDBObjMessage target = 1;
+  string key = 2;
 }
