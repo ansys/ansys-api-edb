@@ -81,106 +81,159 @@ service PadstackDefDataService {
   // summary: get material of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: set material of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMaterial
   rpc SetMaterial(PadstackDefDataSetMaterialMessage) returns (google.protobuf.Empty) {}
 
   // summary: get layer names from PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayerNames(EDBObjMessage) returns (PadstackDefDataGetLayerNamesMessage) {}
 
   // summary: get LayerIds from PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayerIds(EDBObjMessage) returns (PadstackDefDataGetLayerIdsMessage) {}
 
   // summary: add Layers to PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLayerIds
+  //       - GetLayerNames
   rpc AddLayers(PadstackDefDataAddLayersMessage) returns (google.protobuf.Empty) {}
 
   // summary: get PadParameters of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc GetPadParameters(PadstackDefDataGetPadParametersMessage) returns (PadstackDefDataPadParametersMessage) {}
 
   // summary: set PadParameters of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPadParameters
   rpc SetPadParameters(PadstackDefDataPadParametersSetMessage) returns (google.protobuf.Empty) {}
 
   // summary: get PadstackHoleRange of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHoleRange(EDBObjMessage) returns (PadstackDefDataPadstackHoleRangeMessage) {}
 
   // summary: set PadstackHoleRange of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHoleRange
   rpc SetHoleRange(PadstackDefDataSetHoleRangeMessage) returns (google.protobuf.Empty) {}
 
   // summary: get plating percentage of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPlatingPercentage(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: set plating percentage of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPlatingPercentage
   rpc SetPlatingPercentage(PadstackDefDataSetPlatingPercentage) returns (google.protobuf.Empty) {}
 
   // summary: get SolderBallShape of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolderBallShape(EDBObjMessage) returns (PadstackDefDataSolderballShapeMessage) {}
 
   // summary: set SolderBallShape of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolderBallShape
   rpc SetSolderBallShape(PadstackDefDataSetSolderballShapeMessage) returns (google.protobuf.Empty) {}
 
   // summary: get SolderBallPlacement of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolderBallPlacement(EDBObjMessage) returns (PadstackDefDataSolderballPlacementMessage) {}
 
   // summary: set SolderBallPlacement of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolderBallPlacement
   rpc SetSolderBallPlacement(PadstackDefDataSetSolderballPlacementMessage) returns (google.protobuf.Empty) {}
 
   // summary: get solderBall parameters of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolderBallParam(EDBObjMessage) returns (PadstackDefDataGetSolderBallParamMessage) {}
 
   // summary: set solderBall parameters of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolderBallParam
   rpc SetSolderBallParam(PadstackDefDataSetSolderBallParamMessage) returns (google.protobuf.Empty) {}
 
   // summary: get solderBall material of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolderBallMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: set solderBall material of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolderBallMaterial
   rpc SetSolderBallMaterial(PadstackDefDataSetSolderBallMaterialMessage) returns (google.protobuf.Empty) {}
 
   // summary: get ConnectionPt of PadstackDefData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetConnectionPt(PadstackDefDataGetConnectionPtMessage) returns (PadstackDefDataConnectionPtMessage) {}
 
   // summary: set ConnectionPt of PadstackDefData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetConnectionPt
   rpc SetConnectionPt(PadstackDefDataSetConnectionPtMessage) returns (google.protobuf.Empty) {}
 }
 

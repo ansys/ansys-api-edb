@@ -50,7 +50,7 @@ service ApdBondwireDefService {
   // io_flags:
   //   - cache
   //   - invalidations:
-  //     - .object:
+  //     - .object
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
   // summary: Get Apd BondwireDef parameters in cblock string format.
@@ -83,7 +83,7 @@ service Jedec4BondwireDefService {
   // io_flags:
   //   - cache
   //   - invalidations:
-  //     - .object:
+  //     - .object
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
   // summary: Get Jedec4BondwireDef parameters in cblock string format.
@@ -121,7 +121,7 @@ service Jedec5BondwireDefService {
   // io_flags:
   //   - cache
   //   - invalidations:
-  //     - .object:
+  //     - .object
   rpc FindByName (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
   // summary: Get Jedec5BondwireDef parameters in cblock string format.

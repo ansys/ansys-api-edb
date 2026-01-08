@@ -20,18 +20,28 @@ service IOComponentPropertyService {
   // summary: Set the solder ball property
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolderBallProperty
   rpc SetSolderBallProperty(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolderBallProperty(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set the port property
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPortProperty
   rpc SetPortProperty(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPortProperty(EDBObjMessage) returns (EDBObjMessage) {}
 }

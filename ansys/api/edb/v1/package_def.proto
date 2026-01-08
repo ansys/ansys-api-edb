@@ -15,6 +15,10 @@ service PackageDefService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target:
+  //       - FindByName
+  //       - FindByEDBUId
   rpc Create(StringPropertyMessage) returns (EDBObjMessage) {}
 
   // io_flags:
@@ -31,86 +35,139 @@ service PackageDefService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
   rpc SetName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetExteriorBoundary(EDBObjMessage) returns (PolygonDataMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetExteriorBoundary
   rpc SetExteriorBoundary(PolygonDataPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHeight(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHeight
   rpc SetHeight(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOperatingPower(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetOperatingPower
   rpc SetOperatingPower(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaximumPower(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMaximumPower
   rpc SetMaximumPower(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTherm_Cond(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTherm_Cond
   rpc SetTherm_Cond(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTheta_JB(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTheta_JB
   rpc SetTheta_JB(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTheta_JC(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTheta_JC
   rpc SetTheta_JC(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHeatSink(EDBObjMessage) returns (HeatSinkMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHeatSink
   rpc SetHeatSink(SetHeatSinkMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 }
 

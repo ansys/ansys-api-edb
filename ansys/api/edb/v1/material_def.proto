@@ -28,16 +28,26 @@ service MaterialDefService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .database:
+  //       - FindByName
   rpc Create(MaterialDefCreationMessage) returns (EDBObjMessage) {}
 
   // DEPRECATED: use Create instead
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .materialDef:
+  //       - GetProperty
+  //       - GetAllProperties
+  //       - GetDimensions
   rpc SetProperty(MaterialDefSetPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Find Material Definition by name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName(EDBObjNameMessage) returns (EDBObjMessage) {}
 
   // summary: Delete Material Definition
@@ -48,56 +58,84 @@ service MaterialDefService {
   // summary: Get Property
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .materialDef
   rpc GetProperty(MaterialDefGetPropertyMessage) returns (ValueMessage) {}
 
   // summary: Get All Properties
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAllProperties(EDBObjMessage) returns (MaterialDefGetAllPropertiesMessage) {}
 
   // summary: Remove Property
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .materialDef:
+  //       - GetProperty
+  //       - GetAllProperties
+  //       - GetDimensions
   rpc RemoveProperty(MaterialDefGetPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Name of Material Def
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Get Dielectric Material Model
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDielectricMaterialModel(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set Dielectric Material Model
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDielectricMaterialModel
   rpc SetDielectricMaterialModel(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Dimensions
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .materialDef
   rpc GetDimensions(MaterialDefPropertyMessage) returns (MaterialDefGetDimensionMessage) {}
 
   // summary: Set Thermal Modifier
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .materialDef:
+  //       - GetThermalModifier
   rpc SetThermalModifier(SetMaterialDefPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Set Anisotropic Thermal Modifier
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .materialDef:
+  //       - GetAnisotropicThermalModifier
   rpc SetAnisotropicThermalModifier(SetMaterialDefPropertyComponentMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Thermal Modifier
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .materialDef
   rpc GetThermalModifier(MaterialDefPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Get Anisotropic Thermal Modifier
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .materialDef
   rpc GetAnisotropicThermalModifier(MaterialDefPropertyComponentMessage) returns (EDBObjMessage) {}
 }
 
