@@ -120,6 +120,9 @@ service LayoutService {
 
   // summary: Remove holes except on critical nets
   rpc RemoveHolesExceptOnCriticalNets(RemoveHolesMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Remove unused conducting layers
+  rpc RemoveUnusedConductingLayers(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 
 message SetLayerCollectionMessage {
