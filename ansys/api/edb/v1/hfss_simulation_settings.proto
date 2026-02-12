@@ -211,6 +211,14 @@ service HFSSOptionsSettingsService {
 
   // io_flags:
   //   - cache
+  rpc GetSolveInsideMetalBasis(EDBObjMessage) returns (BasisFunctionOrderMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSolveInsideMetalBasis(BasisFunctionOrderPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
   rpc GetSolverTypeOrder(EDBObjMessage) returns (SolverTypeMessage) {}
 
   // io_flags:
