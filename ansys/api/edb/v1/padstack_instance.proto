@@ -207,11 +207,13 @@ message PadstackInstBackDrillByLayerMessage {
   EDBObjMessage drill_to_layer = 1;
   ValueMessage diameter = 2;
   ValueMessage offset = 3;
+  string fill_material = 4;
 }
 
 message PadstackInstBackDrillByDepthMessage {
   ValueMessage drill_depth = 1;
   ValueMessage diameter = 2;
+  string fill_material = 3;
 }
 
 message PadstackInstSetBackDrillByLayerMessage {
@@ -220,6 +222,7 @@ message PadstackInstSetBackDrillByLayerMessage {
   ValueMessage offset = 3;
   ValueMessage diameter = 4;
   bool from_bottom = 5;
+  string fill_material = 6;
 }
 
 message PadstackInstSetBackDrillByDepthMessage {
@@ -227,6 +230,7 @@ message PadstackInstSetBackDrillByDepthMessage {
   ValueMessage drill_depth = 2;
   ValueMessage diameter = 3;
   bool from_bottom = 4;
+  string fill_material = 5;
 }
 
 message PadstackInstIsInPinGroupMessage{
