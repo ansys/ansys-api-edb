@@ -47,6 +47,7 @@ service GroupService {
   //     - .target:
   //       - ComponentGroup.GetNumberOfPins
   //       - GetMembers
+  //       - StreamMembers
   //     - .member:
   //       - Connectable.GetComponent
   //       - Connectable.GetGroup

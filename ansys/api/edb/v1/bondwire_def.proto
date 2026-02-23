@@ -41,9 +41,16 @@ service ApdBondwireDefService {
   //   - invalidations:
   //     - .object:
   //       - FindByName
+  //       - Database.GetDefinitionObjs
   rpc Create (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
   // summary: Loads Definitions From File.
+  // io_flags:
+  //   - buffer
+  //   - invalidations:
+  //     - .object:
+  //       - FindByName
+  //       - Database.GetDefinitionObjs
   rpc LoadDefinitionsFromFile (BondwireDefStrMessage) returns (google.protobuf.Empty) {}
 
   // summary: Find Apd BondwireDef By Name.
