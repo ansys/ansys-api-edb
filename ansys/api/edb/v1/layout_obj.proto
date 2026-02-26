@@ -45,14 +45,14 @@ service LayoutObjService {
   // io_flags:
   //   - cache
   //   - invalidations:
-  //     - .
+  //     - .target.edb_obj
   rpc GetProductProperty (GetProductPropertyTypeMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Sets a integer property by product id and attribute id
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .target:
+  //     - .target.edb_obj:
   //       - GetProductProperty
   //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyTypeMessage) returns (google.protobuf.Empty) {}

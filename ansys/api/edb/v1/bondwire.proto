@@ -30,8 +30,9 @@ service BondwireService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
-  //     - global:
   //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (BondwireCreateMessage) returns (EDBObjMessage) {}
 
   // summary: Get Material

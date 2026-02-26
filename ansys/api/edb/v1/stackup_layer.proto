@@ -46,6 +46,11 @@ service StackupLayerService {
   // summary: Set the thickness of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetThickness
+  //     - global:
+  //       - LayerCollection.GetTopBottomStackupLayers
   rpc SetThickness(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the lower elevation of the layer
@@ -58,6 +63,11 @@ service StackupLayerService {
   // summary: Set the lower elevation of the layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetLowerElevation
+  //     - global:
+  //       - LayerCollection.GetTopBottomStackupLayers
   rpc SetLowerElevation(StackupLayerValueMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the upper elevation of the layer

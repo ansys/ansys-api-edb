@@ -11,7 +11,11 @@ service SimulationSetupService {
   // io_flags:
   //   - buffer
   //   - returns_future
-  //   - write_no_cache_invalidation
+  //   - buffer
+  //   - invalidations:
+  //     - .cell:
+  //       - GetSimulationSetups
+  //       - StreamSimulationSetups
   rpc Create(SimulationSetupCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:

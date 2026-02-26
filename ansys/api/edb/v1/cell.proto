@@ -21,6 +21,8 @@ service CellService {
   //       - TopCircuitCells
   //       - GetCircuits
   //       - GetFootprints
+  //       - StreamCircuits
+  //       - StreamFootprints
   rpc Create (CellCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Gets the layout of the provided cell
@@ -42,7 +44,7 @@ service CellService {
 
   // summary: Delete a cell
   // io_flags:
-  //   - buffer
+  //   - write_no_cache_invalidation
   rpc Delete (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the database
@@ -136,6 +138,11 @@ service CellService {
   // summary: Set the name of the cell
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
+  //     - global:
+  //       - Find
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the cell's design mode
@@ -215,26 +222,36 @@ service CellService {
   //   - invalidations:
   //     - .target:
   //       - GetSimulationSetups
+  //       - StreamSimulationSetups
   rpc DeleteSimulationSetup (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get simulation setups
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetSimulationSetups (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream the simulation setups
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamSimulationSetups (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Generate auto HFSS regions
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //     - global:
+  //       - Layout.StreamItems
   rpc GenerateAutoHFSSRegions (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: Generate via smart box
   // io_flags:
-  //   - cache
+  //   - read_no_cache
   rpc GenerateViaSmartBox (StringPropertyMessage) returns (PolygonDataListMessage) {}
 }
 

@@ -31,41 +31,56 @@ service LayoutService {
   // summary: Sets the layer collection of the layout
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLayerCollection
   rpc SetLayerCollection (SetLayerCollectionMessage) returns (google.protobuf.Empty) {}
 
   // summary: Gets the layout objects that belong to the layout
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetItems (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream the layout objects that belong to the layout
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamItems (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get expanded extent from nets
   // io_flags:
-  //   - cache
+  //   - read_no_cache
   rpc GetExpandedExtentFromNets (LayoutExpandedExtentMessage) returns (PolygonDataMessage) {}
 
   // summary: Convert primitives to via
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - StreamItems
+  //       - Net.StreamLayoutObjects
   rpc ConvertPrimitivesToVias(LayoutConvertP2VMessage) returns (google.protobuf.Empty) {}
 
   // summary: Gets if the port reference terminals are connected
   // io_flags:
-  //   - cache
+  //   - read_no_cache
   rpc ArePortReferenceTerminalsConnected (EDBObjMessage) returns (LayoutPortRefTerminalsConnectedMessage) {}
 
   // summary: Gets list of zone primitives
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetZonePrimitives (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Streams list of zone primitives
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamZonePrimitives (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Set fixed zone primitives
@@ -86,11 +101,15 @@ service LayoutService {
   // summary: Get board bend definitions
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetBoardBendDefs (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Streams board bend definitions
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamBoardBendDefs (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Synchronize bend manager
@@ -99,24 +118,37 @@ service LayoutService {
   // summary: Get the layout instance of the layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutInstance (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Reconstruct arcs on layer
+  // io_flags:
+  //   - buffer
   rpc ReconstructArcs (GeometrySimplificationSettingsMessage) returns (google.protobuf.Empty) {}
 
   // summary: Union primitives on layer
+  // io_flags:
+  //   - buffer
   rpc UnitePrimitives (LayerRefsPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Create via groups on layer
+  // io_flags:
+  //   - buffer
   rpc GroupVias (ViaGroupingSettingsMessage) returns (google.protobuf.Empty) {}
 
   // summary: Snap vias on layer
+  // io_flags:
+  //   - buffer
   rpc SnapVias (ViaSnappingSettingsMessage) returns (google.protobuf.Empty) {}
 
   // summary: Snap primitives on layer
+  // io_flags:
+  //   - buffer
   rpc SnapPrimitives (GeometrySimplificationSettingsWithOptionMessage) returns (google.protobuf.Empty) {}
 
   // summary: Create mesh region
+  // io_flags:
   //   - write_no_cache_invalidation
   rpc CreateMeshRegion(CreateMeshRegionMessage) returns (google.protobuf.Empty) {}
   

@@ -19,6 +19,9 @@ service GroupService {
   //     - .layout:
   //       - FindByName
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create(ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a group by name in the given layout

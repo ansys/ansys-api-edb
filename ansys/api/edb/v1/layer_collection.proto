@@ -47,6 +47,7 @@ service LayerCollectionService {
   //   - invalidations:
   //     - .layer_collection:
   //       - GetMode
+  //       - IsValid
   rpc SetMode (SetLayerCollectionModeMessage) returns (google.protobuf.Empty) {}
 
   // summary: Adds the provided layers to the LayerCollection
@@ -55,6 +56,9 @@ service LayerCollectionService {
   //   - invalidations:
   //     - .layer_collection:
   //       - FindByName
+  //       - GetLayers
+  //       - StreamLayers
+  //       - IsValid
   rpc AddLayers (AddLayersMessage) returns (google.protobuf.Empty) {}
 
   // summary: Import a LayerCollection from a control file
@@ -67,6 +71,9 @@ service LayerCollectionService {
   //   - invalidations:
   //     - .layer_collection:
   //       - FindByName
+  //       - GetLayers
+  //       - StreamLayers
+  //       - IsValid
   rpc AddLayer (AddLayerMessage) returns (EDBObjMessage) {}
 
   // summary: Check whether there is layer overlapping or gap for laminate stackup. Check whether there is dielectric layer overlapping or gap for overlapping stackup.
@@ -86,16 +93,22 @@ service LayerCollectionService {
   // summary: Get top bottom stackup layers of specific type
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTopBottomStackupLayers (GetTopBottomStackupLayersMessage) returns (TopBottomStackupLayersMessage) {}
 
   // summary: Get a list of layers in the LayerCollection filtered by the given layer filter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetLayers (GetLayersMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream a list of layers in the LayerCollection filtered by the given layer filter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamLayers (GetLayersMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get the layer's product property corresponding to the given product and attribute ids
@@ -125,6 +138,12 @@ service LayerCollectionService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - FindByName
+  //       - GetLayers
+  //       - StreamLayers
+  //       - IsValid
   rpc MergeDielectrics (MergeDielectricsMessage) returns (EDBObjMessage) {}
 
   // summary: Retrieves a list of all zones in the LayerCollection
@@ -155,6 +174,9 @@ service LayerCollectionService {
   // summary: Removes a zone
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - GetZoneIds
   rpc RemoveZone (LayerCollectionZoneMessage) returns (google.protobuf.Empty) {}
 
   // summary: Simplifies dielectric layers by splitting them at the boundaries of signal layers and merging them

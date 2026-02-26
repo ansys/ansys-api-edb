@@ -22,6 +22,7 @@ service ViaGroupService {
   //     - .layout:
   //       - Connectable.FindByIdAndType
   //       - FindByName
+  //       - Layout.StreamItems
   rpc CreateWithOutline(ViaGroupCreateWithOutlineMessage) returns (EDBObjMessage) {}
 
   // summary: Find the ViaGroup by name in the given layout

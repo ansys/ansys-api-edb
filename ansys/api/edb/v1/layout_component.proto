@@ -18,6 +18,11 @@ service LayoutComponentService {
   // summary: Imports a layout component as a sub-design within a given layout
   // io_flags:
   //   - write_no_cache_invalidation
+  //   - invalidations:
+  //     - .layout:
+  //       - FindByName
+  //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
   rpc ImportLayoutComponent (ImportExportLayoutComponentMessage) returns (EDBObjMessage) {}
 
   // summary: Get the underlying cell instance of the layout component

@@ -44,11 +44,15 @@ service LayerMapService {
   // summary: GetMapping of a layer map
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMappingForward (IntPropertyMessage) returns (ProductPropertyIdsMessage) {}
 
   // summary: GetMapping of a layer map
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMappingBackward (IntPropertyMessage) returns (ProductPropertyIdsMessage) {}
 }
 

@@ -17,6 +17,9 @@ service PointTerminalService {
   //     - .layout:
   //       - Connectable.FindByIdAndType
   //       - Terminal.FindByName
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PointTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:

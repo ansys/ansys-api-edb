@@ -16,6 +16,9 @@ service TextService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (TextCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get text values

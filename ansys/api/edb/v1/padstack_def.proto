@@ -12,11 +12,13 @@ service PadstackDefService {
   //   - invalidations:
   //     - .target:
   //       - FindByName
+  //       - Database.GetDefinitionObjs
+  //       - Database.StreamDefinitionObjs
   rpc Create(PadstackDefStringMessage) returns (EDBObjMessage) {}
 
   // summary: delete a PadstackDef
   // io_flags:
-  //   - buffer
+  //   - write_no_cache_invalidation
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: find a PadstackDef by name

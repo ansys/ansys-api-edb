@@ -93,6 +93,11 @@ service LayerService {
   // summary: Set the name of this layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layer:
+  //       - GetName
+  //     - global:
+  //       - LayerCollection.FindByName
   rpc SetName (SetNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Create a clone of this layer

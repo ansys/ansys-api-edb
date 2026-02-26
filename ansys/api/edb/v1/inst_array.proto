@@ -18,6 +18,8 @@ service InstArrayService {
   //     - .layout:
   //       - Connectable.FindByIdAndType
   //       - FindByName
+  //     - global:
+  //       - Layout.StreamItems
   rpc Create(InstArrayCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
@@ -86,6 +88,10 @@ service InstArrayService {
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - Layout.StreamItems
+  //       - Net.StreamLayoutObjects
   rpc Decompose(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 

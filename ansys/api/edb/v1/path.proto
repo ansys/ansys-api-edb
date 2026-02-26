@@ -30,11 +30,16 @@ service PathService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PathCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Render Path
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Render (PathRenderMessage) returns (PolygonDataMessage) {}
 
   // summary: Get Polygon Data

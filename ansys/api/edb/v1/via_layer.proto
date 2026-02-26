@@ -25,6 +25,9 @@ service ViaLayerService {
   // summary: Sets the upper or lower reference layer of the via layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - StackupLayer.GetReferencingViaLayerIds
   rpc SetRefLayer (SetViaLayerRefLayerMessage) returns (google.protobuf.Empty) {}
 }
 

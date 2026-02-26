@@ -17,6 +17,9 @@ service PolygonService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PolygonCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get PolygonData

@@ -42,6 +42,7 @@ service ApdBondwireDefService {
   //     - .object:
   //       - FindByName
   //       - Database.GetDefinitionObjs
+  //       - Database.StreamDefinitionObjs
   rpc Create (BondwireDefStrMessage) returns (EDBObjMessage) {}
 
   // summary: Loads Definitions From File.

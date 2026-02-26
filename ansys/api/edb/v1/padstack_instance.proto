@@ -20,6 +20,9 @@ service PadstackInstanceService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create(PadstackInstCreateMessage) returns (EDBObjMessage) {}
 
   // summary: Get PadstackDef from PadstackInst
@@ -195,6 +198,8 @@ service PadstackInstanceService {
   // summary: Stream pin groups in PadstackInst
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamPinGroups(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
 }

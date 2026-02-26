@@ -20,6 +20,7 @@ service CellInstanceService {
   //     - .target.layout:
   //       - Connectable.FindByIdAndType
   //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Create a cellinstance with component
@@ -30,6 +31,8 @@ service CellInstanceService {
   //     - .target.layout:
   //       - Connectable.FindByIdAndType
   //       - FindByName
+  //     - global:
+  //       - Layout.StreamItems
   rpc CreateWithComponent(CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a cellinstance by name in the given layout
@@ -47,9 +50,17 @@ service CellInstanceService {
   rpc GetReferenceLayout(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Terminal Instances
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetTermInsts (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream terminal instances
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamTermInsts (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get if component is 3dplaced

@@ -17,8 +17,8 @@ service BoardBendDefService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
-  //     - global:
-  //       - Layout.StreamItems
+  //       - Layout.GetBoardBendDefs
+  //       - Layout.StreamBoardBendDefs
   rpc Create (BoardBendDefCreateMessage) returns (EDBObjMessage) {}
 
   // Summary: Get the boundary prim

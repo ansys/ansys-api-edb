@@ -15,6 +15,9 @@ service TerminalInstanceTerminalService {
   //     - .layout:
   //       - Connectable.FindByIdAndType
   //       - Terminal.FindByName
+  //     - global:
+  //       - Layout.StreamItems
+  //       - Net.StreamLayoutObjects
   rpc Create (TermInstTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:

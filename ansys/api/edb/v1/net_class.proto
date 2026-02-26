@@ -13,6 +13,7 @@ service NetClassService {
   //   - invalidations:
   //     - .layout:
   //       - FindByName
+  //       - Layout.StreamItems
   rpc Create(NetClassCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
@@ -32,6 +33,8 @@ service NetClassService {
   //   - invalidations:
   //     - .target:
   //       - GetName
+  //     - global:
+  //       - FindByName
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
@@ -54,9 +57,17 @@ service NetClassService {
   rpc IsPowerGround(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Get nets
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetNets(EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream nets
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamNets(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // io_flags:
@@ -64,6 +75,8 @@ service NetClassService {
   //   - invalidations:
   //     - .target:
   //       - ContainsNet
+  //       - GetNets
+  //       - StreamNets
   rpc AddNet(NetClassEditMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
@@ -71,6 +84,8 @@ service NetClassService {
   //   - invalidations:
   //     - .target:
   //       - ContainsNet
+  //       - GetNets
+  //       - StreamNets
   rpc RemoveNet(NetClassEditMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:

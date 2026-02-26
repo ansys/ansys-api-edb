@@ -16,6 +16,7 @@ service NetService {
   //   - invalidations:
   //     - .target:
   //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a net on a layer by name
@@ -34,6 +35,11 @@ service NetService {
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
+  //     - global:
+  //       - FindByName
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get is power ground
@@ -48,15 +54,22 @@ service NetService {
   //   - invalidations:
   //     - .target:
   //       - GetIsPowerGround
+  //     - global:
+  //       - NetClass.GetNets
+  //       - NetClass.StreamNets
   rpc SetIsPowerGround (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: layout objects getter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutObjects (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream layout objects getter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamLayoutObjects (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 }

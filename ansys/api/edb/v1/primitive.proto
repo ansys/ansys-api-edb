@@ -39,6 +39,8 @@ service PrimitiveService {
   //   - invalidations:
   //     - .target:
   //       - HasVoids
+  //       - Voids
+  //       - StreamVoids
   //     - .hole:
   //       - IsVoid
   //       - GetOwner
@@ -99,11 +101,15 @@ service PrimitiveService {
   // summary: Gets an iterator of the voids in the Primitive
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc Voids (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Streams an iterator of the voids in the Primitive
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamVoids (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get Owner
@@ -146,6 +152,9 @@ service PrimitiveService {
   //   - invalidations:
   //     - .target:
   //       - IsZonePrimitive
+  //     - global:
+  //       - Layout.GetZonePrimitives
+  //       - Layout.StreamZonePrimitives
   rpc MakeZonePrimitive (IntPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

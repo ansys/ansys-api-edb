@@ -22,6 +22,9 @@ service RectangleService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (RectangleCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Return Rectangle Parameters
@@ -43,6 +46,8 @@ service RectangleService {
   // summary: Render Geometry PolygonData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Render (RectanglePolygonDataMessage) returns (PolygonDataMessage) {}
   
   // summary: Get PolygonData

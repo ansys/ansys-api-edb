@@ -17,6 +17,9 @@ service CircleService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (CircleCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Render Circle

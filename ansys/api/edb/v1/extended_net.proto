@@ -14,6 +14,9 @@ service ExtendedNetService {
   //   - invalidations:
   //     - .layout:
   //       - FindByName
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (ExtendedNetCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Find an extended net by name

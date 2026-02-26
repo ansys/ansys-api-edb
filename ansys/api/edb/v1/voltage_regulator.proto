@@ -13,6 +13,7 @@ service VoltageRegulatorService {
   //   - invalidations:
   //     - .layout:
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
   rpc Create (VoltageRegulatorMessage) returns (EDBObjMessage) {}
 
   // io_flags:

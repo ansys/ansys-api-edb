@@ -25,10 +25,15 @@ service PinPairModelService {
   //   - invalidations:
   //     - .model:
   //       - GetRlc
+  //       - GetPinPairs
   rpc SetRlc (PinPairModelRlcPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRlc
+  //       - GetPinPairs
   rpc DeleteRlc (StringPairPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:

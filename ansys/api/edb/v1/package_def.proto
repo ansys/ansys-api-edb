@@ -19,18 +19,24 @@ service PackageDefService {
   //     - .target:
   //       - FindByName
   //       - FindByEDBUId
+  //       - Database.GetDefinitionObjs
+  //       - Database.StreamDefinitionObjs
   rpc Create(StringPropertyMessage) returns (EDBObjMessage) {}
 
   // io_flags:
-  //   - buffer
+  //   - write_no_cache_invalidation
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByEDBUId(IntPropertyMessage) returns (EDBObjMessage) {}
 
   // io_flags:
@@ -44,6 +50,8 @@ service PackageDefService {
   //   - invalidations:
   //     - .target:
   //       - GetName
+  //     - global:
+  //       - FindByName
   rpc SetName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:

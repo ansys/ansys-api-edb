@@ -38,6 +38,11 @@ service HierarchyObjectService {
   // summary: Set Name
   // io_flags:
   //   - buffer
+  //     - global:
+  //       - Group.FindByName
+  //       - InstArray.FindByName
+  //       - CellInstance.FindByName
+  //       - ViaGroup.FindByName
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Component

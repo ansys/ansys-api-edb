@@ -14,8 +14,11 @@ service PinGroupTerminalService {
   //     - .layout:
   //       - Terminal.FindByName
   //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
   //     - .pin_group:
   //       - PinGroup.GetPinGroupTerminal
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PinGroupTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:

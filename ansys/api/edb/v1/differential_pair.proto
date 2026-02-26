@@ -15,6 +15,7 @@ service DifferentialPairService {
   //   - invalidations:
   //     - .layout:
   //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (DifferentialPairCreationMessage) returns (EDBObjMessage) {}
 
   // summary: find a differential pair
