@@ -224,6 +224,31 @@ service CellService {
   //     - .target:
   //       - GetSimulationSetups
   //       - StreamSimulationSetups
+  //     - global:
+  //       - "Q3DGeneralSettings.*"
+  //       - "Q3DSettings.*"
+  //       - "Q3DDCRLSettings.*"
+  //       - "Q3DCGSettings.*"
+  //       - "Q3DAdvancedSettings.*"
+  //       - "RaptorXGeneralSettings.*"
+  //       - "RaptorXAdvancedSettings.*"
+  //       - "HFSSPIGeneralSettings.*"
+  //       - "HFSSPINetProcessingSettings.*"
+  //       - "HFSSPIPowerGroundNets.*"
+  //       - "HFSSPISignalNetsSettings.*"
+  //       - "HFSSGeneralSettings.*"
+  //       - "HFSSOptionsSettings.*"
+  //       - "HFSSAdvancedSettings.*"
+  //       - "HFSSAdvancedMeshingSettings.*"
+  //       - "HFSSSolverSettings.*"
+  //       - "DCRSettings.*"
+  //       - "HfssSimulationSetup.*"
+  //       - "SIWaveDCIRSimulationSettings.*"
+  //       - "SIWaveGeneralSettings.*"
+  //       - "SIWaveAdvancedSettings.*"
+  //       - "SIWaveDCSettings.*"
+  //       - "SIWaveDCAdvancedSettings.*"
+  //       - "SIWaveSParameterSettings.*"
   rpc DeleteSimulationSetup (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get simulation setups

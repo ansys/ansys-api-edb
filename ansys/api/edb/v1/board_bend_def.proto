@@ -42,6 +42,7 @@ service BoardBendDefService {
   //     - .target:
   //       - GetBendMiddle
   //       - GetBentRegions
+  //       - Primitive.IsParameterized
   rpc SetBendMiddle (PointPairPropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bend radius
@@ -58,6 +59,7 @@ service BoardBendDefService {
   //     - .target:
   //       - GetRadius
   //       - GetBentRegions
+  //       - Primitive.IsParameterized
   rpc SetRadius (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bend angle
@@ -74,6 +76,7 @@ service BoardBendDefService {
   //     - .target:
   //       - GetAngle
   //       - GetBentRegions
+  //       - Primitive.IsParameterized
   rpc SetAngle (ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // Summary: Get the bent regions

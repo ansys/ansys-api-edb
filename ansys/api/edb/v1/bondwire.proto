@@ -93,6 +93,7 @@ service BondwireService {
   //   - invalidations:
   //     - .target:
   //       - GetCrossSectionHeight
+  //       - Primitive.IsParameterized
   rpc SetCrossSectionHeight (SetCrossSectionHeightMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Bondwire Definition Name
@@ -153,6 +154,7 @@ service BondwireService {
   //   - invalidations:
   //     - .target:
   //       - GetTraj
+  //       - Primitive.IsParameterized
   rpc SetTraj (SetBondwireTrajMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Width Value
@@ -168,6 +170,7 @@ service BondwireService {
   //   - invalidations:
   //     - .target:
   //       - GetWidthValue
+  //       - Primitive.IsParameterized
   rpc SetWidthValue (BondwireValueMessage) returns (google.protobuf.Empty) {}
 }
 

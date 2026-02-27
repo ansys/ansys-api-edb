@@ -122,6 +122,8 @@ service PrimitiveService {
   // summary: Get isParametrized
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsParameterized (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Get HFSS Properties
