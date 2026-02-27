@@ -9,10 +9,14 @@ import "ansys/api/edb/v1/edb_messages.proto";
 service LayoutObjInstanceGeometryService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaterial(LayoutObjInstanceGeometryMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetColor(LayoutObjInstanceGeometryMessage) returns (google.protobuf.Int64Value) {}
 }
 

@@ -12,7 +12,6 @@ service BundleTerminalService {
   //   - returns_future
   //   - invalidations:
   //     - .layout:
-  //       - FindByName
   //       - Connectable.FindByIdAndType
   //       - Terminal.FindByName
   //       - Layout.StreamItems

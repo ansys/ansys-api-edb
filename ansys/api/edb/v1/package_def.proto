@@ -24,6 +24,7 @@ service PackageDefService {
   rpc Create(StringPropertyMessage) returns (EDBObjMessage) {}
 
   // io_flags:
+  //   - buffer
   //   - write_no_cache_invalidation
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
 

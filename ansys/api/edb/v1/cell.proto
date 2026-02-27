@@ -44,6 +44,7 @@ service CellService {
 
   // summary: Delete a cell
   // io_flags:
+  //   - buffer
   //   - write_no_cache_invalidation
   rpc Delete (EDBObjMessage) returns (google.protobuf.Empty) {}
 

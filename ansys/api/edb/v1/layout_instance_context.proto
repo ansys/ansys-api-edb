@@ -10,33 +10,49 @@ import "ansys/api/edb/v1/point_data.proto";
 service LayoutInstanceContextService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayout(EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetBBox(BoolPropertyMessage) returns (BoxMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsTopOrBlackBox(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTopOrBlackBox(EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPlacementElevation(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Is3DPlacement(BoolPropertyMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTransformation(EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTransformationBetweenContexts(EDBObjPairMessage) returns (EDBObjMessage) {}
 }

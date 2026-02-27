@@ -18,6 +18,7 @@ service PadstackDefService {
 
   // summary: delete a PadstackDef
   // io_flags:
+  //   - buffer
   //   - write_no_cache_invalidation
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
 

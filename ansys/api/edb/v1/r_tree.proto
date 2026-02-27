@@ -17,54 +17,96 @@ service RTreeService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetExtent (EDBObjMessage) returns (BoxMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetExtent
+  //       - Empty
+  //       - Search
+  //       - NearestNeighbor
+  //       - TouchingGeometry
+  //       - ConnectedGeometry
+  //       - GetConnectedGeometrySets
   rpc InsertIntObject (RTreeObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetExtent
+  //       - Empty
+  //       - Search
+  //       - NearestNeighbor
+  //       - TouchingGeometry
+  //       - ConnectedGeometry
+  //       - GetConnectedGeometrySets
   rpc DeleteIntObject (RTreeObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Empty (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc Search (RTreeSearchMessage) returns (IntegersPropertyMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc NearestNeighbor(RTreeObjMessage) returns (NearestNeighborResponseMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc TouchingGeometry (RTreeGeometryRequestMessage) returns (IntegersPropertyMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc ConnectedGeometry(RTreeGeometryRequestMessage) returns (IntegersPropertyMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetConnectedGeometrySets (EDBObjMessage) returns (GeometrySetsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetVisit
   rpc IncrementVisit(EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc IsVisited (RTreeObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - IsVisited
   rpc Visit(RTreeObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc GetVisit(EDBObjMessage) returns (google.protobuf.Int64Value) {}
 }
 

@@ -38,6 +38,7 @@ service HierarchyObjectService {
   // summary: Set Name
   // io_flags:
   //   - buffer
+  //   - invalidations:
   //     - global:
   //       - Group.FindByName
   //       - InstArray.FindByName

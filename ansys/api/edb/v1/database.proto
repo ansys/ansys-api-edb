@@ -51,6 +51,8 @@ service DatabaseService {
   rpc GetTopCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Streams the top circuits in a database
+  // io_flags:
+  //   - read_no_cache
   //   - invalidations:
   //     - .
   rpc StreamTopCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
@@ -156,6 +158,7 @@ service DatabaseService {
 
   // summary: copy cells
   // io_flags:
+  //   - read_no_cache
   //   - invalidations:
   //     - .target:
   //       - Cell.Find

@@ -62,6 +62,11 @@ service LayerCollectionService {
   rpc AddLayers (AddLayersMessage) returns (google.protobuf.Empty) {}
 
   // summary: Import a LayerCollection from a control file
+  // io_flags:
+  //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - "*"
   rpc ImportFromControlFile (ImportFromControlFileMessage) returns (google.protobuf.Empty) {}
 
   // summary: Add a new layer to the LayerCollection
@@ -169,6 +174,11 @@ service LayerCollectionService {
   rpc SetZoneName (SetZoneNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Inserts a new zone
+  // io_flags:
+  //   - write_no_buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - GetZoneIds
   rpc InsertZone (InsertZoneMessage) returns (google.protobuf.Int64Value) {}
 
   // summary: Removes a zone
@@ -180,6 +190,11 @@ service LayerCollectionService {
   rpc RemoveZone (LayerCollectionZoneMessage) returns (google.protobuf.Empty) {}
 
   // summary: Simplifies dielectric layers by splitting them at the boundaries of signal layers and merging them
+  // io_flags:
+  //   - write_no_buffer
+  //   - invalidations:
+  //     - .layer_collection:
+  //       - "*"
   rpc SimplifyDielectricsForPhi (SimplifyDielectricsForPhiMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Sets the zone to the layer and updates the layer in the collection

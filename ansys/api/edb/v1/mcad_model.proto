@@ -13,6 +13,7 @@ service McadModelService {
   //   - buffer
   //   - returns_future
   //   - write_no_cache_invalidation
+  //   - invalidations:
   //     - global:
   //       - Layout.StreamItems
   rpc CreateStride (McadModelCreationMessage) returns (EDBObjMessage) {}
@@ -21,6 +22,7 @@ service McadModelService {
   //   - buffer
   //   - returns_future
   //   - write_no_cache_invalidation
+  //   - invalidations:
   //     - global:
   //       - Layout.StreamItems
   rpc CreateHfss (McadModelHfssCreationMessage) returns (EDBObjMessage) {}
@@ -29,6 +31,7 @@ service McadModelService {
   //   - buffer
   //   - returns_future
   //   - write_no_cache_invalidation
+  //   - invalidations:
   //     - global:
   //       - Layout.StreamItems
   rpc Create3dComp (McadModelCreationMessage) returns (EDBObjMessage) {}

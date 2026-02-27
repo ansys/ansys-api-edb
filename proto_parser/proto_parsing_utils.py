@@ -20,7 +20,9 @@ valid_io_flags = {
     "returns_future",
     "read_no_cache",
     "write_no_cache_invalidation",
-    "invalidations"
+    "invalidations",
+    "write_no_buffer",
+    "read_no_buffer_flush"
 }
 
 class IOFlags:

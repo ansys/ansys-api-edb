@@ -14,35 +14,49 @@ service LayoutObjInstanceService {
   // summary: Get layers
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayers(EDBObjMessage) returns (EDBObjCollectionMessage) {}
   
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamLayers(EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get geometries
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetGeometries(LayerRefPropertyMessage) returns (FetchedLayoutObjInstanceGeometriesMessage) {}
 
   // summary: Get context
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetContext(EDBObjMessage) returns (StringsMessage) {}
 
   // summary: Get layout instance context
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutInstanceContext(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get layout object
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutObj(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get bounding box
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetBBox(BoolPropertyMessage) returns (BoxMessage) {}
 }
 

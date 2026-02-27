@@ -20,98 +20,122 @@ enum IntersectionType
 service PolygonDataService {
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetNormalizedPoints (PolygonDataMessage) returns (PointsMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc IsCircle (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc IsBox (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc HasSelfIntersections (PolygonDataWithToleranceMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc RemoveSelfIntersections (PolygonDataWithToleranceMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc IsConvex (PolygonDataMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetArea (PolygonDataMessage) returns (google.protobuf.FloatValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Transform (PolygonDataTransformMessage) returns (PolygonDataMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetBBox (PolygonDataListMessage) returns (BoxMessage) {}
   
   // io_flags:
   //   - read_no_cache
+  //   - read_no_buffer_flush
   rpc GetStreamedBBox (stream PolygonDataListMessage) returns (BoxMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetConvexHull (PolygonDataListMessage) returns (PolygonDataMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc RemoveArcs (PolygonDataRemoveArcMessage) returns (PolygonDataMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Defeature (PolygonDataWithToleranceMessage) returns (PolygonDataMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetBoundingCircle (PolygonDataMessage) returns (CircleMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc IsInside (PolygonDataWithPointMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc CircleIntersectsPolygon (PolygonDataWithCircleMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetIntersectionType (PolygonDataPairWithToleranceMessage) returns (IntersectionTypeMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetClosestPoints (PolygonDataWithPointsMessage) returns (PointsMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetUnion (PolygonDataListMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetIntersection (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Subtract (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Xor (PolygonDataPairMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Expand (PolygonDataExpandMessage) returns (PolygonDataListMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Get2DAlphaShape (PolygonDataGetAlphaShapeMessage) returns (PolygonDataListMessage) {}
 }
 

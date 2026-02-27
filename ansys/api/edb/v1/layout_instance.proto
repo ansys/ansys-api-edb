@@ -11,28 +11,48 @@ import "ansys/api/edb/v1/polygon_data.proto";
 
 service LayoutInstanceService {
   // summary: Refresh the layout instance
+  // io_flags:
+  //   - write_no_buffer
+  //   - invalidations:
+  //     - global:
+  //       - "*"
+  //       - "LayoutInstanceContext.*"
+  //       - "LayoutObjInstance.*"
+  //       - "LayoutObjInstance2DGeometry.*"
+  //       - "LayoutObjInstance3DGeometry.*"
+  //       - "LayoutObjInstanceGeometry.*"
   rpc Refresh(EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc QueryLayoutObjInstances(LayoutObjInstancesQueryMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
   
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamLayoutObjInstancesQuery(LayoutObjInstancesQueryMessage) returns (stream LayoutObjInstancesQueryResultsMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutObjInstanceInContext(GetLayoutObjInstanceInContextMessage) returns (EDBObjMessage) {}
 
   // summary: Get connected objects
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetConnectedObjects(GetConnectedObjectsMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream connected objects
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamConnectedObjects(GetConnectedObjectsMessage) returns (stream EDBObjCollectionMessage) {}
 }
 

@@ -11,6 +11,8 @@ import "ansys/api/edb/v1/layout_obj_instance_geometry.proto";
 service LayoutObjInstance3DGeometryService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTesselationData(LayoutObjInstanceGeometryMessage) returns (TesselationDataMessage) {}
 }
 

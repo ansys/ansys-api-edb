@@ -54,6 +54,7 @@ service MaterialDefService {
 
   // summary: Delete Material Definition
   // io_flags:
+  //   - buffer
   //   - write_no_cache_invalidation
   rpc Delete(EDBObjMessage) returns (google.protobuf.Empty) {}
 
