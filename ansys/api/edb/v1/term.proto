@@ -51,22 +51,37 @@ service TerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout
   rpc FindByName (TermFindByNameMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParams (EDBObjMessage) returns (TermParamsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetParams
+  //     - global:
+  //       - Net.StreamLayoutObjects
+  //       - Layout.StreamItems
   rpc SetParams (TermSetParamsMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetProductSolvers (TermGetProductSolversMessage) returns (TermProductSolversMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetProductSolvers
   rpc SetProductSolverOptions (TermSetSolverOptionMessage) returns (google.protobuf.Empty) {}
 }
 

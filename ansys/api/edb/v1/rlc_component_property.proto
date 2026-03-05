@@ -20,9 +20,14 @@ service RLCComponentPropertyService {
   // summary: Get enabled
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEnabled(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetEnabled
   rpc SetEnabled(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }

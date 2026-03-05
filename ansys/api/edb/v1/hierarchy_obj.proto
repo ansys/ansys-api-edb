@@ -15,56 +15,89 @@ service HierarchyObjectService {
   // summary: Get Transform
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTransform(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set Transform
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTransform
+  //       - InstArray.GetOrig
+  //       - GetLocation
   rpc SetTransform(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set Name
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - Group.FindByName
+  //       - InstArray.FindByName
+  //       - CellInstance.FindByName
+  //       - ViaGroup.FindByName
   rpc SetName(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Component
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetComponent(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get Placement Layer
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPlacementLayer(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set Placement Layer
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPlacementLayer
   rpc SetPlacementLayer(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Location
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLocation(EDBObjMessage) returns (PointMessage) {}
 
   // summary: Set Location
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLocation
+  //       - InstArray.GetOrig
   rpc SetLocation(PointPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Solve Independent Preference
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSolveIndependentPreference(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set Solve Independent Preference
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSolveIndependentPreference
   rpc SetSolveIndependentPreference(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

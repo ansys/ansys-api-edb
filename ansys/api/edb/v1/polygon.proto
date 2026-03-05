@@ -14,16 +14,27 @@ service PolygonService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PolygonCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get PolygonData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
 
   // summary: Set PolygonData
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPolygonData
   rpc SetPolygonData (SetPolygonDataMessage) returns (google.protobuf.Empty) {}
 }
 

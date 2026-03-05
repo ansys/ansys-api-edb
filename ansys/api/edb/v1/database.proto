@@ -16,12 +16,18 @@ enum AccessLevel {
 
 service DatabaseService {
   // summary: Creates a database
+  // io_flags:
+  //   - write_no_cache_invalidation
   rpc Create (google.protobuf.StringValue) returns (EDBObjMessage) {}
 
   // summary: Opens a database
+  // io_flags:
+  //   - read_no_cache
   rpc Open (OpenDatabaseMessage) returns (EDBObjMessage) {}
 
   // summary: Deletes a database
+  // io_flags:
+  //   - write_no_cache_invalidation
   rpc Delete (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
 
   // summary: Saves a database
@@ -33,19 +39,29 @@ service DatabaseService {
   // summary: Determines whether the database is read only
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsReadOnly(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Gets the top circuits in a database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTopCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Streams the top circuits in a database
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamTopCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Gets the id of a database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetId (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
   // summary: Finds a database with the provided id
@@ -64,21 +80,31 @@ service DatabaseService {
   // summary: Get the directory of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDirectory (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Get the product property of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductProperty(GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the product property of the Database
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty(SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the product property ids of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductPropertyIds(GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
   // summary: Get the product property ids of the Database
@@ -87,6 +113,8 @@ service DatabaseService {
   // summary: Get the version of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetVersion(EDBObjMessage) returns (GetVersionMessage) {}
 
   // summary: Scale the geometry of the Database
@@ -97,53 +125,94 @@ service DatabaseService {
   // summary: Get the source of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSource(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the source of the Database
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSource
   rpc SetSource(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the source version of the Database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSourceVersion(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the source version of the Database
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSourceVersion
   rpc SetSourceVersion(EDBObjNameMessage) returns (google.protobuf.Empty) {}
 
   // summary: copy cells
+  // io_flags:
+  //   - write_no_buffer
+  //   - invalidations:
+  //     - .target:
+  //       - Cell.Find
+  //       - GetTopCircuits
+  //       - TopCircuitCells
+  //       - GetCircuits
+  //       - GetFootprints
+  //       - StreamCircuits
+  //       - StreamFootprints
   rpc CopyCells (CopyCellsMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Get defs
   // io_flags:
-  //   - cache
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .target
   rpc GetDefinitionObjs (GetDefinitionObjsMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream defs
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .target
   rpc StreamDefinitionObjs (GetDefinitionObjsMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get top cells
   // io_flags:
-  //   - cache
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc TopCircuitCells (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Get cells
   // io_flags:
-  //   - cache
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetCircuits (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream cells
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamCircuits (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get footprint cells
   // io_flags:
-  //   - cache
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetFootprints (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream footprint cells
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamFootprints (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
 }

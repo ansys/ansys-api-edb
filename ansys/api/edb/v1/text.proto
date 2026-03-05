@@ -13,16 +13,27 @@ service TextService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (TextCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get text values
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTextData (EDBObjMessage) returns (TextDataMessage) {}
 
   // summary: Set text values
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTextData
   rpc SetTextData (SetTextDataMessage) returns (google.protobuf.Empty) {}
 }
 

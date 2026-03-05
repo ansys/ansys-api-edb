@@ -29,31 +29,46 @@ service Structure3DService {
   // summary: Get material
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaterial(BoolPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set material
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMaterial
   rpc SetMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get thickness
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetThickness(EDBObjMessage) returns (ValueMessage) {}
 
   // summary: Set thickness
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetThickness
   rpc SetThickness(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get mesh closure property
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMeshClosureProp(EDBObjMessage) returns (ClosureMessage) {}
 
   // summary: Set mesh closure property
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMeshClosureProp
   rpc SetMeshClosureProp(SetClosureMessage) returns (google.protobuf.Empty) {}
 }
 

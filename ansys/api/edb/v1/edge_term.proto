@@ -20,17 +20,26 @@ service EdgeService {
   // summary: Get the edge type
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetEdgeType (EDBObjMessage) returns (EdgeTypeMessage) {}
 
   // summary: Create an edge
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - global:
+  //       - Layout.StreamItems
+  //       - Net.StreamLayoutObjects
+  //       - Connectable.FindByIdAndType
   rpc Create (EdgeCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get the edge parameters
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters (EDBObjMessage) returns (EdgeParamsMessage) {}
 }
 
@@ -39,21 +48,36 @@ service EdgeTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Terminal.FindByName
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (EdgeTermCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Get edges
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetEdges (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream edges
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamEdges (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get edges
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetEdges
+  //       - StreamEdges
   rpc SetEdges (EdgeTermSetEdgesMessage) returns (google.protobuf.Empty) {}
 }
 

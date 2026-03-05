@@ -72,46 +72,93 @@ service Transform3DService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc TransformPoint (CPos3DPropertyMessage) returns (CPos3DMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetZYXRotation (EDBObjMessage) returns (CPos3DMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAxis (EDBObjMessage) returns (CPos3DTripleMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetAxis
+  //       - GetZYXRotation
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - IsEqual
+  //       - GetScaling
+  //       - GetShift
+  //       - GetMatrix
   rpc Transpose (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetAxis
+  //       - GetZYXRotation
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - IsEqual
+  //       - GetScaling
+  //       - GetShift
+  //       - GetMatrix
   rpc Invert (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc IsIdentity (IsIdentityMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
+  //     - .value
   rpc IsEqual (IsEqualMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetScaling (EDBObjMessage) returns (CPos3DMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetShift (EDBObjMessage) returns (CPos3DMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .:
+  //       - GetAxis
+  //       - GetZYXRotation
+  //       - IsIdentity
+  //       - TransformPoint
+  //       - IsEqual
+  //       - GetScaling
+  //       - GetShift
+  //       - GetMatrix
   rpc SetMatrix (DoublesPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMatrix (EDBObjMessage) returns (DoublesMessage) {}
 }
 

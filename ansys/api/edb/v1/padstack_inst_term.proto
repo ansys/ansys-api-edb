@@ -10,14 +10,30 @@ service PadstackInstanceTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Terminal.FindByName
+  //       - Layout.StreamItems
+  //     - .params.padstack_instance:
+  //       - PadstackInstance.GetPadstackInstanceTerminal
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PadstackInstTermCreationsMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters (EDBObjMessage) returns (PadstackInstTermParamsMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetParameters
+  //     - .params.padstack_instance:
+  //       - PadstackInstance.GetPadstackInstanceTerminal
   rpc SetParameters (PadstackInstTermSetParamsMessage) returns (google.protobuf.Empty) {}
 }
 

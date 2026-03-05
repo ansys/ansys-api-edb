@@ -9,10 +9,20 @@ import "ansys/api/edb/v1/edb_messages.proto";
 service VariableServerService {
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .variable_owner:
+  //       - GetAllVariableNames
+  //       - GetVariableValue
+  //       - IsParameter
   rpc AddVariable (AddVariableMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .variable_owner:
+  //       - GetAllVariableNames
+  //       - GetVariableValue
+  //       - IsParameter
   rpc AddMenuVariable (AddMenuVariableMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
@@ -25,22 +35,33 @@ service VariableServerService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .variable_owner
   rpc GetVariableValue (VariableNameMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .variable_owner
   rpc IsParameter (VariableNameMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAllVariableNames (EDBObjMessage) returns (GetVariableNamesMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .variable_owner
   rpc GetVariableDesc (VariableNameMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .variable_owner:
+  //       - GetVariableDesc
   rpc SetVariableDesc (SetDescriptionMessage) returns (google.protobuf.Empty) {}
 }
 

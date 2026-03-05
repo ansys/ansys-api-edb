@@ -11,14 +11,26 @@ service TerminalInstanceTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Terminal.FindByName
+  //     - global:
+  //       - Layout.StreamItems
+  //       - Net.StreamLayoutObjects
   rpc Create (TermInstTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTerminalInstance (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetTerminalInstance
   rpc SetTerminalInstance (TermInstTermSetInstanceMessage) returns (google.protobuf.Empty) {}
 }
 

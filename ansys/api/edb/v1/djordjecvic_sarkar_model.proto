@@ -19,68 +19,103 @@ service DjordjecvicSarkarModelService {
   // summary: Get frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetFrequency
   rpc SetFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get relative permitivity at frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetRelativePermitivityAtFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set relative permitivity at frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRelativePermitivityAtFrequency
   rpc SetRelativePermitivityAtFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get loss tangent at frequency
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLossTangentAtFrequency(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set loss tangent at frequency
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetLossTangentAtFrequency
   rpc SetLossTangentAtFrequency(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHighFrequencyCorner(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHighFrequencyCorner
   rpc SetHighFrequencyCorner(DoublePropertyMessage) returns (google.protobuf.Empty) {}
   
   // summary: Get use dc relative permitivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc UseDCRelativePermitivity(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set use dc relative permitivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - UseDCRelativePermitivity
   rpc SetUseDCRelativePermitivity(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get dc relative permitivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDCRelativePermitivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set dc relative permitivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDCRelativePermitivity
   rpc SetDCRelativePermitivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get dc conductivity
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDCConductivity(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
 
   // summary: Set dc conductivity
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDCConductivity
   rpc SetDCConductivity(DoublePropertyMessage) returns (google.protobuf.Empty) {}
 }

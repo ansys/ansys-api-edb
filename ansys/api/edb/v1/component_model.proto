@@ -19,36 +19,51 @@ service ComponentModelService {
   // summary: Set reference file
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetReferenceFile
   rpc SetReferenceFile(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get reference file
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferenceFile(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Find component model by name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Find component model by id
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindById(IntPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Get the name of the component model
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Get the type of the component model
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetType(EDBObjMessage) returns (ComponentModelTypeMessage) {}
   
   // summary: Get the id of the component model
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetId(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
 }
 
@@ -76,11 +91,16 @@ service DynamicLinkComponentModelService {
   // summary: Set design name
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDesignName
   rpc SetDesignName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get design name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDesignName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 }
 

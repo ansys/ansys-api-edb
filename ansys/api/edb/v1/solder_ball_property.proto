@@ -14,46 +14,73 @@ service SolderBallPropertyService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetShape(EDBObjMessage) returns (PadstackDefDataSolderballShapeMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetShape
   rpc SetShape(PadstackDefDataSetSolderballShapeMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPlacement(EDBObjMessage) returns (PadstackDefDataSolderballPlacementMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetPlacement
   rpc SetPlacement(PadstackDefDataSetSolderballPlacementMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDiameter(EDBObjMessage) returns (DiameterMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDiameter
   rpc SetDiameter(SetDiameterMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHeight(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetHeight
   rpc SetHeight(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetMaterialName(EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetMaterialName
   rpc SetMaterialName(StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc UsesSolderball(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:

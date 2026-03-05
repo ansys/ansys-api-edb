@@ -11,10 +11,14 @@ import "ansys/api/edb/v1/polygon_data.proto";
 service LayoutObjInstance2DGeometryService {
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layout_obj_inst_geom.geometry
   rpc IsNegative(LayoutObjInstanceGeometryMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layout_obj_inst_geom.geometry
   rpc GetPolygonData(GetPolygonDataMessage) returns (PolygonDataMessage) {}
 }
 
