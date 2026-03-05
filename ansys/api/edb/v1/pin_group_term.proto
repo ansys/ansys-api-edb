@@ -10,22 +10,43 @@ service PinGroupTerminalService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Terminal.FindByName
+  //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - .pin_group:
+  //       - PinGroup.GetPinGroupTerminal
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (PinGroupTermCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPinGroup (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetPinGroup
+  //     - .pin_group:
+  //       - PinGroup.GetPinGroupTerminal
   rpc SetPinGroup (PinGroupTermSetPinGroupMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayer (EDBObjMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .term:
+  //       - GetLayer
   rpc SetLayer (PinGroupTermSetLayerMessage) returns (google.protobuf.Empty) {}
 }
 

@@ -13,38 +13,63 @@ service NetService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target:
+  //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a net on a layer by name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName (StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Get name
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
+  //     - global:
+  //       - FindByName
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get is power ground
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIsPowerGround (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetIsPowerGround
+  //     - global:
+  //       - NetClass.GetNets
+  //       - NetClass.StreamNets
   rpc SetIsPowerGround (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: layout objects getter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetLayoutObjects (LayoutObjTargetMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream layout objects getter
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .target
   rpc StreamLayoutObjects (LayoutObjTargetMessage) returns (stream EDBObjCollectionMessage) {}
 }

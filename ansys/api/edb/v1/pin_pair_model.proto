@@ -16,18 +16,30 @@ service PinPairModelService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc GetRlc (StringPairPropertyMessage) returns (PinPairRlcMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .model:
+  //       - GetRlc
+  //       - GetPinPairs
   rpc SetRlc (PinPairModelRlcPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetRlc
+  //       - GetPinPairs
   rpc DeleteRlc (StringPairPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPinPairs (EDBObjMessage) returns (StringPairsMessage) {}
 }
 

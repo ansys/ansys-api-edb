@@ -15,14 +15,22 @@ service SParameterModelService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetProperties (EDBObjMessage) returns (SParameterModelMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProperties
   rpc SetComponentModelName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
-    // io_flags:
+  // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProperties
   rpc SetReferenceNet (StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 

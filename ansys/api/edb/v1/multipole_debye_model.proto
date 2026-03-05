@@ -18,10 +18,15 @@ service MultipoleDebyeModelService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters(EDBObjMessage) returns (MultipoleDebyeModelGetParams) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetParameters
   rpc SetParameters(MultipoleDebyeModelSetParams) returns (google.protobuf.Empty) {}
 }
 

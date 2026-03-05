@@ -25,25 +25,40 @@ service PortPropertyService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferenceHeight(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetReferenceHeight
   rpc SetReferenceHeight(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferenceSizeAuto(EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetReferenceSizeAuto
   rpc SetReferenceSizeAuto(BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferenceSize(EDBObjMessage) returns (ValuePairMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetReferenceSize
   rpc SetReferenceSize(ValuePairPropertyMessage) returns (google.protobuf.Empty) {}
 }

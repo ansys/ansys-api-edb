@@ -15,14 +15,17 @@ enum PolySense {
 service PointDataService {
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Rotate (PointDataRotateMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc ClosestPoint (PointDataWithLineMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc Distance (PointDataWithLineMessage) returns (google.protobuf.FloatValue) {}
 }
 

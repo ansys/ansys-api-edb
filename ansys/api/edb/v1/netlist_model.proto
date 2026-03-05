@@ -15,9 +15,14 @@ service NetlistModelService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetNetlist (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetNetlist
   rpc SetNetlist (StringPropertyMessage) returns (google.protobuf.Empty) {}
 }

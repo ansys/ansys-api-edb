@@ -15,30 +15,49 @@ service SpiceModelService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetProperties (EDBObjMessage) returns (SpiceModelMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProperties
   rpc SetModelPath (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProperties
   rpc SetModelName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetProperties
   rpc SetSubCkt (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTerminalPinPairs
   rpc AddTerminalPinPair (SpiceModelNewTerminalPinMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetTerminalPinPairs
   rpc RemoveTerminalPinPair (StringPropertyMessage) returns (google.protobuf.Empty) {}
   
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTerminalPinPairs (EDBObjMessage) returns (StringMapMessage) {}
 }
 

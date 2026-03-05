@@ -19,26 +19,42 @@ service RectangleService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - Layout.StreamItems
+  //     - global:
+  //       - Net.StreamLayoutObjects
   rpc Create (RectangleCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Return Rectangle Parameters
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameters (EDBObjMessage) returns (RectangleParametersMessage) {}
 
   // summary: Receive Rectangle Parameters
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetParameters
+  //       - GetPolygonData
   rpc SetParameters (SetRectangleParametersMessage) returns (google.protobuf.Empty) {}
 
   // summary: Render Geometry PolygonData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Render (RectanglePolygonDataMessage) returns (PolygonDataMessage) {}
   
   // summary: Get PolygonData
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetPolygonData (EDBObjMessage) returns (PolygonDataMessage) {}
 }
 

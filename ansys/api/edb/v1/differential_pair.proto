@@ -12,21 +12,32 @@ service DifferentialPairService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (DifferentialPairCreationMessage) returns (EDBObjMessage) {}
 
   // summary: find a differential pair
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName (StringPropertyMessage) returns (EDBObjMessage) {}
 
   // summary: Get differential pair
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDifferentialPair (EDBObjMessage) returns (DifferentialPairNetRefsMessage) {}
 
   // summary: Set differential pair
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .dp:
+  //       - GetDifferentialPair
   rpc SetDifferentialPair (DifferentialPairNetRefsMessage) returns (google.protobuf.Empty) {}
 }
 

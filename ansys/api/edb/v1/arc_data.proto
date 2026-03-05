@@ -17,36 +17,43 @@ service ArcDataService {
   // summary: Get height of an arc
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetHeight (ArcMessage) returns (google.protobuf.FloatValue) {}
 
   // summary: Get center point of an arc
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetCenter (ArcMessage) returns (PointMessage) {}
 
   // summary: Get midpoint of an arc
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetMidpoint (ArcMessage) returns (PointMessage) {}
 
   // summary: Get radius of an arc
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetRadius (ArcMessage) returns (google.protobuf.FloatValue) {}
 
   // summary: Get bounding box of an arc
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetBoundingBox (ArcMessage) returns (BoxMessage) {}
 
   // summary: Get angle between two arcs.
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc GetAngle (ArcMessage) returns (google.protobuf.FloatValue) {}
 
   // summary: Get closest points between two arcs.
   // io_flags:
   //   - cache
+  //   - read_no_buffer_flush
   rpc ClosestPoints (ArcDataTwoArcsMessage) returns (BoxMessage) {}
 }
 

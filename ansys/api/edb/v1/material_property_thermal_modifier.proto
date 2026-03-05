@@ -15,10 +15,14 @@ service MaterialPropertyThermalModifierService {
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetQuadraticModelParams(EDBObjMessage) returns (MaterialPropertyThermalModifierParamsMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetThermalModifierExpression(EDBObjMessage) returns (ValueMessage) {}
 }
 

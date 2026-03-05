@@ -14,11 +14,22 @@ service CellService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .database:
+  //       - Find
+  //       - Database.GetTopCircuits
+  //       - Database.TopCircuitCells
+  //       - Database.GetCircuits
+  //       - Database.GetFootprints
+  //       - Database.StreamCircuits
+  //       - Database.StreamFootprints
   rpc Create (CellCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Gets the layout of the provided cell
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetLayout (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get the flattened layout
@@ -27,106 +38,165 @@ service CellService {
   // summary: Find cell by name or id
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .database
   rpc Find (CellFindMessage) returns (EDBObjMessage) {}
 
   // summary: Delete a cell
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - Find
+  //       - Database.GetTopCircuits
+  //       - Database.TopCircuitCells
+  //       - Database.GetCircuits
+  //       - Database.GetFootprints
+  //       - Database.StreamCircuits
+  //       - Database.StreamFootprints
   rpc Delete (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the database
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDatabase (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Get whether the cell is of type footprint
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsFootprint (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Get whether the cell is a black box
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsBlackBox (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set whether the cell is a black box
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - IsBlackBox
   rpc SetBlackBox (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get whether the cell suppresses pads
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetSuppressPads (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set whether the cell suppresses pads
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSuppressPads
   rpc SetSuppressPads (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get whether the anti pads is always on
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAntiPadsAlwaysOn (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set whether the anti pads is always on
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAntiPadsAlwaysOn
   rpc SetAntiPadsAlwaysOn (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the option for anti pads
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetAntiPadsOption (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 
   // summary: Set the option for anti pads
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetAntiPadsOption
   rpc SetAntiPadsOption (IntPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get whether the cell is a symbolic footprint
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc IsSymbolicFootprint (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Get the name of the cell
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetName (EDBObjMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set the name of the cell
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetName
+  //     - global:
+  //       - Find
   rpc SetName (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get the cell's design mode
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetDesignMode (EDBObjMessage) returns (DesignModeMessage) {}
 
   // summary: Set the cell's design mode
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetDesignMode
   rpc SetDesignMode (DesignModePropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get HFSS extent info
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetHfssExtentInfo (EDBObjMessage) returns (HfssExtentInfoMessage) {}
 
   // summary: Set HFSS extent info
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .cell:
+  //       - GetHfssExtentInfo
   rpc SetHfssExtentInfo (CellSetHfssExtentsMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get temperature settings
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetTemperatureSettings (EDBObjMessage) returns (TemperatureSettingsMessage) {}
 
   // summary: Set temperature settings
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .cell:
+  //       - GetTemperatureSettings
   rpc SetTemperatureSettings (CellSetTemperatureSettingsMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get touchstone settings
@@ -145,41 +215,87 @@ service CellService {
   // summary: Get a list of property ids.
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductPropertyIds (GetProductPropertyIdsMessage) returns (ProductPropertyIdsMessage) {}
 
   // summary: Get product properties
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .edb_obj
   rpc GetProductProperty (GetProductPropertyMessage) returns (google.protobuf.StringValue) {}
 
   // summary: Set a product property value
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .edb_obj:
+  //       - GetProductProperty
+  //       - GetProductPropertyIds
   rpc SetProductProperty (SetProductPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Delete a simulation setup by name
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetSimulationSetups
+  //       - StreamSimulationSetups
+  //     - global:
+  //       - "Q3DGeneralSettings.*"
+  //       - "Q3DSettings.*"
+  //       - "Q3DDCRLSettings.*"
+  //       - "Q3DCGSettings.*"
+  //       - "Q3DAdvancedSettings.*"
+  //       - "RaptorXGeneralSettings.*"
+  //       - "RaptorXAdvancedSettings.*"
+  //       - "HFSSPIGeneralSettings.*"
+  //       - "HFSSPINetProcessingSettings.*"
+  //       - "HFSSPIPowerGroundNets.*"
+  //       - "HFSSPISignalNetsSettings.*"
+  //       - "HFSSGeneralSettings.*"
+  //       - "HFSSOptionsSettings.*"
+  //       - "HFSSAdvancedSettings.*"
+  //       - "HFSSAdvancedMeshingSettings.*"
+  //       - "HFSSSolverSettings.*"
+  //       - "DCRSettings.*"
+  //       - "HfssSimulationSetup.*"
+  //       - "SIWaveDCIRSimulationSettings.*"
+  //       - "SIWaveGeneralSettings.*"
+  //       - "SIWaveAdvancedSettings.*"
+  //       - "SIWaveDCSettings.*"
+  //       - "SIWaveDCAdvancedSettings.*"
+  //       - "SIWaveSParameterSettings.*"
   rpc DeleteSimulationSetup (StringPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get simulation setups
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetSimulationSetups (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream the simulation setups
   // io_flags:
   //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamSimulationSetups (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Generate auto HFSS regions
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //     - global:
+  //       - Layout.StreamItems
   rpc GenerateAutoHFSSRegions (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: Generate via smart box
   // io_flags:
-  //   - cache
+  //   - read_no_cache
   rpc GenerateViaSmartBox (StringPropertyMessage) returns (PolygonDataListMessage) {}
 
   // summary: Apply technology

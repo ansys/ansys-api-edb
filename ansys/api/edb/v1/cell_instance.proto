@@ -15,53 +15,88 @@ service CellInstanceService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target.layout:
+  //       - Connectable.FindByIdAndType
+  //       - FindByName
+  //       - Layout.StreamItems
   rpc Create (CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Create a cellinstance with component
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .target.layout:
+  //       - Connectable.FindByIdAndType
+  //       - FindByName
+  //     - global:
+  //       - Layout.StreamItems
   rpc CreateWithComponent(CellInstanceCreationMessage) returns (EDBObjMessage) {}
 
   // summary: Finds a cellinstance by name in the given layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .layout
   rpc FindByName (ObjectNameInLayoutMessage) returns (EDBObjMessage) {}
 
   // summary: Get the reference layout
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetReferenceLayout(EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Terminal Instances
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc GetTermInsts (EDBObjMessage) returns (EDBObjCollectionMessage) {}
 
   // summary: Stream terminal instances
+  // io_flags:
+  //   - read_no_cache
+  //   - invalidations:
+  //     - .
   rpc StreamTermInsts (EDBObjMessage) returns (stream EDBObjCollectionMessage) {}
 
   // summary: Get if component is 3dplaced
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetIs3DPlacement (EDBObjMessage) returns (google.protobuf.BoolValue) {}
 
   // summary: Set if component is 3dplaced
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetIs3DPlacement
   rpc Set3DPlacement (BoolPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get 3d transform values
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc Get3DTransform (EDBObjMessage) returns (EDBObjMessage) {}
 
   // summary: Set 3d transform values
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - Get3DTransform
   rpc Set3DTransform (PointerPropertyMessage) returns (google.protobuf.Empty) {}
 
   // summary: Get Parameter Override
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetParameterOverride (StringPropertyMessage) returns (ValueMessage) {}
 
   // summary: Set Parameter Override

@@ -14,50 +14,84 @@ service InstArrayService {
   // io_flags:
   //   - buffer
   //   - returns_future
+  //   - invalidations:
+  //     - .layout:
+  //       - Connectable.FindByIdAndType
+  //       - FindByName
+  //     - global:
+  //       - Layout.StreamItems
   rpc Create(InstArrayCreationMessage) returns (EDBObjMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .target
   rpc FindByName(StringPropertyMessage) returns (EDBObjMessage) {}
 
-  // io_flas:
+  // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetOrig(EDBObjMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetXAxis(EDBObjMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetXAxis
   rpc SetXAxis(PointPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetYAxis(EDBObjMessage) returns (PointMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetYAxis
   rpc SetYAxis(PointPropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetXCount(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetXCount
   rpc SetXCount(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - cache
+  //   - invalidations:
+  //     - .
   rpc GetYCount(EDBObjMessage) returns (ValueMessage) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - .target:
+  //       - GetYCount
   rpc SetYCount(ValuePropertyMessage) returns (google.protobuf.Empty) {}
 
   // io_flags:
   //   - buffer
+  //   - invalidations:
+  //     - global:
+  //       - Layout.StreamItems
+  //       - Net.StreamLayoutObjects
   rpc Decompose(EDBObjMessage) returns (google.protobuf.Empty) {}
 }
 
