@@ -287,10 +287,10 @@ service CellService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .layout:
-  //       - Connectable.FindByIdAndType
   //     - global:
   //       - Layout.StreamItems
+  //       - Connectable.FindByIdAndType
+  //       - Net.StreamLayoutObjects
   rpc GenerateAutoHFSSRegions (EDBObjMessage) returns (google.protobuf.Empty) {}
 
   // summary: Generate via smart box

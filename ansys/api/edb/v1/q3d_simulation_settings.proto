@@ -107,7 +107,7 @@ service Q3DSettingsService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .q3d_settings:
+  //     - .q3d_settings.target:
   //       - GetMaxPasses
   rpc SetMaxPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
@@ -120,7 +120,7 @@ service Q3DSettingsService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .q3d_settings:
+  //     - .q3d_settings.target:
   //       - GetMinPasses
   rpc SetMinPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
@@ -133,7 +133,7 @@ service Q3DSettingsService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .q3d_settings:
+  //     - .q3d_settings.target:
   //       - GetMinConvergedPasses
   rpc SetMinConvergedPasses(Q3DSettingsUInt64PropertyMessage) returns (google.protobuf.Empty) {}
 
@@ -146,7 +146,7 @@ service Q3DSettingsService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .q3d_settings:
+  //     - .q3d_settings.target:
   //       - GetPercentError
   rpc SetPercentError(Q3DSettingsDoublePropertyMessage) returns (google.protobuf.Empty) {}
 
@@ -159,7 +159,7 @@ service Q3DSettingsService {
   // io_flags:
   //   - buffer
   //   - invalidations:
-  //     - .q3d_settings:
+  //     - .q3d_settings.target:
   //       - GetMaxRefinePerPass
   rpc SetMaxRefinePerPass(Q3DSettingsDoublePropertyMessage) returns (google.protobuf.Empty) {}
 }
