@@ -120,6 +120,12 @@ message PolygonDataMessage {
   bool closed = 2;
   PolySense sense = 3;
   repeated PolygonDataMessage holes = 4;
+  // Fast-path alternative to `points`: interleaved (x, y) constant doubles,
+  // packed into a single flat buffer. When present, the C++ backend has
+  // verified all coordinates are non-parametric constants and omits the
+  // per-vertex PointMessage/ValueMessage overhead. The Python parser prefers
+  // this field over `points` when it is non-empty.
+  repeated double coords = 6 [packed = true];
 }
 
 message PolygonDataListMessage {
