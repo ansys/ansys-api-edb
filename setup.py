@@ -5,8 +5,6 @@ from datetime import datetime
 
 import setuptools
 
-from ansys.tools.protoc_helper import CMDCLASS_OVERRIDE
-
 # Get the long description from the README file
 HERE = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(HERE, "README.md"), encoding="utf-8") as f:
@@ -37,7 +35,7 @@ if __name__ == "__main__":
         url=f"https://github.com/ansys/{package_name}",
         license="MIT",
         python_requires=">=3.10",
-        install_requires=["grpcio>=1.44", "protobuf>=3.19.3,<7"],
+        install_requires=["grpcio>=1.44", "protobuf>=3.19.3,<5"],
         packages=setuptools.find_namespace_packages(".", include=("ansys.*",)),
         package_data={
             "": ["*.proto", "*.pyi", "py.typed", "VERSION"],
@@ -47,7 +45,6 @@ if __name__ == "__main__":
                 f"{dot_package_name}={dot_package_name}"
             ],
         },
-        cmdclass=CMDCLASS_OVERRIDE,
         project_urls={
             'Documentation': 'https://github.com/ansys/ansys-api-edb/#readme',
             'Source': 'https://github.com/ansys/ansys-api-edb/',

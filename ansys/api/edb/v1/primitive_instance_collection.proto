@@ -40,6 +40,12 @@ service PrimitiveInstanceCollectionService {
   // io_flags:
   //   - buffer
   rpc Decompose(EDBObjMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Create a primitive instance collection (unary, non-streaming variant)
+  rpc CreateUnary (PrimitiveInstanceCollectionDataMessage) returns (EDBObjMessage) {}
+
+  // summary: Set the positions the geometry is instantiated at (unary, non-streaming variant)
+  rpc SetPositionsUnary (PrimitiveInstanceCollectionDataMessage) returns (google.protobuf.Empty) {}
 }
 
 message PrimitiveInstanceCollectionDataMessage {
