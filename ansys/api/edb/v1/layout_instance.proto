@@ -35,8 +35,8 @@ service LayoutInstanceService {
   //   - read_no_cache
   rpc StreamConnectedObjects(GetConnectedObjectsMessage) returns (stream EDBObjCollectionMessage) {}
 
-  // summary: Query layout obj instances (unary, non-streaming variant)
-  rpc StreamLayoutObjInstancesQueryUnary(LayoutObjInstancesQueriesMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
+  // summary: Query layout obj instances (batched unary variant)
+  rpc BatchQueryLayoutObjInstances(LayoutObjInstancesQueriesMessage) returns (LayoutObjInstancesQueryResultsMessage) {}
 }
 
 message LayoutObjInstancesQueryMessage {
