@@ -61,7 +61,7 @@ enum T25DViaStyle
   MESH = 2;
   FIELD = 3;
   NUM_VIA_STYLE = 4;
-}
+}	
 
 enum DefeatureModelType
 {
@@ -181,6 +181,14 @@ service AdvancedSettingsService {
   // io_flags:
   //   - buffer
   rpc SetModelType(DefeatureModelTypePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetZeroMetalLayerThickness(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetZeroMetalLayerThickness(StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 message ViaModelTypeMessage {

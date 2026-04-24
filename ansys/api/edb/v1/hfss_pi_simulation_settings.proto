@@ -84,14 +84,6 @@ service HFSSPIAdvancedSettingsService {
   // io_flags:
   //   - buffer
   rpc SetSmallPlaneArea(StringPropertyMessage) returns (google.protobuf.Empty) {}
-
-  // io_flags:
-  //   - cache
-  rpc GetZeroMetalLayerThickness(EDBObjMessage) returns (google.protobuf.StringValue) {}
-
-  // io_flags:
-  //   - buffer
-  rpc SetZeroMetalLayerThickness(StringPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
 // Solver settings
