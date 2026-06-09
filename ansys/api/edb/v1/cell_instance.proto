@@ -68,6 +68,11 @@ service CellInstanceService {
   // io_flags:
   //   - buffer
   rpc SetParameterOverride (CellInstanceParameterOverride) returns (google.protobuf.Empty) {}
+
+  // summary: Set Net Mapping
+  // io_flags:
+  //   - buffer
+  rpc SetNetMapping (SetNetMappingMessage) returns (google.protobuf.Empty) {}
 }
 
 message CellInstanceCreationMessage {
@@ -80,3 +85,9 @@ message CellInstanceParameterOverride {
   string pname = 2;
   ValueMessage pval = 3;
 }
+
+message SetNetMappingMessage {
+  EDBObjMessage target = 1;
+  StringMapMessage net_map = 2;
+}
+
