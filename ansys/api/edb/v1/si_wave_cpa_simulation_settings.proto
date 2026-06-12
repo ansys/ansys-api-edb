@@ -1,0 +1,755 @@
+// Proto file representing siwave CPA simulation setup settings
+
+syntax = "proto3";
+
+package ansys.api.edb.v1;
+
+import "ansys/api/edb/v1/edb_messages.proto";
+
+//------------------------------------------------------------------------------
+// SIWaveCPASimulationSettingsService
+
+enum CPASimulationMode
+{
+  CPA_ESD_R = 0;
+  CPA_RLCG = 1;
+  CPA_HOTSPOT_PIN_GROUP = 2;
+}
+
+message CPASimulationModeMessage {
+  CPASimulationMode sim_mode = 1;
+}
+
+message CPASimulationModePropertyMessage {
+  EDBObjMessage target = 1;
+  CPASimulationMode sim_mode = 2;
+}
+
+service SIWaveCPASimulationSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetUseChannelSetup(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetUseChannelSetup(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSimulationMode(EDBObjMessage) returns (CPASimulationModeMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSimulationMode(CPASimulationModePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetUseQ3DSolver(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetUseQ3DSolver(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHotspotPinGroupThreshold(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHotspotPinGroupThreshold(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHotspotPinGroupSize(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHotspotPinGroupSize(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHotspotMaxNumPinGroups(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHotspotMaxNumPinGroups(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPASettingsService
+
+enum CPAExtractionMode
+{
+  CPA_PI = 0;
+  CPA_SI = 1;
+}
+
+enum CPAModelType
+{
+  CPA_MODEL_RDL_IC = 0;
+  CPA_MODEL_PACKAGE = 1;
+  CPA_MODEL_PCB = 2;
+}
+
+message CPAExtractionModeMessage {
+  CPAExtractionMode extract_mode = 1;
+}
+
+message CPAExtractionModePropertyMessage {
+  EDBObjMessage target = 1;
+  CPAExtractionMode extract_mode = 2;
+}
+
+message CPAModelTypeMessage {
+  CPAModelType model_type = 1;
+}
+
+message CPAModelTypePropertyMessage {
+  EDBObjMessage target = 1;
+  CPAModelType model_type = 2;
+}
+
+service SIWaveCPASettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetExtractMode(EDBObjMessage) returns (CPAExtractionModeMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetExtractMode(CPAExtractionModePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetExtractFrequency(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetExtractFrequency(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetComputeCapacitance(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetComputeCapacitance(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetComputeDC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetComputeDC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetComputeDCInductance(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetComputeDCInductance(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetComputeDCCapacitance(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetComputeDCCapacitance(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetComputeAC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetComputeAC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetGroundPwrGndNetsForSI(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetGroundPwrGndNetsForSI(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetReturnNet(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetReturnNet(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetAutoSelectSmallHoleSize(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetAutoSelectSmallHoleSize(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSmallHoleSize(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSmallHoleSize(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetModelType(EDBObjMessage) returns (CPAModelTypeMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetModelType(CPAModelTypePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetUseLocalAnalysis(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetUseLocalAnalysis(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetPerformERC(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetPerformERC(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetExcludeNonfunctionalPads(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetExcludeNonfunctionalPads(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAAdvancedSettingsService
+
+enum CPASpiceNetlistTopology
+{
+  CPA_L_NETWORK = 0;
+  CPA_T_NETWORK = 1;
+  CPA_MOR_NETWORK = 2;
+}
+
+message CPASpiceNetlistTopologyMessage {
+  CPASpiceNetlistTopology topology = 1;
+}
+
+message CPASpiceNetlistTopologyPropertyMessage {
+  EDBObjMessage target = 1;
+  CPASpiceNetlistTopology topology = 2;
+}
+
+service SIWaveCPAAdvancedSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetIgnoreGeometryBelowSize(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIgnoreGeometryBelowSize(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIgnoreVoidsBelowSize(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIgnoreVoidsBelowSize(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSnapVertexDistance(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSnapVertexDistance(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetThermalAwareSim(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetThermalAwareSim(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetUseUniformTemperature(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetUseUniformTemperature(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDesignTemperature(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetDesignTemperature(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetSitempFilePath(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetSitempFilePath(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetOutputSpiceTopology(EDBObjMessage) returns (CPASpiceNetlistTopologyMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetOutputSpiceTopology(CPASpiceNetlistTopologyPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAQ3DSettingsService
+
+enum CPAAccuracyLevel
+{
+  CPA_ACCURACY_NORMAL = 0;
+  CPA_ACCURACY_HIGH = 1;
+}
+
+message CPAAccuracyLevelMessage {
+  CPAAccuracyLevel accuracy_level = 1;
+}
+
+message CPAAccuracyLevelPropertyMessage {
+  EDBObjMessage target = 1;
+  CPAAccuracyLevel accuracy_level = 2;
+}
+
+service SIWaveCPAQ3DSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetCustomRefinement(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetCustomRefinement(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMaxNumCGPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMaxNumCGPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinNumCGPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMinNumCGPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetCGPercentError(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetCGPercentError(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetCGPercentRefinement(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetCGPercentRefinement(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetCGAccuracyLevel(EDBObjMessage) returns (CPAAccuracyLevelMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetCGAccuracyLevel(CPAAccuracyLevelPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMaxNumRLPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMaxNumRLPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinNumRLPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMinNumRLPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetRLPercentError(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetRLPercentError(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetRLPercentRefinement(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetRLPercentRefinement(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMaxNumDCPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMaxNumDCPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetMinNumDCPasses(EDBObjMessage) returns (google.protobuf.UInt64Value) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetMinNumDCPasses(UInt64PropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDCPercentError(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetDCPercentError(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDCPercentRefinement(EDBObjMessage) returns (google.protobuf.DoubleValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetDCPercentRefinement(DoublePropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetDielectricExtension(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetDielectricExtension(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetTerminalDiam(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetTerminalDiam(StringPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPANetSettingsService
+
+message CPAIncludedNetsMessage {
+  repeated string nets = 1;
+}
+
+message CPAIncludedNetsPropertyMessage {
+  EDBObjMessage target = 1;
+  repeated string nets = 2;
+}
+
+service SIWaveCPANetSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetAutoSelectNetsForSimulation(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetAutoSelectNetsForSimulation(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIgnoreDummyNetsForSelectedNets(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIgnoreDummyNetsForSelectedNets(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIncludedNets(EDBObjMessage) returns (CPAIncludedNetsMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIncludedNets(CPAIncludedNetsPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAExternalEnvSettingsService
+
+service SIWaveCPAExternalEnvSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetTopFillMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetTopFillMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetBottomFillMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetBottomFillMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetPcbMaterial(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetPcbMaterial(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIncludeMetalPlane1(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIncludeMetalPlane1(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetGroundMetalPlane1(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetGroundMetalPlane1(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHeightMetalPlane1(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHeightMetalPlane1(StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetIncludeMetalPlane2(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetIncludeMetalPlane2(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetGroundMetalPlane2(EDBObjMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetGroundMetalPlane2(BoolPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHeightMetalPlane2(EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHeightMetalPlane2(StringPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPADieConfigSettingsService
+
+enum CPAPinGroupMode
+{
+  CPA_PIN_GROUP_NONE = 0;
+  CPA_DIE_GROUPS = 1;
+  CPA_PLOC = 2;
+}
+
+message CPADieConfigMessage {
+  bool included = 1;
+  CPAPinGroupMode pin_grouping = 2;
+}
+
+message CPADieConfigEntryMessage {
+  string part_ref_des = 1;
+  CPADieConfigMessage config = 2;
+}
+
+message CPADieConfigMapMessage {
+  repeated CPADieConfigEntryMessage entries = 1;
+}
+
+message CPADieConfigPropertyMessage {
+  EDBObjMessage target = 1;
+  string part_ref_des = 2;
+  CPADieConfigMessage config = 3;
+}
+
+message CPADieConfigRemoveMessage {
+  EDBObjMessage target = 1;
+  string part_ref_des = 2;
+}
+
+service SIWaveCPADieConfigSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetAllDieConfigs(EDBObjMessage) returns (CPADieConfigMapMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc AddDieConfig(CPADieConfigPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
+  rpc RemoveDieConfig(CPADieConfigRemoveMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAChannelComponentSettingsService
+
+message CPAChannelComponentPropertyMessage {
+  EDBObjMessage target = 1;
+  string ref_des = 2;
+  bool internal = 3;
+}
+
+service SIWaveCPAChannelComponentSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetPartIsInternalToNetlist(EDBObjNameMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetPartIsInternalToNetlist(CPAChannelComponentPropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAVRMSettingsService
+
+message CPAVRMParamsMessage {
+  string power_net = 1;
+  string ground_net = 2;
+  string supply_voltage = 3;
+}
+
+message CPAVRMConfigMessage {
+  bool included = 1;
+  repeated CPAVRMParamsMessage vrm_params = 2;
+}
+
+message CPAVRMConfigEntryMessage {
+  string part_ref_des = 1;
+  CPAVRMConfigMessage config = 2;
+}
+
+message CPAVRMConfigMapMessage {
+  repeated CPAVRMConfigEntryMessage entries = 1;
+}
+
+message CPAVRMConfigPropertyMessage {
+  EDBObjMessage target = 1;
+  string part_ref_des = 2;
+  CPAVRMConfigMessage config = 3;
+}
+
+message CPAVRMConfigRemoveMessage {
+  EDBObjMessage target = 1;
+  string part_ref_des = 2;
+}
+
+message CPAGetVRMConfigMessage {
+  EDBObjMessage target = 1;
+  string part_ref_des = 2;
+}
+
+service SIWaveCPAVRMSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetAllVRMConfigs(EDBObjMessage) returns (CPAVRMConfigMapMessage) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetVRMConfig(CPAGetVRMConfigMessage) returns (CPAVRMConfigEntryMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc AddVRMConfig(CPAVRMConfigPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // io_flags:
+  //   - buffer
+  rpc RemoveVRMConfig(CPAVRMConfigRemoveMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAUnconnectedDiePinSettingsService
+
+message CPAPinSupplyVoltageMapMessage {
+  map<string, string> pin_supply_voltages = 1;
+}
+
+message CPAPinSupplyVoltagePropertyMessage {
+  EDBObjMessage target = 1;
+  string pin = 2;
+  string voltage = 3;
+}
+
+service SIWaveCPAUnconnectedDiePinSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetPinSupplyVoltages(EDBObjMessage) returns (CPAPinSupplyVoltageMapMessage) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetPinSupplyVoltage(CPAPinSupplyVoltagePropertyMessage) returns (google.protobuf.Empty) {}
+}
+
+//------------------------------------------------------------------------------
+// SIWaveCPAHotSpotComponentSettingsService
+
+message CPAHotSpotComponentsMessage {
+  repeated string ref_des = 1;
+}
+
+message CPAHotSpotComponentPropertyMessage {
+  EDBObjMessage target = 1;
+  string ref_des = 2;
+  bool enabled = 3;
+}
+
+service SIWaveCPAHotSpotComponentSettingsService {
+  // io_flags:
+  //   - cache
+  rpc GetHotSpotComponents(EDBObjMessage) returns (CPAHotSpotComponentsMessage) {}
+
+  // io_flags:
+  //   - cache
+  rpc GetHotSpotEnabled(EDBObjNameMessage) returns (google.protobuf.BoolValue) {}
+
+  // io_flags:
+  //   - buffer
+  rpc SetHotSpotEnabled(CPAHotSpotComponentPropertyMessage) returns (google.protobuf.Empty) {}
+}
