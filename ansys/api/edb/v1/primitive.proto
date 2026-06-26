@@ -110,6 +110,21 @@ service PrimitiveService {
   // io_flags:
   //   - buffer
   rpc MakeZonePrimitive (IntPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get Color Mask
+  // io_flags:
+  //   - cache
+  rpc GetColorMask (EDBObjMessage) returns (google.protobuf.StringValue) {}
+
+  // summary: Set Color Mask
+  // io_flags:
+  //   - buffer
+  rpc SetColorMask (StringPropertyMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Get Color Mask ID
+  // io_flags:
+  //   - cache
+  rpc GetColorMaskId (EDBObjMessage) returns (google.protobuf.Int64Value) {}
 }
 
 // Message for GetPrimitiveType
