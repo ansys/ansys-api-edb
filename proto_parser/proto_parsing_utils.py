@@ -35,6 +35,7 @@ class RpcData:
         response_type: str,
         io_flags: List[str],
         proto_file_name: str,
+        is_streaming: bool = False,
     ):
         """Create an RpcData object."""
         self._package_name = package_name
@@ -46,6 +47,7 @@ class RpcData:
         self._response_type = response_type
         self._io_flags = set(io_flags)
         self._proto_file_name = proto_file_name
+        self._is_streaming = is_streaming
 
     @property
     def package_name(self):
@@ -110,6 +112,11 @@ class RpcData:
         """Name of the proto file defining the rpc method."""
         return self._proto_file_name
 
+    @property
+    def is_streaming(self):
+        """Flag indicating if the rpc method uses streaming (server, client, or bidirectional)."""
+        return self._is_streaming
+
 
 def _process_rpc(
     comments: List[str],
@@ -118,13 +125,15 @@ def _process_rpc(
     package_name: str,
     proto_file_name: str,
     rpc_datas: List[RpcData],
+    require_io_flags: bool = True,
 ):
     rpc_info = yaml.safe_load(linesep.join([comment.replace("// ", "") for comment in comments]))
-    if rpc_info is None or isinstance(rpc_info, str):
+    io_flags = []
+    if rpc_info is not None and not isinstance(rpc_info, str):
+        io_flags = rpc_info.get("io_flags") or []
+    if require_io_flags and not io_flags:
         return
-    io_flags = rpc_info.get("io_flags")
-    if io_flags is None or not io_flags:
-        return
+    is_streaming = "stream" in re.split(r" |\(|\)", rpc_decl)
     rpc_method_tokens = [
         token for token in re.split(" |\(|\)", rpc_decl) if token and token != "stream"
     ]
@@ -136,13 +145,13 @@ def _process_rpc(
     request = rpc_method_tokens[2]
     response = rpc_method_tokens[4]
     rpc_data = RpcData(
-        package_name, service_name, rpc_name, request, response, io_flags, proto_file_name
+        package_name, service_name, rpc_name, request, response, io_flags, proto_file_name, is_streaming
     )
     rpc_data.validate_io_flags()
     rpc_datas.append(rpc_data)
 
 
-def parse_proto(proto_path: str, rpc_datas: List[RpcData]):
+def parse_proto(proto_path: str, rpc_datas: List[RpcData], require_io_flags: bool = True):
     """Parse the provided proto file."""
     with open(proto_path) as proto_file:
         proto_datas = proto_file.readlines()
@@ -156,7 +165,7 @@ def parse_proto(proto_path: str, rpc_datas: List[RpcData]):
             comments.append(proto_data)
             continue
         elif proto_data.startswith("rpc"):
-            _process_rpc(comments, proto_data, service, package, proto_file_name, rpc_datas)
+            _process_rpc(comments, proto_data, service, package, proto_file_name, rpc_datas, require_io_flags)
         elif proto_data.startswith("service"):
             service = proto_data.split()[1]
         elif proto_data.startswith("package"):
@@ -164,7 +173,7 @@ def parse_proto(proto_path: str, rpc_datas: List[RpcData]):
         comments.clear()
 
 
-def parse_all_protos_in_dir(protos_dir: str, rpc_datas: List[RpcData]):
+def parse_all_protos_in_dir(protos_dir: str, rpc_datas: List[RpcData], require_io_flags: bool = True):
     """Parse all proto files in the specified directory."""
     for proto_file in iglob(protos_dir + "/**/*.proto", recursive=True):
-        parse_proto(proto_file, rpc_datas)
+        parse_proto(proto_file, rpc_datas, require_io_flags)
