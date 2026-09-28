@@ -18,6 +18,11 @@ service ComponentPropertyService {
   //   - write_no_cache_invalidation
   rpc Clone(EDBObjMessage) returns (EDBObjMessage) {}
 
+// summary: Get component property type
+  // io_flags:
+  //   - cache
+  rpc GetComponentPropertyType(EDBObjMessage) returns (ComponentPropertyTypeMessage) {}
+
   // summary: Get Package mounting offset
   // io_flags:
   //   - cache
@@ -46,7 +51,18 @@ service ComponentPropertyService {
   rpc SetModel(PointerPropertyMessage) returns (google.protobuf.Empty) {}
 }
 
+enum ComponentPropertyType {
+  RLC_COMPONENT_PROP = 0;
+  IC_COMPONENT_PROP = 1;
+  IO_COMPONENT_PROP = 2;
+  INVALID_COMPONENT_PROP = -1;
+}
+
 message ComponentPropModelMessage {
   EDBObjMessage model = 1;
   ModelType model_type = 2;
+}
+
+message ComponentPropertyTypeMessage {
+  ComponentPropertyType type = 1;
 }
