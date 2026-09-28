@@ -135,6 +135,16 @@ service LayerCollectionService {
   // io_flags:
   //   - buffer
   rpc AddZoneToLayer (AddZoneToLayerMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Attempts to set a zone's core layer
+  // io_flags:
+  //   - buffer
+  rpc SetZoneCore (SetZoneCoreMessage) returns (google.protobuf.Empty) {}
+
+  // summary: Attempts to get a zone's core layer
+  // io_flags:
+  //   - cache
+  rpc GetZoneCore (GetZoneCoreMessage) returns (EDBObjMessage) {}
 }
 
 message LayerCollectionModeMessage {
@@ -235,4 +245,15 @@ message AddZoneToLayerMessage {
   EDBObjMessage layer = 2;
   int64 zone = 3;
   bool in_zone = 4;
+}
+
+message SetZoneCoreMessage {
+  EDBObjMessage layer_collection = 1;
+  EDBObjMessage layer = 2;
+  int64 zone = 3;
+}
+
+message GetZoneCoreMessage {
+  EDBObjMessage layer_collection = 1;
+  int64 zone = 2;
 }
